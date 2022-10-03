@@ -1,0 +1,142 @@
+import 'package:all_dogs/app/constants/api_constants.dart';
+import 'package:all_dogs/app/constants/color_constant.dart';
+import 'package:all_dogs/app/constants/sizeConstant.dart';
+import 'package:all_dogs/app/utilities/buttons.dart';
+import 'package:all_dogs/app/utilities/progress_dialog_utils.dart';
+import 'package:all_dogs/main.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import '../../../routes/app_pages.dart';
+import '../../../utilities/text_field.dart';
+import '../controllers/login_screen_controller.dart';
+
+class LoginScreenView extends GetWidget<LoginScreenController> {
+  const LoginScreenView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    MySize().init(context);
+    return SafeArea(
+      child: Obx(() {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Spacing.height(80),
+                  Center(
+                    child: Container(
+                      child: SvgPicture.asset(
+                        imagePath + "logo.svg",
+                        height: MySize.getHeight(50),
+                        width: MySize.getWidth(100),
+                      ),
+                    ),
+                  ),
+                  Spacing.height(60),
+                  Center(
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: MySize.getHeight(25),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Spacing.height(16),
+                  Center(
+                    child: Text(
+                      "Please fill in your credential to log in",
+                      style: TextStyle(
+                        fontSize: MySize.getHeight(14),
+                      ),
+                    ),
+                  ),
+                  Spacing.height(30),
+                  Text(
+                    "EMAIL :",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: MySize.getHeight(15)),
+                  ),
+                  Spacing.height(15),
+                  getTextField(
+                      textEditingController: controller.emailController,
+                      hintText: "Enter email here"),
+                  Spacing.height(30),
+                  Text(
+                    "PASSWORD :",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: MySize.getHeight(15)),
+                  ),
+                  Spacing.height(15),
+                  getTextField(
+                    textEditingController: controller.passwordController,
+                    hintText: "Enter password here",
+                    textVisible: !controller.isVisible.value,
+                    suffixIcon: InkWell(
+                        onTap: () {
+                          controller.isVisible.toggle();
+                        },
+                        child: Icon(
+                          (controller.isVisible.isTrue)
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        )),
+                  ),
+                  Spacing.height(10),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                        color: Colors.grey.shade400,
+                      ),
+                    ),
+                  ),
+                  Spacing.height(80),
+                  Center(
+                      child: InkWell(
+                          onTap: () {
+                            getIt<CustomDialogs>().showCircularDialog(context);
+                            Future.delayed(Duration(seconds: 5)).then((value) {
+                              getIt<CustomDialogs>()
+                                  .hideCircularDialog(context);
+                              Get.toNamed(Routes.SIGNUP_SCREEN);
+                            });
+                          },
+                          child: getButton(title: "LOGIN"))),
+                  Spacing.height(15),
+                  Center(
+                    child: Text.rich(
+                      TextSpan(children: [
+                        TextSpan(
+                            text: "No account?",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text: " Register",
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Get.toNamed(Routes.SIGNUP_SCREEN),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: appTheme.secondaryTheme)),
+                      ]),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+}
