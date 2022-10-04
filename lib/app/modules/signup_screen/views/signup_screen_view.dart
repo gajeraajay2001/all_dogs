@@ -21,144 +21,158 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
       child: Obx(() {
         return Scaffold(
           body: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Spacing.height(80),
-                  Center(
-                    child: Container(
-                      child: SvgPicture.asset(
-                        imagePath + "logo.svg",
-                        height: MySize.getHeight(50),
-                        width: MySize.getWidth(100),
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    child: Image.asset(
+                      imagePath + "back_arrow_image.png",
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: MySize.getHeight(10),
+                  left: MySize.getWidth(5),
+                  child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: MySize.getHeight(20),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Spacing.height(65),
+                      Center(
+                        child: Container(
+                          child: Image.asset(
+                            imagePath + "logo.png",
+                            height: MySize.getHeight(125),
+                            width: MySize.getWidth(320),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Spacing.height(60),
-                  Center(
-                    child: Text(
-                      "Create An Account",
-                      style: TextStyle(
-                        fontSize: MySize.getHeight(20),
-                        fontWeight: FontWeight.bold,
+                      Spacing.height(10),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                            fontSize: MySize.getHeight(18),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Spacing.height(16),
-                  Center(
-                    child: Text(
-                      "Please fill out this form to register with us",
-                      style: TextStyle(
-                        fontSize: MySize.getHeight(12),
+                      Spacing.height(37),
+                      getTextField(
+                          textEditingController: controller.nameController,
+                          prefixIcon: Icon(
+                            Icons.person_outline,
+                            color: appTheme.secondaryTheme,
+                          ),
+                          labelText: "Name",
+                          hintText: "Enter name here"),
+                      Spacing.height(30),
+                      getTextField(
+                          textEditingController: controller.emailController,
+                          prefixIcon: Icon(
+                            Icons.email_outlined,
+                            color: appTheme.secondaryTheme,
+                          ),
+                          labelText: "Email",
+                          hintText: "Enter email here"),
+                      Spacing.height(30),
+                      getTextField(
+                          textEditingController:
+                              controller.mobileNumberController,
+                          prefixIcon: Icon(
+                            Icons.call_outlined,
+                            color: appTheme.secondaryTheme,
+                          ),
+                          labelText: "Mobile No.",
+                          hintText: "Enter your number"),
+                      Spacing.height(30),
+                      getTextField(
+                        textEditingController: controller.passwordController,
+                        hintText: "Enter password here",
+                        textVisible: !controller.isVisible1.value,
+                        prefixIcon: Icon(
+                          Icons.lock_outline,
+                          color: appTheme.secondaryTheme,
+                        ),
+                        labelText: "Password",
+                        suffixIcon: InkWell(
+                            onTap: () {
+                              controller.isVisible1.toggle();
+                            },
+                            child: Icon(
+                              (controller.isVisible1.isTrue)
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            )),
                       ),
-                    ),
+                      Spacing.height(25),
+                      getTextField(
+                        textEditingController:
+                            controller.confirmPasswordController,
+                        hintText: "Confirm password here",
+                        textVisible: !controller.isVisible2.value,
+                        prefixIcon: Icon(
+                          Icons.lock_outline,
+                          color: appTheme.secondaryTheme,
+                        ),
+                        labelText: "Confirm Password",
+                        suffixIcon: InkWell(
+                            onTap: () {
+                              controller.isVisible2.toggle();
+                            },
+                            child: Icon(
+                              (controller.isVisible2.isTrue)
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            )),
+                      ),
+                      Spacing.height(60),
+                      Center(
+                          child: getButton(
+                              title: "SIGN UP",
+                              width: MySize.screenWidth,
+                              textSize: 17)),
+                      Spacing.height(15),
+                      Center(
+                        child: Text.rich(
+                          TextSpan(children: [
+                            TextSpan(
+                                text: "Have an account?",
+                                style: TextStyle(
+                                    color: Colors.grey.shade500,
+                                    fontSize: MySize.getHeight(11))),
+                            TextSpan(
+                                text: " Sign in!",
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () =>
+                                      Get.offAllNamed(Routes.LOGIN_SCREEN),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: MySize.getHeight(12))),
+                          ]),
+                        ),
+                      ),
+                      Spacing.height(50),
+                    ],
                   ),
-                  Spacing.height(30),
-                  Text(
-                    "NAME :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MySize.getHeight(15)),
-                  ),
-                  Spacing.height(15),
-                  getTextField(
-                      textEditingController: controller.nameController,
-                      hintText: "Enter name here"),
-                  Spacing.height(25),
-                  Text(
-                    "EMAIL :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MySize.getHeight(15)),
-                  ),
-                  Spacing.height(15),
-                  getTextField(
-                      textEditingController: controller.emailController,
-                      hintText: "Enter email here"),
-                  Spacing.height(25),
-                  Text(
-                    "MOBILE NO. :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MySize.getHeight(15)),
-                  ),
-                  Spacing.height(15),
-                  getTextField(
-                      textEditingController: controller.mobileNumberController,
-                      hintText: "10 digit mobile"),
-                  Spacing.height(25),
-                  Text(
-                    "PASSWORD :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MySize.getHeight(15)),
-                  ),
-                  Spacing.height(15),
-                  getTextField(
-                    textEditingController: controller.passwordController,
-                    hintText: "Enter password here",
-                    textVisible: !controller.isVisible1.value,
-                    suffixIcon: InkWell(
-                        onTap: () {
-                          controller.isVisible1.toggle();
-                        },
-                        child: Icon(
-                          (controller.isVisible1.isTrue)
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.grey,
-                        )),
-                  ),
-                  Spacing.height(25),
-                  Text(
-                    "CONFIRM PASSWORD :",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: MySize.getHeight(15)),
-                  ),
-                  Spacing.height(15),
-                  getTextField(
-                    textEditingController: controller.confirmPasswordController,
-                    hintText: "Confirm password here",
-                    textVisible: !controller.isVisible2.value,
-                    suffixIcon: InkWell(
-                        onTap: () {
-                          controller.isVisible2.toggle();
-                        },
-                        child: Icon(
-                          (controller.isVisible2.isTrue)
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.grey,
-                        )),
-                  ),
-                  Spacing.height(60),
-                  Center(
-                      child: getButton(
-                          title: "REGISTER", width: 125, textSize: 15)),
-                  Spacing.height(15),
-                  Center(
-                    child: Text.rich(
-                      TextSpan(children: [
-                        TextSpan(
-                            text: "Have an account?",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(
-                            text: " Login",
-                            recognizer: TapGestureRecognizer()
-                              ..onTap =
-                                  () => Get.offAllNamed(Routes.LOGIN_SCREEN),
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: appTheme.secondaryTheme)),
-                      ]),
-                    ),
-                  ),
-                  Spacing.height(50),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

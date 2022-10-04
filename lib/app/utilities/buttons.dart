@@ -13,7 +13,7 @@ Widget getButton({
   double? borderRadius,
 }) {
   return Container(
-    height: MySize.getHeight(height ?? 45),
+    height: MySize.getHeight(height ?? 47),
     width: MySize.getWidth(width ?? 150),
     alignment: Alignment.center,
     decoration: BoxDecoration(
@@ -25,7 +25,7 @@ Widget getButton({
       style: TextStyle(
           color: textColor ?? Colors.white,
           fontSize: MySize.getHeight(textSize ?? 17),
-          fontWeight: fontWeight ?? FontWeight.w400),
+          fontWeight: fontWeight ?? FontWeight.w500),
     ),
   );
 }

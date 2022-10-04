@@ -5,14 +5,16 @@ import '../constants/sizeConstant.dart';
 
 TextFormField getTextField({
   String? hintText,
+  String? labelText,
   TextEditingController? textEditingController,
   Widget? prefixIcon,
   double? borderRadius,
   Widget? suffixIcon,
   double? size = 52,
   Widget? suffix,
-  Color borderColor = Colors.transparent,
+  Color? borderColor,
   Color? fillColor,
+  Color? labelColor,
   TextInputType textInputType = TextInputType.name,
   TextInputAction textInputAction = TextInputAction.next,
   bool textVisible = false,
@@ -35,22 +37,26 @@ TextFormField getTextField({
     maxLines: maxLine,
     onChanged: onChange,
     decoration: InputDecoration(
-      fillColor: fillColor ?? appTheme.textGrayColor,
-      filled: true,
+      // fillColor: fillColor ?? appTheme.textGrayColor,
+      // filled: true,
+      labelText: labelText,
+      labelStyle: TextStyle(
+          color: labelColor ?? appTheme.secondaryTheme,
+          fontWeight: FontWeight.w600),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: borderColor),
+        borderSide: BorderSide(color: borderColor ?? appTheme.secondaryTheme),
         borderRadius: BorderRadius.circular(
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
-        borderSide: BorderSide(color: borderColor),
+        borderSide: BorderSide(color: borderColor ?? appTheme.secondaryTheme),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
-        borderSide: BorderSide(color: borderColor),
+        borderSide: BorderSide(color: borderColor ?? appTheme.secondaryTheme),
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
