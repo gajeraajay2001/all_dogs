@@ -14,6 +14,7 @@ TextFormField getTextField({
   Widget? suffix,
   Color? borderColor,
   Color? fillColor,
+  bool isFilled = false,
   Color? labelColor,
   TextInputType textInputType = TextInputType.name,
   TextInputAction textInputAction = TextInputAction.next,
@@ -37,8 +38,8 @@ TextFormField getTextField({
     maxLines: maxLine,
     onChanged: onChange,
     decoration: InputDecoration(
-      // fillColor: fillColor ?? appTheme.textGrayColor,
-      // filled: true,
+      fillColor: fillColor ?? appTheme.textGrayColor,
+      filled: isFilled,
       labelText: labelText,
       labelStyle: TextStyle(
           color: labelColor ?? appTheme.secondaryTheme,
@@ -63,8 +64,8 @@ TextFormField getTextField({
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
       ),
       contentPadding: EdgeInsets.only(
-        left: MySize.size20!,
-        right: MySize.size10!,
+        left: MySize.getWidth(20),
+        right: MySize.getWidth(10),
         bottom: size! / 2, // HERE THE IMPORTANT PART
       ),
       prefixIcon: prefixIcon,
@@ -72,8 +73,8 @@ TextFormField getTextField({
       suffix: suffix,
       errorText: (isNullEmptyOrFalse(errorText)) ? null : errorText,
       hintText: hintText,
-      hintStyle:
-          TextStyle(fontSize: MySize.size14!, color: Colors.grey.shade500),
+      hintStyle: TextStyle(
+          fontSize: MySize.getHeight(14), color: Colors.grey.shade500),
     ),
   );
 }

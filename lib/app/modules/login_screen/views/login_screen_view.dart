@@ -106,14 +106,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                       Center(
                           child: InkWell(
                               onTap: () {
-                                getIt<CustomDialogs>()
-                                    .showCircularDialog(context);
-                                Future.delayed(Duration(seconds: 5))
-                                    .then((value) {
-                                  getIt<CustomDialogs>()
-                                      .hideCircularDialog(context);
-                                  Get.toNamed(Routes.SIGNUP_SCREEN);
-                                });
+                                Get.toNamed(Routes.HOME_SCREEN);
                               },
                               child: getButton(
                                   title: "LOGIN", width: MySize.screenWidth))),

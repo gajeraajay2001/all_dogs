@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
+import '../modules/breeders_screen/bindings/breeders_screen_binding.dart';
+import '../modules/breeders_screen/views/breeders_screen_view.dart';
+import '../modules/home_screen/bindings/home_screen_binding.dart';
+import '../modules/home_screen/views/home_screen_view.dart';
 import '../modules/login_screen/bindings/login_screen_binding.dart';
 import '../modules/login_screen/views/login_screen_view.dart';
 import '../modules/signup_screen/bindings/signup_screen_binding.dart';
@@ -16,11 +18,6 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
       name: _Paths.LOGIN_SCREEN,
       page: () => const LoginScreenView(),
       binding: LoginScreenBinding(),
@@ -29,6 +26,16 @@ class AppPages {
       name: _Paths.SIGNUP_SCREEN,
       page: () => const SignupScreenView(),
       binding: SignupScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_SCREEN,
+      page: () => const HomeScreenView(),
+      binding: HomeScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREEDERS_SCREEN,
+      page: () => const BreedersScreenView(),
+      binding: BreedersScreenBinding(),
     ),
   ];
 }

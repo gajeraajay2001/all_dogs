@@ -11,14 +11,14 @@ class BaseTheme {
       BoxShadow(
         offset: Offset(2, 2),
         color: Colors.black26,
-        blurRadius: MySize.size2!,
-        spreadRadius: MySize.size2!,
+        blurRadius: MySize.getHeight(2),
+        spreadRadius: MySize.getHeight(2),
       ),
       BoxShadow(
         offset: Offset(-1, -1),
         color: Colors.white.withOpacity(0.8),
-        blurRadius: MySize.size2!,
-        spreadRadius: MySize.size2!,
+        blurRadius: MySize.getHeight(2),
+        spreadRadius: MySize.getHeight(2),
       ),
     ];
   }
