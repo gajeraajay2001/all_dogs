@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../../../constants/sizeConstant.dart';
 import '../controllers/breeders_screen_controller.dart';
 
-class BreedersScreenView extends GetView<BreedersScreenController> {
+class BreedersScreenView extends GetWidget<BreedersScreenController> {
   const BreedersScreenView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {

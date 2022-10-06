@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class BreedersScreenController extends GetxController {
+class BreedsScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();

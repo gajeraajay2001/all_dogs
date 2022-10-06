@@ -1,6 +1,7 @@
 import 'package:all_dogs/app/modules/home_screen/views/home_add_post_widget.dart';
 import 'package:all_dogs/app/modules/home_screen/views/home_latest_blog_widget.dart';
 import 'package:all_dogs/app/modules/home_screen/views/home_new_arrivals_widget.dart';
+import 'package:all_dogs/app/widget/drawer_widget/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,7 +18,9 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: controller.scaffoldKey,
         backgroundColor: Colors.white,
+        endDrawer: DrawerWidget(),
         appBar: AppBar(
           leadingWidth: MySize.getWidth(150),
           leading: Container(
@@ -34,14 +37,17 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
           elevation: 0,
           actions: [
             IconButton(
-              onPressed: () {
-                Get.toNamed(Routes.BREEDERS_SCREEN);
-              },
+              onPressed: () {},
               icon: Icon(Icons.search, color: Colors.black),
             ),
-            Container(
-              padding: EdgeInsets.only(right: MySize.getWidth(13)),
-              child: SvgPicture.asset(imagePath + "menu_icon.svg"),
+            InkWell(
+              onTap: () {
+                controller.scaffoldKey.currentState!.openEndDrawer();
+              },
+              child: Container(
+                padding: EdgeInsets.only(right: MySize.getWidth(13)),
+                child: SvgPicture.asset(imagePath + "menu_icon.svg"),
+              ),
             ),
           ],
         ),

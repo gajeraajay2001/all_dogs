@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 
-class BreedersScreenController extends GetxController {
+class BlogsScreenController extends GetxController {
+  //TODO: Implement BlogsScreenController
+
+  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -15,4 +18,6 @@ class BreedersScreenController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
+  void increment() => count.value++;
 }

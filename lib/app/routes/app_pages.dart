@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
 
+import '../modules/blogs_screen/bindings/blogs_screen_binding.dart';
+import '../modules/blogs_screen/views/blogs_screen_view.dart';
 import '../modules/breeders_screen/bindings/breeders_screen_binding.dart';
 import '../modules/breeders_screen/views/breeders_screen_view.dart';
+import '../modules/breeds_screen/bindings/breeds_screen_binding.dart';
+import '../modules/breeds_screen/views/breeds_screen_view.dart';
 import '../modules/home_screen/bindings/home_screen_binding.dart';
 import '../modules/home_screen/views/home_screen_view.dart';
 import '../modules/login_screen/bindings/login_screen_binding.dart';
@@ -36,6 +40,16 @@ class AppPages {
       name: _Paths.BREEDERS_SCREEN,
       page: () => const BreedersScreenView(),
       binding: BreedersScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREEDS_SCREEN,
+      page: () => const BreedsScreenView(),
+      binding: BreedsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.BLOGS_SCREEN,
+      page: () => const BlogsScreenView(),
+      binding: BlogsScreenBinding(),
     ),
   ];
 }
