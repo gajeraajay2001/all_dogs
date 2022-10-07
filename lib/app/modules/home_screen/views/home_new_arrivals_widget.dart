@@ -1,7 +1,9 @@
 import 'package:all_dogs/app/constants/color_constant.dart';
 import 'package:all_dogs/app/constants/sizeConstant.dart';
+import 'package:all_dogs/app/routes/app_pages.dart';
 import 'package:all_dogs/app/utilities/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeNewArrivalWidget extends StatefulWidget {
   const HomeNewArrivalWidget({Key? key}) : super(key: key);
@@ -144,12 +146,17 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                               fontSize: MySize.getHeight(12)),
                         ),
                         Spacing.height(15),
-                        getButton(
-                          title: "MORE DETAILS",
-                          height: 35,
-                          width: 125,
-                          textSize: 12,
-                          borderRadius: 5,
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(Routes.PUPPIES_DETAILS_SCREEN);
+                          },
+                          child: getButton(
+                            title: "MORE DETAILS",
+                            height: 35,
+                            width: 125,
+                            textSize: 12,
+                            borderRadius: 5,
+                          ),
                         ),
                         Spacing.height(8),
                         Row(

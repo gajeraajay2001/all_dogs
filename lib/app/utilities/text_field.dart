@@ -10,7 +10,7 @@ TextFormField getTextField({
   Widget? prefixIcon,
   double? borderRadius,
   Widget? suffixIcon,
-  double? size = 52,
+  double? size = 70,
   Widget? suffix,
   Color? borderColor,
   Color? fillColor,

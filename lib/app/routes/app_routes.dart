@@ -12,6 +12,7 @@ abstract class Routes {
   static const BLOGS_SCREEN = _Paths.BLOGS_SCREEN;
   static const GET_IN_TOUCH_SCREEN = _Paths.GET_IN_TOUCH_SCREEN;
   static const ABOUT_US_SCREEN = _Paths.ABOUT_US_SCREEN;
+  static const PUPPIES_DETAILS_SCREEN = _Paths.PUPPIES_DETAILS_SCREEN;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const BLOGS_SCREEN = '/blogs-screen';
   static const GET_IN_TOUCH_SCREEN = '/get-in-touch-screen';
   static const ABOUT_US_SCREEN = '/about-us-screen';
+  static const PUPPIES_DETAILS_SCREEN = '/puppies-details-screen';
 }
