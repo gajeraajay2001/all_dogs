@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
 
+import '../modules/about_us_screen/bindings/about_us_screen_binding.dart';
+import '../modules/about_us_screen/views/about_us_screen_view.dart';
 import '../modules/blogs_screen/bindings/blogs_screen_binding.dart';
 import '../modules/blogs_screen/views/blogs_screen_view.dart';
 import '../modules/breeders_screen/bindings/breeders_screen_binding.dart';
 import '../modules/breeders_screen/views/breeders_screen_view.dart';
 import '../modules/breeds_screen/bindings/breeds_screen_binding.dart';
 import '../modules/breeds_screen/views/breeds_screen_view.dart';
+import '../modules/get_in_touch_screen/bindings/get_in_touch_screen_binding.dart';
+import '../modules/get_in_touch_screen/views/get_in_touch_screen_view.dart';
 import '../modules/home_screen/bindings/home_screen_binding.dart';
 import '../modules/home_screen/views/home_screen_view.dart';
 import '../modules/login_screen/bindings/login_screen_binding.dart';
@@ -50,6 +54,16 @@ class AppPages {
       name: _Paths.BLOGS_SCREEN,
       page: () => const BlogsScreenView(),
       binding: BlogsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.GET_IN_TOUCH_SCREEN,
+      page: () => const GetInTouchScreenView(),
+      binding: GetInTouchScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABOUT_US_SCREEN,
+      page: () => const AboutUsScreenView(),
+      binding: AboutUsScreenBinding(),
     ),
   ];
 }

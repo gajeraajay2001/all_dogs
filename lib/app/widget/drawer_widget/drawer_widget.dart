@@ -53,6 +53,26 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 Get.toNamed(Routes.BLOGS_SCREEN);
               },
             ),
+            ListTile(
+              title: Text(
+                "Get in Touch",
+                style: TextStyle(fontSize: MySize.getHeight(16)),
+              ),
+              onTap: () {
+                Get.back();
+                Get.toNamed(Routes.GET_IN_TOUCH_SCREEN);
+              },
+            ),
+            ListTile(
+              title: Text(
+                "About Us",
+                style: TextStyle(fontSize: MySize.getHeight(16)),
+              ),
+              onTap: () {
+                Get.back();
+                Get.toNamed(Routes.ABOUT_US_SCREEN);
+              },
+            ),
           ],
         ),
       ),

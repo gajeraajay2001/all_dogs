@@ -1,4 +1,6 @@
+import 'package:all_dogs/app/constants/color_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -16,7 +18,14 @@ void main() async {
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      theme: ThemeData(canvasColor: Colors.white),
+      theme: ThemeData(
+        canvasColor: Colors.white,
+        accentColor: appTheme.secondaryTheme,
+        appBarTheme: AppBarTheme(
+          backwardsCompatibility: false, // 1
+          systemOverlayStyle: SystemUiOverlayStyle.light, // 2
+        ),
+      ),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

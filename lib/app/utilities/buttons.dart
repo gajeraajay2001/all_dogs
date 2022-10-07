@@ -11,6 +11,7 @@ Widget getButton({
   Color? textColor,
   FontWeight? fontWeight,
   double? borderRadius,
+  Widget? widget,
 }) {
   return Container(
     height: MySize.getHeight(height ?? 47),
@@ -20,12 +21,14 @@ Widget getButton({
       color: backColor ?? appTheme.secondaryTheme,
       borderRadius: BorderRadius.circular(MySize.getHeight(borderRadius ?? 5)),
     ),
-    child: Text(
-      title,
-      style: TextStyle(
-          color: textColor ?? Colors.white,
-          fontSize: MySize.getHeight(textSize ?? 17),
-          fontWeight: fontWeight ?? FontWeight.w500),
-    ),
+    child: (!isNullEmptyOrFalse(widget))
+        ? widget
+        : Text(
+            title,
+            style: TextStyle(
+                color: textColor ?? Colors.white,
+                fontSize: MySize.getHeight(textSize ?? 17),
+                fontWeight: fontWeight ?? FontWeight.w500),
+          ),
   );
 }
