@@ -184,6 +184,7 @@ class PuppiesDetailsScreenView
                             getButtonContainer(image: "whatsapp_icon.svg"),
                           ],
                         ),
+                        Spacing.height(30),
                       ],
                     ),
                   ),
