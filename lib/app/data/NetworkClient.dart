@@ -81,8 +81,11 @@ class NetworkClient {
         break;
 
       case MethodType.Get:
-        Response response =
-            await dio.get(baseUrl + command, queryParameters: params);
+        Response response = await dio
+            .get(baseUrl + command, queryParameters: params)
+            .catchError((error) {
+          print("Error : = $error");
+        });
         parseResponse(context, response,
             successCallback: successCallback!,
             failureCallback: failureCallback!);

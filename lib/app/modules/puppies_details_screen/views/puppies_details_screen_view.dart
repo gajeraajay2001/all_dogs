@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -74,7 +75,7 @@ class PuppiesDetailsScreenView
                           ),
                           Spacing.width(5),
                           Text(
-                            "10 views",
+                            "${controller.viewsCount.value} views",
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: MySize.getHeight(9)),
@@ -85,113 +86,157 @@ class PuppiesDetailsScreenView
                   )),
             ],
           ),
-          body: SingleChildScrollView(
-            child: Container(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  Spacing.height(5),
-                  Text(
-                    "Toy Pom Pup's Available",
-                    style: TextStyle(
-                        fontSize: MySize.getHeight(18),
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Spacing.height(5),
-                  Text(
-                    "Posted by Sumit on 18 Sep, 22",
-                    style: TextStyle(
-                        fontSize: MySize.getHeight(10),
-                        fontWeight: FontWeight.w300),
-                  ),
-                  Spacing.height(30),
-                  getBannerWidget(),
-                  Spacing.height(20),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    InkWell(
-                        onTap: () {
-                          controller.carouselController.previousPage();
-                        },
-                        child: getBannerArrow(image: "left_arrow.svg")),
-                    Spacing.width(25),
-                    InkWell(
-                        onTap: () {
-                          controller.carouselController.nextPage();
-                        },
-                        child: getBannerArrow(image: "right_arrow.svg")),
-                  ]),
-                  Spacing.height(30),
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
-                    child: Column(
-                      children: [
-                        Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: getContainer(
-                                    text1: "AVAILABLE", text2: "Yes"),
-                              ),
-                              Spacing.width(25),
-                              Expanded(
-                                child: getContainer(
-                                    text1: "BREED", text2: "Toy Pom"),
-                              ),
-                            ]),
-                        Spacing.height(20),
-                        Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: getContainer(
-                                    text1: "DOB", text2: "11 Sep, 22"),
-                              ),
-                              Spacing.width(25),
-                              Expanded(
-                                child: getContainer(
-                                    text1: "MOBILE", text2: "7232887000"),
-                              ),
-                            ]),
-                        Spacing.height(20),
-                        Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: getContainer(
-                                    text1: "LOCATION", text2: "Bhiwadi"),
-                              ),
-                            ]),
-                        Spacing.height(20),
-                        Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: getContainer(
-                                    text1: "DESCRIPTION",
-                                    text2:
-                                        "For quick response WhatsApp please@+918798055319. Cute well trained and welcoming male and female Shih Tzu puppies available. They are up to date on all shots and vaccines. Very friendly with people. They will be coming with all papers at lankaad.ik Thanks for the time. .WhatsApp. +918798055319"),
-                              ),
-                            ]),
-                        Spacing.height(60),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+          body: (controller.hasData.isFalse)
+              ? Center(
+                  child:
+                      CircularProgressIndicator(color: appTheme.secondaryTheme),
+                )
+              : (isNullEmptyOrFalse(controller.postDetails) &&
+                      isNullEmptyOrFalse(controller.userDetails))
+                  ? Center(
+                      child: Text("Something went wrong..."),
+                    )
+                  : SingleChildScrollView(
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Column(
                           children: [
-                            getButtonContainer(image: "call_icon.svg"),
-                            Spacing.width(30),
-                            getButtonContainer(image: "mail_icon.svg"),
-                            Spacing.width(30),
-                            getButtonContainer(image: "whatsapp_icon.svg"),
+                            Spacing.height(5),
+                            Text(
+                              controller.postDetails.title.toString(),
+                              style: TextStyle(
+                                  fontSize: MySize.getHeight(18),
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Spacing.height(5),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: MySize.getWidth(20)),
+                              child: Text(
+                                "Posted by ${controller.userDetails.name.toString()} on ${DateFormat("dd MMM, yy").format(controller.postDetails.dateTimeCreatedOn!)}",
+                                style: TextStyle(
+                                    fontSize: MySize.getHeight(10),
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                            Spacing.height(30),
+                            getBannerWidget(),
+                            Spacing.height(20),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                      onTap: () {
+                                        controller.carouselController
+                                            .previousPage();
+                                      },
+                                      child: getBannerArrow(
+                                          image: "left_arrow.svg")),
+                                  Spacing.width(25),
+                                  InkWell(
+                                      onTap: () {
+                                        controller.carouselController
+                                            .nextPage();
+                                      },
+                                      child: getBannerArrow(
+                                          image: "right_arrow.svg")),
+                                ]),
+                            Spacing.height(30),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: MySize.getWidth(20)),
+                              child: Column(
+                                children: [
+                                  Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: getContainer(
+                                              text1: "AVAILABLE",
+                                              text2: (controller.postDetails
+                                                          .available ==
+                                                      "1")
+                                                  ? "Yes"
+                                                  : "No"),
+                                        ),
+                                        Spacing.width(25),
+                                        Expanded(
+                                          child: getContainer(
+                                              text1: "BREED",
+                                              text2: controller
+                                                  .postDetails.breed
+                                                  .toString()),
+                                        ),
+                                      ]),
+                                  Spacing.height(20),
+                                  Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: getContainer(
+                                              text1: "DOB",
+                                              text2: DateFormat("dd MMM, yy")
+                                                  .format(controller.postDetails
+                                                      .dateTimeDOB!)),
+                                        ),
+                                        Spacing.width(25),
+                                        Expanded(
+                                          child: getContainer(
+                                              text1: "MOBILE",
+                                              text2: controller
+                                                  .userDetails.mobile
+                                                  .toString()),
+                                        ),
+                                      ]),
+                                  Spacing.height(20),
+                                  Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: getContainer(
+                                              text1: "LOCATION",
+                                              text2: controller
+                                                  .postDetails.location
+                                                  .toString()),
+                                        ),
+                                      ]),
+                                  Spacing.height(20),
+                                  Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: getContainer(
+                                              text1: "DESCRIPTION",
+                                              text2: controller.postDetails.body
+                                                  .toString()),
+                                        ),
+                                      ]),
+                                  Spacing.height(60),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      getButtonContainer(
+                                          image: "call_icon.svg"),
+                                      Spacing.width(30),
+                                      getButtonContainer(
+                                          image: "mail_icon.svg"),
+                                      Spacing.width(30),
+                                      getButtonContainer(
+                                          image: "whatsapp_icon.svg"),
+                                    ],
+                                  ),
+                                  Spacing.height(30),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                        Spacing.height(30),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
         );
       }),
     );
@@ -219,14 +264,30 @@ class PuppiesDetailsScreenView
             items: List.generate(controller.bannerList.length, (index) {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(MySize.getHeight(15)),
-                    child: Container(
-                      width: MySize.screenWidth,
-                      child: Image.asset(
-                          imagePath + controller.bannerList[index],
-                          fit: BoxFit.cover),
-                    )),
+                child: Stack(
+                  fit: StackFit.expand,
+                  alignment: Alignment.center,
+                  children: [
+                    ClipRRect(
+                        borderRadius:
+                            BorderRadius.circular(MySize.getHeight(15)),
+                        child: Container(
+                          width: MySize.screenWidth,
+                          child: getImageByLink(
+                              url: imageBaseUrl + controller.bannerList[index],
+                              height: 100,
+                              width: 100,
+                              boxFit: BoxFit.cover),
+                        )),
+                    Positioned(
+                      bottom: MySize.getHeight(27),
+                      child: Text(
+                        controller.bannerTextList[index].toString(),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
               );
             }),
           ),
