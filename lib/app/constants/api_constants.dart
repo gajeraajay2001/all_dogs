@@ -1,3 +1,8 @@
+import 'package:get/get.dart';
+
+import '../../main.dart';
+import '../routes/app_pages.dart';
+
 const imagePath = "assets/images/";
 const baseUrl = "https://alldogs.in/api/";
 const imageBaseUrl = "https://alldogs.in/public/uploads/";
@@ -8,9 +13,15 @@ class ApiConstant {
   static const login = "login";
   static const resetPassword = "reset-password";
   static const getPostDetailsApi = "/post/details/";
+  static const likePostApi = "/post/like-post/";
 }
 
 class ArgumentConstant {
   static const postId = "postId";
   static const token = "token";
+}
+
+getLogOut() {
+  box.write(ArgumentConstant.token, "");
+  Get.offAllNamed(Routes.HOME_SCREEN);
 }

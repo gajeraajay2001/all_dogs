@@ -2,6 +2,10 @@ import 'package:all_dogs/app/constants/api_constants.dart';
 import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+
+import '../../../../main.dart';
+import '../../../routes/app_pages.dart';
 
 class HomeAddPostWidget extends StatefulWidget {
   const HomeAddPostWidget({Key? key}) : super(key: key);
@@ -27,7 +31,14 @@ class _HomeAddPostWidgetState extends State<HomeAddPostWidget> {
                       fontSize: MySize.getHeight(20)),
                 ),
                 Spacer(),
-                SvgPicture.asset(imagePath + "edit_icon.svg"),
+                InkWell(
+                    onTap: () {
+                      if (isNullEmptyOrFalse(
+                          box.read(ArgumentConstant.token))) {
+                        Get.toNamed(Routes.LOGIN_SCREEN);
+                      }
+                    },
+                    child: SvgPicture.asset(imagePath + "edit_icon.svg")),
               ],
             ),
           ),

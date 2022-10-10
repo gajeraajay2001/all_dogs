@@ -9,7 +9,9 @@ import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../../main.dart';
 import '../../../constants/api_constants.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/puppies_details_screen_controller.dart';
 
 class PuppiesDetailsScreenView
@@ -47,6 +49,21 @@ class PuppiesDetailsScreenView
                         child: LikeButton(
                           size: MySize.getHeight(22),
                           animationDuration: Duration(milliseconds: 400),
+                          isLiked: !isNullEmptyOrFalse(
+                              controller.postDetails.likedBy),
+                          onTap: (val) async {
+                            if (isNullEmptyOrFalse(
+                                box.read(ArgumentConstant.token))) {
+                              Get.toNamed(Routes.LOGIN_SCREEN);
+                              return await val;
+                            } else {
+                              controller.likePostApi(
+                                  context: context,
+                                  id: controller.postId,
+                                  isLiked: !val);
+                              return await !val;
+                            }
+                          },
                           likeBuilder: (val) {
                             return Icon(
                               Icons.favorite,

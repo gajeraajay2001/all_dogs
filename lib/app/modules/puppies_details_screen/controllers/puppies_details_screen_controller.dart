@@ -12,6 +12,7 @@ import '../../../utilities/progress_dialog_utils.dart';
 class PuppiesDetailsScreenController extends GetxController {
   CarouselController carouselController = CarouselController();
   RxList<String> bannerTextList = RxList<String>([]);
+  String postId = "";
   RxInt selectedBannerIndex = 0.obs;
   RxBool hasData = false.obs;
   Post postDetails = Post();
@@ -22,6 +23,7 @@ class PuppiesDetailsScreenController extends GetxController {
   @override
   void onInit() {
     if (!isNullEmptyOrFalse(Get.arguments[ArgumentConstant.postId])) {
+      postId = Get.arguments[ArgumentConstant.postId];
       getPostDetailsData(
           context: Get.context!, id: Get.arguments[ArgumentConstant.postId]);
     }
@@ -102,6 +104,38 @@ class PuppiesDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
+        getIt<CustomDialogs>()
+            .getDialog(title: "Failed", desc: "Something went wrong.");
+        print(" error");
+      },
+    );
+  }
+
+  likePostApi(
+      {required BuildContext context,
+      required String id,
+      required bool isLiked}) async {
+    // getIt<CustomDialogs>().showCircularDialog(context);
+    Map<String, dynamic> dict = {};
+
+    return NetworkClient.getInstance.callApi(
+      context,
+      baseUrl,
+      ApiConstant.likePostApi + id + "/${isLiked.toString()}",
+      MethodType.Post,
+      header: NetworkClient.getInstance.getAuthHeaders(),
+      params: dict,
+      successCallback: (response, message) {
+        // getIt<CustomDialogs>().hideCircularDialog(context);
+
+        if (response["responseCode"] == 200) {
+        } else {
+          getIt<CustomDialogs>()
+              .getDialog(title: "Failed", desc: response["message"]);
+        }
+      },
+      failureCallback: (response, message) {
+        // getIt<CustomDialogs>().hideCircularDialog(context);
         getIt<CustomDialogs>()
             .getDialog(title: "Failed", desc: "Something went wrong.");
         print(" error");

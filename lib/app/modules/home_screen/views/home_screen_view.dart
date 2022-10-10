@@ -18,6 +18,7 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    MySize().init(context);
     return Obx(() {
       return SafeArea(
         child: Scaffold(
