@@ -4,4 +4,7 @@ const imageBaseUrl = "https://alldogs.in/public/uploads/";
 
 class ApiConstant {
   static const homeDataApi = "home";
+  static const signup = "signup";
+  static const login = "login";
+  static const resetPassword = "reset-password";
 }
