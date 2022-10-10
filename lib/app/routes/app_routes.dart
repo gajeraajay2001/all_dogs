@@ -13,6 +13,7 @@ abstract class Routes {
   static const GET_IN_TOUCH_SCREEN = _Paths.GET_IN_TOUCH_SCREEN;
   static const ABOUT_US_SCREEN = _Paths.ABOUT_US_SCREEN;
   static const PUPPIES_DETAILS_SCREEN = _Paths.PUPPIES_DETAILS_SCREEN;
+  static const FORGET_PASSWORD = _Paths.FORGET_PASSWORD;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const GET_IN_TOUCH_SCREEN = '/get-in-touch-screen';
   static const ABOUT_US_SCREEN = '/about-us-screen';
   static const PUPPIES_DETAILS_SCREEN = '/puppies-details-screen';
+  static const FORGET_PASSWORD = '/forget-password';
 }

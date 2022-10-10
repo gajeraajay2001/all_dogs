@@ -1,4 +1,3 @@
-import 'package:all_dogs/app/routes/app_pages.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide MultipartFile, FormData;
@@ -8,31 +7,27 @@ import '../../../constants/api_constants.dart';
 import '../../../data/NetworkClient.dart';
 import '../../../utilities/progress_dialog_utils.dart';
 
-class SignupScreenController extends GetxController {
+class ForgetPasswordController extends GetxController {
   TextEditingController emailController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController mobileNumberController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  RxBool isVisible1 = false.obs;
-  RxBool isVisible2 = false.obs;
+  Rx<GlobalKey<FormState>> formKey = GlobalKey<FormState>().obs;
   @override
   void onInit() {
     super.onInit();
   }
 
-  callApiForSignUp({
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  callApiForResetPassword({
     required BuildContext context,
   }) {
     FocusScope.of(context).unfocus();
     getIt.get<CustomDialogs>().showCircularDialog(context);
     Map<String, dynamic> dict = {};
-    dict["name"] = nameController.value.text;
     dict["email"] = emailController.value.text;
-    dict["password"] = passwordController.value.text;
-    dict["mobile"] = mobileNumberController.value.text;
+    // dict["password"] = passwordController.value.text;
     FormData formData = new FormData.fromMap(dict);
 
     // print(token);
@@ -40,7 +35,7 @@ class SignupScreenController extends GetxController {
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,
-      ApiConstant.signup,
+      ApiConstant.resetPassword,
       MethodType.Post,
       header: NetworkClient.getInstance.getAuthHeaders(),
       params: formData,
@@ -49,11 +44,11 @@ class SignupScreenController extends GetxController {
         if (response["responseCode"] == 200) {
           // box.re
           getIt.get<CustomDialogs>().getDialog(
-              title: "Registration Success",
+              title: "Reset Instructions Sent",
               desc:
-                  "An email has been sent to the registered email. Please verify that email to continue.",
+                  "An email has been sent to the registered email for resetting your password.",
               onTap: () {
-                Get.offAllNamed(Routes.LOGIN_SCREEN);
+                Get.close(2);
               });
         } else {
           getIt
@@ -70,11 +65,6 @@ class SignupScreenController extends GetxController {
         print(" error");
       },
     );
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
   }
 
   @override

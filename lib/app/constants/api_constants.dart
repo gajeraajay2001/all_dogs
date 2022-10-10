@@ -7,4 +7,10 @@ class ApiConstant {
   static const signup = "signup";
   static const login = "login";
   static const resetPassword = "reset-password";
+  static const getPostDetailsApi = "/post/details/";
+}
+
+class ArgumentConstant {
+  static const postId = "postId";
+  static const token = "token";
 }

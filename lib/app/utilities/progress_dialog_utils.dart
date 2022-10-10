@@ -49,7 +49,9 @@ class CustomDialogs {
     return Get.defaultDialog(
         barrierDismissible: false,
         title: title,
-        content: Center(child: Text(desc)),
+        content: Center(
+          child: Text(desc, textAlign: TextAlign.center),
+        ),
         buttonColor: appTheme.secondaryTheme,
         textConfirm: "Ok",
         confirmTextColor: Colors.white,
