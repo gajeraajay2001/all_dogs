@@ -25,6 +25,8 @@ TextFormField getTextField({
   String errorText = "",
   Function(String)? onChange,
   FormFieldValidator<String>? validation,
+  double fontSize = 15,
+  double hintFontSize = 14,
 }) {
   return TextFormField(
     controller: textEditingController,
@@ -37,6 +39,9 @@ TextFormField getTextField({
     onTap: onTap,
     maxLines: maxLine,
     onChanged: onChange,
+    style: TextStyle(
+      fontSize: MySize.getHeight(fontSize),
+    ),
     decoration: InputDecoration(
       fillColor: fillColor ?? appTheme.textGrayColor,
       filled: isFilled,
@@ -74,7 +79,8 @@ TextFormField getTextField({
       errorText: (isNullEmptyOrFalse(errorText)) ? null : errorText,
       hintText: hintText,
       hintStyle: TextStyle(
-          fontSize: MySize.getHeight(14), color: Colors.grey.shade500),
+          fontSize: MySize.getHeight(hintFontSize),
+          color: Colors.grey.shade500),
     ),
   );
 }

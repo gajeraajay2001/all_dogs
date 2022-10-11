@@ -1,3 +1,6 @@
+import 'package:all_dogs/app/constants/sizeConstant.dart';
+import 'package:intl/intl.dart';
+
 class BlogDetailsModel {
   int? responseCode;
   Data? data;
@@ -93,14 +96,15 @@ class Blog {
 
 class Comments {
   String? id;
-  Null? blogId;
-  Null? breedId;
+  String? blogId;
+  String? breedId;
   String? blogSlug;
-  Null? breedSlug;
+  String? breedSlug;
   String? userId;
   String? postedAt;
+  DateTime? dateTimePostedAt;
   String? comment;
-  Null? pic;
+  String? pic;
   String? name;
   String? email;
   String? mobile;
@@ -137,6 +141,9 @@ class Comments {
     breedSlug = json['breedSlug'];
     userId = json['user_id'];
     postedAt = json['posted_at'];
+    if (!isNullEmptyOrFalse(postedAt)) {
+      dateTimePostedAt = DateFormat("yyyy-MM-dd hh:mm:ss").parse(postedAt!);
+    }
     comment = json['comment'];
     pic = json['pic'];
     name = json['name'];

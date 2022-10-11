@@ -102,7 +102,7 @@ class LogInResponse {
 class Data {
   String? token;
   String? id;
-  Null? pic;
+  String? pic;
   String? email;
   String? mobile;
   String? name;

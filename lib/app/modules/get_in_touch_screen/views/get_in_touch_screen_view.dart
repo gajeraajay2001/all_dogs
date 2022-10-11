@@ -77,6 +77,8 @@ class GetInTouchScreenView extends GetWidget<GetInTouchScreenController> {
                     hintText: "Full Name",
                     borderColor: Colors.transparent,
                     size: 70,
+                    hintFontSize: 12,
+                    fontSize: 12,
                     isFilled: true,
                     fillColor: Colors.white,
                     textEditingController: controller.nameController,
@@ -103,6 +105,8 @@ class GetInTouchScreenView extends GetWidget<GetInTouchScreenController> {
                     hintText: "Your E-Mail",
                     borderColor: Colors.transparent,
                     size: 70,
+                    hintFontSize: 12,
+                    fontSize: 12,
                     isFilled: true,
                     fillColor: Colors.white,
                     textEditingController: controller.mailController,
@@ -128,6 +132,8 @@ class GetInTouchScreenView extends GetWidget<GetInTouchScreenController> {
                   child: getTextField(
                     hintText: "1-234-567-8901",
                     borderColor: Colors.transparent,
+                    hintFontSize: 12,
+                    fontSize: 12,
                     size: 70,
                     isFilled: true,
                     fillColor: Colors.white,
@@ -156,6 +162,8 @@ class GetInTouchScreenView extends GetWidget<GetInTouchScreenController> {
                     hintText: "Type here...",
                     borderColor: Colors.transparent,
                     size: 70,
+                    hintFontSize: 12,
+                    fontSize: 12,
                     maxLine: 7,
                     isFilled: true,
                     fillColor: Colors.white,
@@ -171,9 +179,6 @@ class GetInTouchScreenView extends GetWidget<GetInTouchScreenController> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(imagePath + "send_icon.svg",
-                              height: MySize.getHeight(18)),
-                          Spacing.width(15),
                           Text(
                             "SEND MESSAGE",
                             style: TextStyle(
