@@ -8,6 +8,8 @@ import '../modules/breeders_screen/bindings/breeders_screen_binding.dart';
 import '../modules/breeders_screen/views/breeders_screen_view.dart';
 import '../modules/breeds_screen/bindings/breeds_screen_binding.dart';
 import '../modules/breeds_screen/views/breeds_screen_view.dart';
+import '../modules/create_add/bindings/create_add_binding.dart';
+import '../modules/create_add/views/create_add_view.dart';
 import '../modules/forget_password/bindings/forget_password_binding.dart';
 import '../modules/forget_password/views/forget_password_view.dart';
 import '../modules/get_in_touch_screen/bindings/get_in_touch_screen_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.PUPPIES_LIST,
       page: () => const PuppiesListView(),
       binding: PuppiesListBinding(),
+    ),
+    GetPage(
+      name: _Paths.CREATE_ADD,
+      page: () => const CreateAddView(),
+      binding: CreateAddBinding(),
     ),
   ];
 }

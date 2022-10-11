@@ -16,6 +16,7 @@ class ApiConstant {
   static const breederListApi = "breeder/list";
   static const breedsListApi = "breed/list";
   static const puppiesPostListApi = "post/list";
+  static const postCreateApi = "post/create";
 }
 
 class ArgumentConstant {
