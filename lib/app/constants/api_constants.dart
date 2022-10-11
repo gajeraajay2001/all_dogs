@@ -11,7 +11,8 @@ class ApiConstant {
   static const signup = "signup";
   static const login = "login";
   static const resetPassword = "reset-password";
-  static const getPostDetailsApi = "/post/details/";
+  static const getPostDetailsApi = "post/details/";
+  static const getBlogDetailsApi = "blog/details/";
   static const likePostApi = "/post/like-post/";
 }
 

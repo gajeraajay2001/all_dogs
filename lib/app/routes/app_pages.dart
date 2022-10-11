@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/about_us_screen/bindings/about_us_screen_binding.dart';
 import '../modules/about_us_screen/views/about_us_screen_view.dart';
+import '../modules/blog_details_screen/bindings/blog_details_screen_binding.dart';
+import '../modules/blog_details_screen/views/blog_details_screen_view.dart';
 import '../modules/blogs_screen/bindings/blogs_screen_binding.dart';
 import '../modules/blogs_screen/views/blogs_screen_view.dart';
 import '../modules/breeders_screen/bindings/breeders_screen_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.FORGET_PASSWORD,
       page: () => const ForgetPasswordView(),
       binding: ForgetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.BLOG_DETAILS_SCREEN,
+      page: () => const BlogDetailsScreenView(),
+      binding: BlogDetailsScreenBinding(),
     ),
   ];
 }

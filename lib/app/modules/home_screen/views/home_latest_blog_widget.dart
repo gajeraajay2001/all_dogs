@@ -1,4 +1,6 @@
+import 'package:all_dogs/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../constants/api_constants.dart';
@@ -133,12 +135,21 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                             ),
                           ),
                           Spacing.height(20),
-                          getButton(
-                            title: "MORE DETAILS",
-                            height: 35,
-                            width: 125,
-                            textSize: 12,
-                            borderRadius: 5,
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.BLOG_DETAILS_SCREEN,
+                                  arguments: {
+                                    ArgumentConstant.postId:
+                                        controller.blogList[index].id
+                                  });
+                            },
+                            child: getButton(
+                              title: "MORE DETAILS",
+                              height: 35,
+                              width: 125,
+                              textSize: 12,
+                              borderRadius: 5,
+                            ),
                           ),
                         ],
                       ),

@@ -5,9 +5,7 @@ import 'package:all_dogs/app/modules/home_screen/views/home_new_arrivals_widget.
 import 'package:all_dogs/app/widget/drawer_widget/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
-
 import '../../../constants/api_constants.dart';
 import '../../../constants/sizeConstant.dart';
 import '../../../routes/app_pages.dart';

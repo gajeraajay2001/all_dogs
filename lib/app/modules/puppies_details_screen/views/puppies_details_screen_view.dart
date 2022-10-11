@@ -236,14 +236,44 @@ class PuppiesDetailsScreenView
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      getButtonContainer(
-                                          image: "call_icon.svg"),
+                                      InkWell(
+                                        onTap: () {
+                                          if (!isNullEmptyOrFalse(
+                                              controller.userDetails.mobile)) {
+                                            urlLauncher(
+                                                url: Uri.parse(
+                                                    "tel:${controller.userDetails.mobile.toString()}"));
+                                          }
+                                        },
+                                        child: getButtonContainer(
+                                            image: "call_icon.svg"),
+                                      ),
                                       Spacing.width(30),
-                                      getButtonContainer(
-                                          image: "mail_icon.svg"),
+                                      InkWell(
+                                        onTap: () {
+                                          if (!isNullEmptyOrFalse(
+                                              controller.userDetails.email)) {
+                                            urlLauncher(
+                                                url: Uri.parse(
+                                                    "mailto:${controller.userDetails.email.toString()}"));
+                                          }
+                                        },
+                                        child: getButtonContainer(
+                                            image: "mail_icon.svg"),
+                                      ),
                                       Spacing.width(30),
-                                      getButtonContainer(
-                                          image: "whatsapp_icon.svg"),
+                                      InkWell(
+                                        onTap: () {
+                                          if (!isNullEmptyOrFalse(
+                                              controller.userDetails.mobile)) {
+                                            urlLauncher(
+                                                url: Uri.parse(
+                                                    "whatsapp://send?phone=${controller.userDetails.mobile.toString()}&text=hello"));
+                                          }
+                                        },
+                                        child: getButtonContainer(
+                                            image: "whatsapp_icon.svg"),
+                                      ),
                                     ],
                                   ),
                                   Spacing.height(30),

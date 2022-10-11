@@ -1,10 +1,8 @@
 import 'package:all_dogs/app/constants/api_constants.dart';
 import 'package:all_dogs/app/constants/color_constant.dart';
 import 'package:all_dogs/app/constants/sizeConstant.dart';
-import 'package:all_dogs/app/utilities/progress_dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../main.dart';
 import '../../routes/app_pages.dart';
 

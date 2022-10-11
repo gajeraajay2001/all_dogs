@@ -1,7 +1,11 @@
 import 'package:all_dogs/app/constants/api_constants.dart';
+import 'package:all_dogs/app/utilities/progress_dialog_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../main.dart';
 
 class MySize {
   static late MediaQueryData _mediaQueryData;
@@ -268,4 +272,13 @@ CachedNetworkImage getImageByLink(
         width: width,
         fit: boxFit),
   );
+}
+
+urlLauncher({required Uri url}) async {
+  if (await launchUrl(url)) {
+  } else {
+    getIt<CustomDialogs>()
+        .getDialog(title: "Failed", desc: "Something went wrong..");
+    throw 'Could not launch $url';
+  }
 }

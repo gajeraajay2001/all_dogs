@@ -17,7 +17,9 @@ dependencies:
   flutter_svg: ^1.1.5
   intl: ^0.17.0
   like_button: ^2.0.5
+  url_launcher: ^6.1.6
   smooth_page_indicator: ^1.0.0+2
+  flutter_inappwebview: ^5.4.4+3
   flutter: 
     sdk: flutter
 

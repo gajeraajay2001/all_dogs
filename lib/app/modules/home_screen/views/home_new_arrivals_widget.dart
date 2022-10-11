@@ -63,7 +63,7 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
           if (!isNullEmptyOrFalse(controller.postList))
             SizedBox(
               width: MySize.screenWidth,
-              height: MySize.getHeight(335),
+              height: MySize.getHeight(340),
               child: ListView.separated(
                 itemCount: controller.postList.length,
                 scrollDirection: Axis.horizontal,
