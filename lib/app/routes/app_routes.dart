@@ -14,6 +14,7 @@ abstract class Routes {
   static const ABOUT_US_SCREEN = _Paths.ABOUT_US_SCREEN;
   static const PUPPIES_DETAILS_SCREEN = _Paths.PUPPIES_DETAILS_SCREEN;
   static const FORGET_PASSWORD = _Paths.FORGET_PASSWORD;
+  static const PUPPIES_LIST = _Paths.PUPPIES_LIST;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const ABOUT_US_SCREEN = '/about-us-screen';
   static const PUPPIES_DETAILS_SCREEN = '/puppies-details-screen';
   static const FORGET_PASSWORD = '/forget-password';
+  static const PUPPIES_LIST = '/puppies-list';
 }

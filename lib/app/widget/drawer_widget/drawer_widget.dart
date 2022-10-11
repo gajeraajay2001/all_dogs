@@ -47,7 +47,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ),
               trailing:
                   Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-              onTap: () {},
+              onTap: () {
+                Get.back();
+
+                Get.toNamed(Routes.PUPPIES_LIST);
+              },
             ),
             SizedBox(
               height: MySize.getHeight(5),
