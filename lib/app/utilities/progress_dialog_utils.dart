@@ -52,7 +52,7 @@ class CustomDialogs {
         content: Center(
           child: Text(desc, textAlign: TextAlign.center),
         ),
-        buttonColor: appTheme.secondaryTheme,
+        buttonColor: appTheme.primaryTheme,
         textConfirm: "Ok",
         confirmTextColor: Colors.white,
         onConfirm: (isNullEmptyOrFalse(onTap))
@@ -70,7 +70,7 @@ class CircularDialog {
       builder: (BuildContext context) {
         return WillPopScope(
             child: Center(
-              child: CircularProgressIndicator(color: appTheme.secondaryTheme),
+              child: CircularProgressIndicator(color: appTheme.primaryTheme),
             ),
             onWillPop: () async {
               return false;

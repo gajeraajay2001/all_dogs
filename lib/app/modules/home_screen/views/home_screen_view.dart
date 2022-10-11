@@ -26,14 +26,16 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
           backgroundColor: Colors.white,
           endDrawer: DrawerWidget(),
           appBar: AppBar(
-            leadingWidth: MySize.getWidth(150),
+            leadingWidth: MySize.getWidth(200),
+            toolbarHeight: MySize.getHeight(60),
             leading: Container(
               alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: MySize.getWidth(5)),
               child: Image.asset(
                 imagePath + "logo.png",
                 fit: BoxFit.cover,
-                height: MySize.getHeight(30),
-                width: MySize.getWidth(130),
+                height: MySize.getHeight(60),
+                width: MySize.getWidth(180),
               ),
             ),
             backgroundColor: Colors.white,
@@ -58,7 +60,7 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
           body: (controller.hasData.isFalse)
               ? Center(
                   child:
-                      CircularProgressIndicator(color: appTheme.secondaryTheme),
+                      CircularProgressIndicator(color: appTheme.primaryTheme),
                 )
               : SingleChildScrollView(
                   child: Container(

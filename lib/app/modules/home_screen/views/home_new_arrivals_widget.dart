@@ -41,7 +41,7 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                 height: MySize.getHeight(10),
                 width: MySize.getWidth(100),
                 child: Divider(
-                  color: appTheme.secondaryTheme,
+                  color: appTheme.primaryTheme,
                 )),
           ),
           Align(
@@ -116,7 +116,7 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                                     height: MySize.getHeight(52),
                                     width: MySize.getWidth(37),
                                     decoration: BoxDecoration(
-                                      color: appTheme.secondaryTheme,
+                                      color: appTheme.primaryTheme,
                                       borderRadius: BorderRadius.circular(
                                           MySize.getHeight(3)),
                                     ),
@@ -203,7 +203,7 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                             children: [
                               Icon(
                                 Icons.person_outline,
-                                color: appTheme.secondaryTheme,
+                                color: appTheme.primaryTheme,
                                 size: MySize.getHeight(20),
                               ),
                               Spacing.width(10),

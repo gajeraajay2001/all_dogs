@@ -66,7 +66,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                             textEditingController: controller.emailController,
                             prefixIcon: Icon(
                               Icons.email_outlined,
-                              color: appTheme.secondaryTheme,
+                              color: appTheme.primaryTheme,
                             ),
                             validation: (val) => validateEmail(val),
                             labelText: "Email",
@@ -84,7 +84,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                           },
                           prefixIcon: Icon(
                             Icons.lock_outline,
-                            color: appTheme.secondaryTheme,
+                            color: appTheme.primaryTheme,
                           ),
                           labelText: "Password",
                           suffixIcon: InkWell(

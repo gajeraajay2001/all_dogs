@@ -18,7 +18,7 @@ Widget getButton({
     width: MySize.getWidth(width ?? 150),
     alignment: Alignment.center,
     decoration: BoxDecoration(
-      color: backColor ?? appTheme.secondaryTheme,
+      color: backColor ?? appTheme.primaryTheme,
       borderRadius: BorderRadius.circular(MySize.getHeight(borderRadius ?? 5)),
     ),
     child: (!isNullEmptyOrFalse(widget))

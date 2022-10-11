@@ -106,7 +106,7 @@ class PuppiesDetailsScreenView
           body: (controller.hasData.isFalse)
               ? Center(
                   child:
-                      CircularProgressIndicator(color: appTheme.secondaryTheme),
+                      CircularProgressIndicator(color: appTheme.primaryTheme),
                 )
               : (isNullEmptyOrFalse(controller.postDetails) &&
                       isNullEmptyOrFalse(controller.userDetails))
@@ -318,7 +318,7 @@ class PuppiesDetailsScreenView
                   dotHeight: MySize.getHeight(8),
                   dotWidth: MySize.getWidth(8),
                   type: WormType.thin,
-                  activeDotColor: appTheme.secondaryTheme,
+                  activeDotColor: appTheme.primaryTheme,
                   dotColor: Colors.white,
                 ),
               ),

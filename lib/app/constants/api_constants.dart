@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../../main.dart';
 import '../routes/app_pages.dart';
 

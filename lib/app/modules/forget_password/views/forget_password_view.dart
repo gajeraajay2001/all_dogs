@@ -62,7 +62,7 @@ class ForgetPasswordView extends GetWidget<ForgetPasswordController> {
                             textEditingController: controller.emailController,
                             prefixIcon: Icon(
                               Icons.email_outlined,
-                              color: appTheme.secondaryTheme,
+                              color: appTheme.primaryTheme,
                             ),
                             validation: (val) => validateEmail(val),
                             labelText: "Email",

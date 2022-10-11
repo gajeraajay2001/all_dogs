@@ -30,7 +30,7 @@ void main() async {
       title: "Application",
       theme: ThemeData(
         canvasColor: Colors.white,
-        accentColor: appTheme.secondaryTheme,
+        accentColor: appTheme.primaryTheme,
         appBarTheme: AppBarTheme(
           backwardsCompatibility: false, // 1
           systemOverlayStyle: SystemUiOverlayStyle.light, // 2

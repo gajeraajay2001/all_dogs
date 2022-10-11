@@ -40,7 +40,7 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                 height: MySize.getHeight(10),
                 width: MySize.getWidth(100),
                 child: Divider(
-                  color: appTheme.secondaryTheme,
+                  color: appTheme.primaryTheme,
                 )),
           ),
           Align(

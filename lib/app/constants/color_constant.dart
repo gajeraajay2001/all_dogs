@@ -2,8 +2,7 @@ import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:flutter/material.dart';
 
 class BaseTheme {
-  Color get primaryTheme => fromHex('#FF1A84');
-  Color get secondaryTheme => fromHex('#4BB382');
+  Color get primaryTheme => fromHex('#4BB382');
   Color get textGrayColor => fromHex("#f1f1f1");
 
   List<BoxShadow> get getShadow {

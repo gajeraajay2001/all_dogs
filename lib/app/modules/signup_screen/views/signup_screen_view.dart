@@ -78,7 +78,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                             textEditingController: controller.nameController,
                             prefixIcon: Icon(
                               Icons.person_outline,
-                              color: appTheme.secondaryTheme,
+                              color: appTheme.primaryTheme,
                             ),
                             labelText: "Name",
                             validation: (val) {
@@ -93,7 +93,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                             textEditingController: controller.emailController,
                             prefixIcon: Icon(
                               Icons.email_outlined,
-                              color: appTheme.secondaryTheme,
+                              color: appTheme.primaryTheme,
                             ),
                             validation: (val) => validateEmail(val),
                             labelText: "Email",
@@ -104,7 +104,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                                 controller.mobileNumberController,
                             prefixIcon: Icon(
                               Icons.call_outlined,
-                              color: appTheme.secondaryTheme,
+                              color: appTheme.primaryTheme,
                             ),
                             labelText: "Mobile No.",
                             textInputType: TextInputType.number,
@@ -131,7 +131,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                           textVisible: !controller.isVisible1.value,
                           prefixIcon: Icon(
                             Icons.lock_outline,
-                            color: appTheme.secondaryTheme,
+                            color: appTheme.primaryTheme,
                           ),
                           labelText: "Password",
                           suffixIcon: InkWell(
@@ -161,7 +161,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                           },
                           prefixIcon: Icon(
                             Icons.lock_outline,
-                            color: appTheme.secondaryTheme,
+                            color: appTheme.primaryTheme,
                           ),
                           labelText: "Confirm Password",
                           suffixIcon: InkWell(

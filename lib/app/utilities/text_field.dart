@@ -31,7 +31,7 @@ TextFormField getTextField({
     obscureText: textVisible,
     textInputAction: textInputAction,
     keyboardType: textInputType,
-    cursorColor: appTheme.secondaryTheme,
+    cursorColor: appTheme.primaryTheme,
     readOnly: readOnly,
     validator: validation,
     onTap: onTap,
@@ -42,22 +42,22 @@ TextFormField getTextField({
       filled: isFilled,
       labelText: labelText,
       labelStyle: TextStyle(
-          color: labelColor ?? appTheme.secondaryTheme,
+          color: labelColor ?? appTheme.primaryTheme,
           fontWeight: FontWeight.w600),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: borderColor ?? appTheme.secondaryTheme),
+        borderSide: BorderSide(color: borderColor ?? appTheme.primaryTheme),
         borderRadius: BorderRadius.circular(
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
-        borderSide: BorderSide(color: borderColor ?? appTheme.secondaryTheme),
+        borderSide: BorderSide(color: borderColor ?? appTheme.primaryTheme),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
             (borderRadius == null) ? MySize.getHeight(5) : borderRadius),
-        borderSide: BorderSide(color: borderColor ?? appTheme.secondaryTheme),
+        borderSide: BorderSide(color: borderColor ?? appTheme.primaryTheme),
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(
