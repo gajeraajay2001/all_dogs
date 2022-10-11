@@ -36,6 +36,8 @@ class _HomeAddPostWidgetState extends State<HomeAddPostWidget> {
                       if (isNullEmptyOrFalse(
                           box.read(ArgumentConstant.token))) {
                         Get.toNamed(Routes.LOGIN_SCREEN);
+                      } else {
+                        Get.toNamed(Routes.CREATE_ADD);
                       }
                     },
                     child: SvgPicture.asset(imagePath + "edit_icon.svg")),

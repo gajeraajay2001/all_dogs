@@ -19,6 +19,7 @@ class ApiConstant {
   static const blogsListApi = "blog/list";
   static const puppiesPostListApi = "post/list";
   static const commentApi = "blog/comment/";
+  static const postCreateApi = "post/create";
 }
 
 class ArgumentConstant {
