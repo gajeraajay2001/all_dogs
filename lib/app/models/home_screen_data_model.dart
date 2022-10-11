@@ -28,8 +28,14 @@ class HomeScreenDataModel {
 class Data {
   List<Posts>? posts;
   List<Blogs>? blogs;
-
-  Data({this.posts, this.blogs});
+  int? page;
+  int? totalPages;
+  Data({
+    this.posts,
+    this.blogs,
+    this.page,
+    this.totalPages,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     if (json['posts'] != null) {
@@ -44,6 +50,8 @@ class Data {
         blogs!.add(new Blogs.fromJson(v));
       });
     }
+    page = json['page'] ?? 1;
+    totalPages = json['totalPages'] ?? 1;
   }
 
   Map<String, dynamic> toJson() {

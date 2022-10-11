@@ -20,6 +20,8 @@ import '../modules/login_screen/bindings/login_screen_binding.dart';
 import '../modules/login_screen/views/login_screen_view.dart';
 import '../modules/puppies_details_screen/bindings/puppies_details_screen_binding.dart';
 import '../modules/puppies_details_screen/views/puppies_details_screen_view.dart';
+import '../modules/puppies_list/bindings/puppies_list_binding.dart';
+import '../modules/puppies_list/views/puppies_list_view.dart';
 import '../modules/signup_screen/bindings/signup_screen_binding.dart';
 import '../modules/signup_screen/views/signup_screen_view.dart';
 
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.BLOG_DETAILS_SCREEN,
       page: () => const BlogDetailsScreenView(),
       binding: BlogDetailsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.PUPPIES_LIST,
+      page: () => const PuppiesListView(),
+      binding: PuppiesListBinding(),
     ),
   ];
 }

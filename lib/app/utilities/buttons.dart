@@ -1,6 +1,7 @@
 import 'package:all_dogs/app/constants/color_constant.dart';
 import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 Widget getButton({
   required String title,
@@ -43,4 +44,12 @@ String? validateEmail(String? value) {
     return 'Enter a valid email address';
   else
     return null;
+}
+
+DateTime getDateFromStringNew(String dateString, {String? formatter}) {
+  const String kMainSourceFormat = "yyyy-MM-dd'T'HH:mm:ss";
+  if (formatter == null) {
+    formatter = kMainSourceFormat;
+  }
+  return DateFormat(formatter).parse(dateString, true);
 }

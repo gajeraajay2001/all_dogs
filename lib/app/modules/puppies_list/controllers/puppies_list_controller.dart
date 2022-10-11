@@ -1,18 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../main.dart';
 import '../../../constants/api_constants.dart';
 import '../../../constants/sizeConstant.dart';
 import '../../../data/NetworkClient.dart';
-import '../../../models/BreedersListModel.dart';
-import '../../../models/BreedsListModel.dart';
+import '../../../models/home_screen_data_model.dart';
 import '../../../utilities/progress_dialog_utils.dart';
 
-class BreedsScreenController extends GetxController {
-  RxList<Breeds> breederList = RxList<Breeds>([]);
+class PuppiesListController extends GetxController {
+  RxList<Posts> puppiesList = RxList<Posts>([]);
   RxBool hasData = false.obs;
-  RxBool showSearch = false.obs;
   RxInt page = 1.obs;
   RxInt pageLimit = 10.obs;
   RxBool allDataLoaded = false.obs;
@@ -20,7 +18,7 @@ class BreedsScreenController extends GetxController {
 
   @override
   void onInit() {
-    getBreedsLstData(context: Get.context!);
+    getPuppiesList(context: Get.context!);
     controller = ScrollController()..addListener(_loadMore);
     super.onInit();
   }
@@ -29,7 +27,7 @@ class BreedsScreenController extends GetxController {
     if (controller.position.pixels == controller.position.maxScrollExtent) {
       if (allDataLoaded.isFalse) {
         page.value++;
-        getBreedsLstData(context: Get.context!, isMoreDataLoad: true);
+        getPuppiesList(context: Get.context!, isMoreDataLoad: true);
       }
     }
   }
@@ -39,7 +37,7 @@ class BreedsScreenController extends GetxController {
     super.onReady();
   }
 
-  getBreedsLstData(
+  getPuppiesList(
       {required BuildContext context,
       bool isFromSearch = false,
       bool isMoreDataLoad = false,
@@ -50,12 +48,12 @@ class BreedsScreenController extends GetxController {
     Map<String, dynamic> dict = {};
     if (isFromSearch) {
       page.value = 1;
-      breederList.clear();
+      puppiesList.clear();
     }
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,
-      ApiConstant.breedsListApi +
+      ApiConstant.puppiesPostListApi +
           "?page=${page.value}&limit=${pageLimit.value}${!isNullEmptyOrFalse(search) ? "&search=$search" : ""}",
       MethodType.Get,
       header: NetworkClient.getInstance.getAuthHeaders(),
@@ -65,14 +63,14 @@ class BreedsScreenController extends GetxController {
         if (!isMoreDataLoad) {
           hasData.value = true;
         }
-        BreedsListModel res = BreedsListModel.fromJson(response);
+        HomeScreenDataModel res = HomeScreenDataModel.fromJson(response);
         if (!isNullEmptyOrFalse(res.data)) {
           if (page.value == res.data!.totalPages) {
             allDataLoaded.value = true;
           }
-          if (!isNullEmptyOrFalse(res.data!.breeds)) {
-            res.data!.breeds!.forEach((element) {
-              breederList.add(element);
+          if (!isNullEmptyOrFalse(res.data!.posts)) {
+            res.data!.posts!.forEach((element) {
+              puppiesList.add(element);
             });
           }
         }

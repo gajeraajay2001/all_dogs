@@ -44,21 +44,27 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                   color: appTheme.primaryTheme,
                 )),
           ),
-          Align(
-              alignment: Alignment.centerRight,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "View All",
-                    style: TextStyle(color: Colors.grey.shade500),
-                  ),
-                  Spacing.width(3),
-                  Icon(Icons.arrow_forward,
-                      color: Colors.grey.shade500, size: MySize.getHeight(15)),
-                  Spacing.width(10),
-                ],
-              )),
+          InkWell(
+            onTap: () {
+              Get.toNamed(Routes.PUPPIES_LIST);
+            },
+            child: Align(
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "View All",
+                      style: TextStyle(color: Colors.grey.shade500),
+                    ),
+                    Spacing.width(3),
+                    Icon(Icons.arrow_forward,
+                        color: Colors.grey.shade500,
+                        size: MySize.getHeight(15)),
+                    Spacing.width(10),
+                  ],
+                )),
+          ),
           Spacing.height(5),
           if (!isNullEmptyOrFalse(controller.postList))
             SizedBox(
