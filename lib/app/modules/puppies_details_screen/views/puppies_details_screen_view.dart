@@ -147,7 +147,7 @@ class PuppiesDetailsScreenView
                             Spacing.height(20),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: MySize.getWidth(10)),
+                                  horizontal: MySize.getWidth(15)),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -162,8 +162,21 @@ class PuppiesDetailsScreenView
                                                     controller.postId,
                                               });
                                         },
-                                        child: SvgPicture.asset(
-                                            imagePath + "edit_post_icon.svg"),
+                                        child: Card(
+                                          elevation: 3,
+                                          child: Container(
+                                            height: MySize.getHeight(30),
+                                            width: MySize.getWidth(30),
+                                            padding: EdgeInsets.all(
+                                                MySize.getHeight(5)),
+                                            child: SvgPicture.asset(
+                                                height: MySize.getHeight(30),
+                                                width: MySize.getWidth(30),
+                                                // fit: BoxFit.cover,
+                                                imagePath +
+                                                    "edit_post_icon.svg"),
+                                          ),
+                                        ),
                                       ),
                                     Spacer(),
                                     InkWell(
@@ -189,8 +202,21 @@ class PuppiesDetailsScreenView
                                               context: context,
                                               id: controller.postId);
                                         },
-                                        child: SvgPicture.asset(
-                                            imagePath + "delete_post_icon.svg"),
+                                        child: Card(
+                                          elevation: 3,
+                                          child: Container(
+                                            height: MySize.getHeight(30),
+                                            width: MySize.getWidth(30),
+                                            padding: EdgeInsets.all(
+                                                MySize.getHeight(5)),
+                                            child: SvgPicture.asset(
+                                                height: MySize.getHeight(30),
+                                                width: MySize.getWidth(30),
+                                                // fit: BoxFit.cover,
+                                                imagePath +
+                                                    "delete_post_icon.svg"),
+                                          ),
+                                        ),
                                       ),
                                   ]),
                             ),

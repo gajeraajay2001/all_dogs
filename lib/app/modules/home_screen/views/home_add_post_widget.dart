@@ -20,30 +20,6 @@ class _HomeAddPostWidgetState extends State<HomeAddPostWidget> {
     return Container(
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(15)),
-            child: Row(
-              children: [
-                Text(
-                  "Pups Available",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: MySize.getHeight(20)),
-                ),
-                Spacer(),
-                InkWell(
-                    onTap: () {
-                      if (isNullEmptyOrFalse(
-                          box.read(ArgumentConstant.token))) {
-                        Get.toNamed(Routes.LOGIN_SCREEN);
-                      } else {
-                        Get.toNamed(Routes.CREATE_ADD);
-                      }
-                    },
-                    child: SvgPicture.asset(imagePath + "edit_icon.svg")),
-              ],
-            ),
-          ),
           Spacing.height(10),
           Image.asset(
             imagePath + "poster_01.png",

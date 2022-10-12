@@ -8,6 +8,8 @@ import '../modules/blogs_screen/bindings/blogs_screen_binding.dart';
 import '../modules/blogs_screen/views/blogs_screen_view.dart';
 import '../modules/breeders_screen/bindings/breeders_screen_binding.dart';
 import '../modules/breeders_screen/views/breeders_screen_view.dart';
+import '../modules/breeds_details_screen/bindings/breeds_details_screen_binding.dart';
+import '../modules/breeds_details_screen/views/breeds_details_screen_view.dart';
 import '../modules/breeds_screen/bindings/breeds_screen_binding.dart';
 import '../modules/breeds_screen/views/breeds_screen_view.dart';
 import '../modules/create_add/bindings/create_add_binding.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.BREEDS_DETAILS_SCREEN,
+      page: () => const BreedsDetailsScreenView(),
+      binding: BreedsDetailsScreenBinding(),
     ),
   ];
 }

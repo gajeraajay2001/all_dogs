@@ -25,10 +25,12 @@ class ApiConstant {
   static const deletePost = "/post/delete/";
   static const deletePostPic = "/post/edit/";
   static const editPost = "/post/edit/";
+  static const breedsDetailsApi = "/breed/details/";
 }
 
 class ArgumentConstant {
   static const postId = "postId";
+  static const breedersId = "breedersId";
   static const userId = "userId";
   static const name = "name";
   static const number = "number";

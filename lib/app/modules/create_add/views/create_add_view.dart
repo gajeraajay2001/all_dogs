@@ -714,12 +714,19 @@ class CreateAddView extends GetWidget<CreateAddController> {
               },
               child: Container(
                 height: MySize.getHeight(30),
-                width: MySize.getWidth(100),
+                width: MySize.getWidth(90),
                 alignment: Alignment.center,
-                decoration: BoxDecoration(color: Colors.red),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                        color: appTheme.primaryTheme,
+                        width: MySize.getHeight(1.5)),
+                    borderRadius: BorderRadius.circular(MySize.getHeight(5))),
                 child: Text(
                   "REMOVE",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: appTheme.primaryTheme,
+                      fontSize: MySize.getHeight(13)),
                 ),
               ),
             ),

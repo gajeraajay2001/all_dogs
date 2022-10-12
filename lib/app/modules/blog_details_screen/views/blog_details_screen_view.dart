@@ -29,6 +29,11 @@ class BlogDetailsScreenView extends GetWidget<BlogDetailsScreenController> {
                 },
                 child: Icon(Icons.arrow_back, color: Colors.black)),
             elevation: 0,
+            title: Text(
+              controller.title.value,
+              style: TextStyle(
+                  color: Colors.black, fontSize: MySize.getHeight(17)),
+            ),
           ),
           body: (controller.hasData.isFalse)
               ? Center(

@@ -18,6 +18,7 @@ class BlogDetailsScreenController extends GetxController {
   String url = "";
   String postId = "";
   RxBool isScrollerJumpToLast = false.obs;
+  RxString title = "Blog".obs;
   @override
   void onInit() {
     if (!isNullEmptyOrFalse(Get.arguments[ArgumentConstant.postId])) {
@@ -49,6 +50,9 @@ class BlogDetailsScreenController extends GetxController {
                 url =
                     "https://alldogs.in/blogs/${res.data!.blog!.filename.toString()}";
                 print("URL :=== $url");
+              }
+              if (!isNullEmptyOrFalse(res.data!.blog!.title)) {
+                title.value = res.data!.blog!.title.toString();
               }
             }
           }

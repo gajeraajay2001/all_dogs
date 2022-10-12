@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../constants/color_constant.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utilities/text_field.dart';
 import '../controllers/breeds_screen_controller.dart';
 
@@ -154,11 +155,26 @@ class BreedsScreenView extends GetWidget<BreedsScreenController> {
                                                 ),
                                                 Spacing.height(40),
                                                 Center(
-                                                  child: getButton(
-                                                      title: 'READ MORE',
-                                                      height: 30,
-                                                      width: 100,
-                                                      textSize: 11),
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      Get.toNamed(
+                                                          Routes
+                                                              .BREEDS_DETAILS_SCREEN,
+                                                          arguments: {
+                                                            ArgumentConstant
+                                                                    .breedersId:
+                                                                controller
+                                                                    .breederList[
+                                                                        index]
+                                                                    .id!,
+                                                          });
+                                                    },
+                                                    child: getButton(
+                                                        title: 'READ MORE',
+                                                        height: 30,
+                                                        width: 100,
+                                                        textSize: 11),
+                                                  ),
                                                 ),
                                                 Spacing.height(5),
                                               ],
