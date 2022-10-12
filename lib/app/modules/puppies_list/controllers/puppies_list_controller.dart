@@ -15,9 +15,17 @@ class PuppiesListController extends GetxController {
   RxInt pageLimit = 10.obs;
   RxBool allDataLoaded = false.obs;
   late ScrollController controller;
+  String breederName = "";
+  String breederId = "1";
+  bool isFromBreeder = false;
 
   @override
   void onInit() {
+    if (Get.arguments != null) {
+      isFromBreeder = Get.arguments[ArgumentConstant.isFromBreeder] ?? false;
+      breederId = Get.arguments[ArgumentConstant.breederId] ?? "1";
+      breederName = Get.arguments[ArgumentConstant.breederName] ?? "N/A";
+    }
     getPuppiesList(context: Get.context!);
     controller = ScrollController()..addListener(_loadMore);
     super.onInit();
@@ -53,7 +61,9 @@ class PuppiesListController extends GetxController {
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,
-      ApiConstant.puppiesPostListApi +
+      ((isFromBreeder)
+              ? "breeder/posts/$breederId"
+              : ApiConstant.puppiesPostListApi) +
           "?page=${page.value}&limit=${pageLimit.value}${!isNullEmptyOrFalse(search) ? "&search=$search" : ""}",
       MethodType.Get,
       header: NetworkClient.getInstance.getAuthHeaders(),

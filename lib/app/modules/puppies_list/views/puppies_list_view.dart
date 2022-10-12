@@ -31,7 +31,7 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
             ),
           ),
           title: Text(
-            'Puppies',
+            (controller.isFromBreeder) ? 'Posts' : 'Puppies',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           centerTitle: true,
@@ -43,7 +43,9 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
             children: [
               Spacing.height(8),
               Text(
-                'Pups Available',
+                (controller.isFromBreeder)
+                    ? controller.breederName
+                    : 'Pups Available',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,

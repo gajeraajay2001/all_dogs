@@ -20,11 +20,15 @@ class ApiConstant {
   static const puppiesPostListApi = "post/list";
   static const commentApi = "blog/comment/";
   static const postCreateApi = "post/create";
+  static const userProfileApi = "user/profile";
 }
 
 class ArgumentConstant {
   static const postId = "postId";
   static const token = "token";
+  static const isFromBreeder = "isFromBreeder";
+  static const breederName = "breederName";
+  static const breederId = "breederId";
 }
 
 getLogOut() {

@@ -1,3 +1,4 @@
+import 'package:all_dogs/app/routes/app_pages.dart';
 import 'package:all_dogs/app/utilities/text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -100,55 +101,84 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                           top: MySize.getHeight(10)),
                                       children: List.generate(
                                           controller.breederList.length, (i) {
-                                        return Card(
-                                          elevation: 6,
-                                          child: Container(
-                                            height: MySize.getHeight(300),
-                                            child: Column(
-                                              children: [
-                                                Spacing.height(10),
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          200),
-                                                  child: Container(
-                                                    height:
-                                                        MySize.getHeight(68),
-                                                    width: MySize.getWidth(68),
-                                                    child: getImageByLink(
-                                                        url: !isNullEmptyOrFalse(
-                                                                controller
-                                                                    .breederList[
-                                                                        i]
-                                                                    .pic)
-                                                            ? (imageBaseUrl +
-                                                                controller
-                                                                    .breederList[
-                                                                        i]
-                                                                    .pic
-                                                                    .toString())
-                                                            : "",
-                                                        height: 68,
-                                                        width: 68,
-                                                        imagePlaceHolder:
-                                                            "avatar_placeholder.png"),
+                                        return InkWell(
+                                          onTap: () {
+                                            Get.toNamed(Routes.PUPPIES_LIST,
+                                                arguments: {
+                                                  ArgumentConstant.breederName:
+                                                      controller
+                                                          .breederList[i].name,
+                                                  ArgumentConstant.breederId:
+                                                      controller
+                                                          .breederList[i].id,
+                                                  ArgumentConstant
+                                                      .isFromBreeder: true,
+                                                });
+                                          },
+                                          child: Card(
+                                            elevation: 6,
+                                            child: Container(
+                                              height: MySize.getHeight(300),
+                                              child: Column(
+                                                children: [
+                                                  Spacing.height(10),
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            200),
+                                                    child: Container(
+                                                      height:
+                                                          MySize.getHeight(68),
+                                                      width:
+                                                          MySize.getWidth(68),
+                                                      child: getImageByLink(
+                                                          url: !isNullEmptyOrFalse(
+                                                                  controller
+                                                                      .breederList[
+                                                                          i]
+                                                                      .pic)
+                                                              ? (imageBaseUrl +
+                                                                  controller
+                                                                      .breederList[
+                                                                          i]
+                                                                      .pic
+                                                                      .toString())
+                                                              : "",
+                                                          height: 68,
+                                                          width: 68,
+                                                          imagePlaceHolder:
+                                                              "avatar_placeholder.png"),
+                                                    ),
                                                   ),
-                                                ),
-                                                Spacing.height(15),
-                                                Text(
-                                                  controller.breederList[i].name
-                                                      .toString(),
-                                                  textAlign: TextAlign.center,
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Spacing.height(15),
-                                                Flexible(
-                                                  child: Text(
+                                                  Spacing.height(15),
+                                                  Text(
                                                     controller
-                                                        .breederList[i].email
+                                                        .breederList[i].name
+                                                        .toString(),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 1,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  Spacing.height(15),
+                                                  Flexible(
+                                                    child: Text(
+                                                      controller
+                                                          .breederList[i].email
+                                                          .toString(),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize:
+                                                              MySize.getHeight(
+                                                                  9)),
+                                                    ),
+                                                  ),
+                                                  Spacing.height(15),
+                                                  Text(
+                                                    controller
+                                                        .breederList[i].mobile
                                                         .toString(),
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
@@ -156,19 +186,9 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                                             MySize.getHeight(
                                                                 9)),
                                                   ),
-                                                ),
-                                                Spacing.height(15),
-                                                Text(
-                                                  controller
-                                                      .breederList[i].mobile
-                                                      .toString(),
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          MySize.getHeight(9)),
-                                                ),
-                                                Spacing.height(15),
-                                              ],
+                                                  Spacing.height(15),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         );

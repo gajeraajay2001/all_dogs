@@ -20,6 +20,8 @@ import '../modules/home_screen/bindings/home_screen_binding.dart';
 import '../modules/home_screen/views/home_screen_view.dart';
 import '../modules/login_screen/bindings/login_screen_binding.dart';
 import '../modules/login_screen/views/login_screen_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/puppies_details_screen/bindings/puppies_details_screen_binding.dart';
 import '../modules/puppies_details_screen/views/puppies_details_screen_view.dart';
 import '../modules/puppies_list/bindings/puppies_list_binding.dart';
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.CREATE_ADD,
       page: () => const CreateAddView(),
       binding: CreateAddBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

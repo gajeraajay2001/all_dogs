@@ -17,6 +17,7 @@ abstract class Routes {
   static const BLOG_DETAILS_SCREEN = _Paths.BLOG_DETAILS_SCREEN;
   static const PUPPIES_LIST = _Paths.PUPPIES_LIST;
   static const CREATE_ADD = _Paths.CREATE_ADD;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const BLOG_DETAILS_SCREEN = '/blog-details-screen';
   static const PUPPIES_LIST = '/puppies-list';
   static const CREATE_ADD = '/create-add';
+  static const PROFILE = '/profile';
 }

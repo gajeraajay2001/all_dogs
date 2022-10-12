@@ -60,7 +60,7 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                           child: GridView.count(
                             crossAxisCount: 2,
                             crossAxisSpacing: MySize.getWidth(7),
-                            childAspectRatio: MySize.getHeight(0.54),
+                            childAspectRatio: MySize.getHeight(0.49),
                             mainAxisSpacing: MySize.getHeight(8),
                             padding: EdgeInsets.only(top: MySize.getHeight(10)),
                             children: List.generate(controller.blogList.length,
