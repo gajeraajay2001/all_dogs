@@ -331,9 +331,13 @@ class PuppiesDetailsScreenView
                                         onTap: () {
                                           if (!isNullEmptyOrFalse(
                                               controller.userDetails.mobile)) {
-                                            urlLauncher(
-                                                url: Uri.parse(
-                                                    "whatsapp://send?phone=${controller.userDetails.mobile.toString()}&text=hello"));
+                                            if (!controller.userDetails.mobile
+                                                .toString()
+                                                .contains("+91")) {
+                                              urlLauncher(
+                                                  url: Uri.parse(
+                                                      "whatsapp://send?phone=+91${controller.userDetails.mobile.toString()}&text=hello"));
+                                            }
                                           }
                                         },
                                         child: getButtonContainer(

@@ -20,8 +20,6 @@ class _DrawerWidgetState extends State<DrawerWidget> {
       width: MySize.getWidth(264),
       child: Container(
         alignment: Alignment.centerLeft,
-
-        // padding: EdgeInsets.only(left: MySize.getWidth(5)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -37,8 +35,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   child: Image.asset(
                     imagePath + "logo1.png",
                     fit: BoxFit.cover,
-                    height: MySize.getHeight(20),
-                    width: MySize.getWidth(80),
+                    height: MySize.getHeight(25),
+                    width: MySize.getWidth(130),
                   ),
                 ),
                 Positioned(
@@ -168,8 +166,13 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   color: Colors.black,
                 ),
                 onTap: () {
-                  Get.back();
-                  Get.toNamed(Routes.CREATE_ADD);
+                  if (isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
+                    Get.back();
+                    Get.toNamed(Routes.LOGIN_SCREEN);
+                  } else {
+                    Get.back();
+                    Get.toNamed(Routes.CREATE_ADD);
+                  }
                 },
               ),
             ),
@@ -217,8 +220,13 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   // trailing:
                   //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
                   onTap: () {
-                    Get.back();
-                    Get.toNamed(Routes.PROFILE);
+                    if (isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
+                      Get.back();
+                      Get.toNamed(Routes.LOGIN_SCREEN);
+                    } else {
+                      Get.back();
+                      Get.toNamed(Routes.PROFILE);
+                    }
                   },
                 ),
               ),

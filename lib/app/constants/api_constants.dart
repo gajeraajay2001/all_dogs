@@ -43,5 +43,8 @@ class ArgumentConstant {
 
 getLogOut() {
   box.write(ArgumentConstant.token, "");
+  box.write(ArgumentConstant.userId, "");
+  box.write(ArgumentConstant.name, "");
+  box.write(ArgumentConstant.number, "");
   Get.offAllNamed(Routes.HOME_SCREEN);
 }
