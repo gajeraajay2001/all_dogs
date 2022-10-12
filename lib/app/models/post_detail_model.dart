@@ -203,7 +203,7 @@ class Post {
 
 class User {
   String? id;
-  Null? pic;
+  String? pic;
   String? name;
   String? email;
   String? mobile;

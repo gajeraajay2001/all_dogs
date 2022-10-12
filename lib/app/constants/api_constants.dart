@@ -21,14 +21,22 @@ class ApiConstant {
   static const commentApi = "blog/comment/";
   static const postCreateApi = "post/create";
   static const userProfileApi = "user/profile";
+  static const getUserProfile = "/user/profile";
+  static const deletePost = "/post/delete/";
+  static const deletePostPic = "/post/edit/";
+  static const editPost = "/post/edit/";
 }
 
 class ArgumentConstant {
   static const postId = "postId";
+  static const userId = "userId";
+  static const name = "name";
+  static const number = "number";
   static const token = "token";
   static const isFromBreeder = "isFromBreeder";
   static const breederName = "breederName";
   static const breederId = "breederId";
+  static const isForEditPost = "isForEditPost";
 }
 
 getLogOut() {
