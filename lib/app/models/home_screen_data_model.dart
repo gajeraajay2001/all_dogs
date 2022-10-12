@@ -100,7 +100,7 @@ class Posts {
   String? pic9;
   String? pictxt10;
   String? pic10;
-  Null? pic;
+  String? pic;
   String? name;
   String? email;
   String? mobile;

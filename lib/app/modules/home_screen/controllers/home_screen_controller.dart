@@ -1,5 +1,6 @@
 import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:all_dogs/app/models/home_screen_data_model.dart';
+import 'package:all_dogs/app/models/profile_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -15,7 +16,12 @@ class HomeScreenController extends GetxController {
   RxBool hasData = false.obs;
   @override
   void onInit() {
-    getHomeScreenData(context: Get.context!);
+    if (!isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
+      getUserProfileData(context: Get.context!);
+    } else {
+      getHomeScreenData(context: Get.context!);
+    }
+
     super.onInit();
   }
 
@@ -43,6 +49,44 @@ class HomeScreenController extends GetxController {
             res.data!.blogs!.forEach((element) {
               blogList.add(element);
             });
+          }
+        }
+      },
+      failureCallback: (response, message) {
+        hasData.value = true;
+        getIt<CustomDialogs>()
+            .getDialog(title: "Failed", desc: "Something went wrong.");
+        print(" error");
+      },
+    );
+  }
+
+  getUserProfileData({required BuildContext context}) async {
+    hasData.value = false;
+    Map<String, dynamic> dict = {};
+
+    return NetworkClient.getInstance.callApi(
+      context,
+      baseUrl,
+      ApiConstant.getUserProfile,
+      MethodType.Get,
+      header: NetworkClient.getInstance.getAuthHeaders(),
+      params: dict,
+      successCallback: (response, message) {
+        hasData.value = true;
+        if (response["responseCode"] == 200) {
+          getHomeScreenData(context: Get.context!);
+          ProfileDataModel res = ProfileDataModel.fromJson(response);
+          if (!isNullEmptyOrFalse(res.data)) {
+            if (!isNullEmptyOrFalse(res.data!.id)) {
+              box.write(ArgumentConstant.userId, res.data!.id.toString());
+            }
+            if (!isNullEmptyOrFalse(res.data!.name)) {
+              box.write(ArgumentConstant.name, res.data!.name.toString());
+            }
+            if (!isNullEmptyOrFalse(res.data!.mobile)) {
+              box.write(ArgumentConstant.number, res.data!.mobile.toString());
+            }
           }
         }
       },

@@ -1,5 +1,6 @@
 import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:all_dogs/app/models/post_detail_model.dart';
+import 'package:all_dogs/app/routes/app_pages.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ import '../../../utilities/progress_dialog_utils.dart';
 class PuppiesDetailsScreenController extends GetxController {
   CarouselController carouselController = CarouselController();
   RxList<String> bannerTextList = RxList<String>([]);
+  RxBool isOwnPost = false.obs;
   String postId = "";
   RxInt selectedBannerIndex = 0.obs;
   RxBool hasData = false.obs;
@@ -48,6 +50,14 @@ class PuppiesDetailsScreenController extends GetxController {
           PostDetailModel res = PostDetailModel.fromJson(response);
           if (!isNullEmptyOrFalse(res.data)) {
             if (!isNullEmptyOrFalse(res.data!.post)) {
+              if (!isNullEmptyOrFalse(res.data!.post!.userId)) {
+                if (!isNullEmptyOrFalse(box.read(ArgumentConstant.userId))) {
+                  if (box.read(ArgumentConstant.userId) ==
+                      res.data!.post!.userId.toString()) {
+                    isOwnPost.value = true;
+                  }
+                }
+              }
               postDetails = res.data!.post!;
               if (!isNullEmptyOrFalse(res.data!.post!.views)) {
                 viewsCount.value = res.data!.post!.views.toString();
@@ -136,6 +146,36 @@ class PuppiesDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         // getIt<CustomDialogs>().hideCircularDialog(context);
+        getIt<CustomDialogs>()
+            .getDialog(title: "Failed", desc: "Something went wrong.");
+        print(" error");
+      },
+    );
+  }
+
+  deletePostApi({required BuildContext context, required String id}) async {
+    getIt<CustomDialogs>().showCircularDialog(context);
+    Map<String, dynamic> dict = {};
+
+    return NetworkClient.getInstance.callApi(
+      context,
+      baseUrl,
+      ApiConstant.deletePost + id,
+      MethodType.Delete,
+      header: NetworkClient.getInstance.getAuthHeaders(),
+      params: dict,
+      successCallback: (response, message) {
+        getIt<CustomDialogs>().hideCircularDialog(context);
+
+        if (response["responseCode"] == 200) {
+          Get.offAllNamed(Routes.HOME_SCREEN);
+        } else {
+          getIt<CustomDialogs>()
+              .getDialog(title: "Failed", desc: response["message"]);
+        }
+      },
+      failureCallback: (response, message) {
+        getIt<CustomDialogs>().hideCircularDialog(context);
         getIt<CustomDialogs>()
             .getDialog(title: "Failed", desc: "Something went wrong.");
         print(" error");

@@ -57,7 +57,7 @@ class BlogDetailsScreenView extends GetWidget<BlogDetailsScreenController> {
                         },
                       ),
                       Positioned(
-                        bottom: MySize.getHeight(5),
+                        bottom: MySize.getHeight(10),
                         child: InkWell(
                           onTap: () {
                             if (!isNullEmptyOrFalse(
@@ -255,6 +255,8 @@ class BlogDetailsScreenView extends GetWidget<BlogDetailsScreenController> {
                               },
                               child: Container(
                                 width: MySize.getWidth(280),
+                                margin: EdgeInsets.only(
+                                    bottom: MySize.getHeight(10)),
                                 child: getButton(
                                   title: "COMMENT",
                                 ),

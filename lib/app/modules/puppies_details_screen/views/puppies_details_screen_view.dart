@@ -119,45 +119,81 @@ class PuppiesDetailsScreenView
                         child: Column(
                           children: [
                             Spacing.height(5),
-                            Text(
-                              controller.postDetails.title.toString(),
-                              style: TextStyle(
-                                  fontSize: MySize.getHeight(18),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Spacing.height(5),
                             Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: MySize.getWidth(20)),
                               child: Text(
-                                "Posted by ${controller.userDetails.name.toString()} on ${DateFormat("dd MMM, yy").format(controller.postDetails.dateTimeCreatedOn!)}",
+                                controller.postDetails.title.toString(),
                                 style: TextStyle(
-                                    fontSize: MySize.getHeight(10),
-                                    fontWeight: FontWeight.w300),
+                                    fontSize: MySize.getHeight(18),
+                                    fontWeight: FontWeight.w500),
                               ),
                             ),
+                            Spacing.height(5),
+                            if (!isNullEmptyOrFalse(
+                                controller.postDetails.dateTimeCreatedOn))
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: MySize.getWidth(20)),
+                                child: Text(
+                                  "Posted by ${controller.userDetails.name.toString()} on ${DateFormat("dd MMM, yy").format(controller.postDetails.dateTimeCreatedOn!)}",
+                                  style: TextStyle(
+                                      fontSize: MySize.getHeight(10),
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              ),
                             Spacing.height(30),
                             getBannerWidget(),
                             Spacing.height(20),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                      onTap: () {
-                                        controller.carouselController
-                                            .previousPage();
-                                      },
-                                      child: getBannerArrow(
-                                          image: "left_arrow.svg")),
-                                  Spacing.width(25),
-                                  InkWell(
-                                      onTap: () {
-                                        controller.carouselController
-                                            .nextPage();
-                                      },
-                                      child: getBannerArrow(
-                                          image: "right_arrow.svg")),
-                                ]),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: MySize.getWidth(10)),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    if (controller.isOwnPost.isTrue)
+                                      InkWell(
+                                        onTap: () {
+                                          Get.toNamed(Routes.CREATE_ADD,
+                                              arguments: {
+                                                ArgumentConstant.isForEditPost:
+                                                    true,
+                                                ArgumentConstant.postId:
+                                                    controller.postId,
+                                              });
+                                        },
+                                        child: SvgPicture.asset(
+                                            imagePath + "edit_post_icon.svg"),
+                                      ),
+                                    Spacer(),
+                                    InkWell(
+                                        onTap: () {
+                                          controller.carouselController
+                                              .previousPage();
+                                        },
+                                        child: getBannerArrow(
+                                            image: "left_arrow.svg")),
+                                    Spacing.width(25),
+                                    InkWell(
+                                        onTap: () {
+                                          controller.carouselController
+                                              .nextPage();
+                                        },
+                                        child: getBannerArrow(
+                                            image: "right_arrow.svg")),
+                                    Spacer(),
+                                    if (controller.isOwnPost.isTrue)
+                                      InkWell(
+                                        onTap: () {
+                                          controller.deletePostApi(
+                                              context: context,
+                                              id: controller.postId);
+                                        },
+                                        child: SvgPicture.asset(
+                                            imagePath + "delete_post_icon.svg"),
+                                      ),
+                                  ]),
+                            ),
                             Spacing.height(30),
                             Container(
                               padding: EdgeInsets.symmetric(
@@ -191,13 +227,16 @@ class PuppiesDetailsScreenView
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Expanded(
-                                          child: getContainer(
-                                              text1: "DOB",
-                                              text2: DateFormat("dd MMM, yy")
-                                                  .format(controller.postDetails
-                                                      .dateTimeDOB!)),
-                                        ),
+                                        if (!isNullEmptyOrFalse(
+                                            controller.postDetails.dateTimeDOB))
+                                          Expanded(
+                                            child: getContainer(
+                                                text1: "DOB",
+                                                text2: DateFormat("dd MMM, yy")
+                                                    .format(controller
+                                                        .postDetails
+                                                        .dateTimeDOB!)),
+                                          ),
                                         Spacing.width(25),
                                         Expanded(
                                           child: getContainer(
