@@ -108,7 +108,7 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                       physics: NeverScrollableScrollPhysics(),
                                       crossAxisSpacing: MySize.getWidth(7),
                                       childAspectRatio: MySize.getHeight(
-                                          (MySize.isMini) ? 0.68 : 0.48),
+                                          (MySize.isMini) ? 0.68 : 0.52),
                                       mainAxisSpacing: MySize.getHeight(8),
                                       padding: EdgeInsets.only(
                                           top: MySize.getHeight(10)),

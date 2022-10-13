@@ -93,10 +93,9 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                       crossAxisCount: 2,
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
-                                      // controller: controller.controller,
                                       crossAxisSpacing: MySize.getWidth(10),
                                       childAspectRatio: MySize.getHeight(
-                                          (MySize.isMini) ? 1.05 : 0.75),
+                                          (MySize.isMini) ? 1.05 : 0.80),
                                       mainAxisSpacing: MySize.getHeight(10),
                                       padding: EdgeInsets.only(
                                           top: MySize.getHeight(10)),
@@ -126,6 +125,8 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                                   CircleAvatar(
                                                     radius:
                                                         MySize.getHeight(34),
+                                                    backgroundColor:
+                                                        Colors.transparent,
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(

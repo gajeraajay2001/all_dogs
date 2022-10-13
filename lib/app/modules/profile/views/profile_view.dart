@@ -561,6 +561,7 @@ class ProfileView extends GetWidget<ProfileController> {
         children: [
           CircleAvatar(
             radius: MySize.getHeight(70),
+            backgroundColor: Colors.transparent,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(
                 MySize.getHeight(200),
