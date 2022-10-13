@@ -3,12 +3,10 @@ import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../../main.dart';
 import '../../../constants/api_constants.dart';
 import '../../../routes/app_pages.dart';
@@ -179,21 +177,23 @@ class PuppiesDetailsScreenView
                                         ),
                                       ),
                                     Spacer(),
-                                    InkWell(
-                                        onTap: () {
-                                          controller.carouselController
-                                              .previousPage();
-                                        },
-                                        child: getBannerArrow(
-                                            image: "left_arrow.svg")),
+                                    if (controller.bannerList.length > 1)
+                                      InkWell(
+                                          onTap: () {
+                                            controller.carouselController
+                                                .previousPage();
+                                          },
+                                          child: getBannerArrow(
+                                              image: "left_arrow.svg")),
                                     Spacing.width(25),
-                                    InkWell(
-                                        onTap: () {
-                                          controller.carouselController
-                                              .nextPage();
-                                        },
-                                        child: getBannerArrow(
-                                            image: "right_arrow.svg")),
+                                    if (controller.bannerList.length > 1)
+                                      InkWell(
+                                          onTap: () {
+                                            controller.carouselController
+                                                .nextPage();
+                                          },
+                                          child: getBannerArrow(
+                                              image: "right_arrow.svg")),
                                     Spacer(),
                                     if (controller.isOwnPost.isTrue)
                                       InkWell(

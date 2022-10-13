@@ -556,46 +556,32 @@ class ProfileView extends GetWidget<ProfileController> {
             ),
           ),
         ));
-        // final ImagePicker _picker = ImagePicker();
-        // PickedFile? image =
-        //     await _picker.getImage(source: ImageSource.gallery);
-        // if (image != null) {
-        //   //  Get.back();
-        //
-        //   controller.profile = File(image.path).obs;
-        //   controller.imgFileName = p.basename(image.path);
-        //   controller.profile!.refresh();
-        //   controller.update();
-        //   controller.count.value++;
-        //
-        //   controller.profileImg.value = true;
-        //   controller.isImageSelected.value = true;
-        //   if (controller.isFromEdit.value) {
-        //     controller.callApiForUploadImageUser(context: Get.context!);
-        //   }
-        // }
       },
       child: Stack(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(
-              MySize.getHeight(200),
+          CircleAvatar(
+            radius: MySize.getHeight(70),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                MySize.getHeight(200),
+              ),
+              child:
+                  (controller.profile != null || controller.profileImg.isTrue)
+                      ? Image.file(controller.profile!.value!,
+                          width: MySize.getHeight(140),
+                          height: MySize.getHeight(140),
+                          fit: BoxFit.cover)
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(200),
+                          child: getImageByLink(
+                            url: imageBaseUrl +
+                                controller.userProfile!.pic.toString(),
+                            boxFit: BoxFit.cover,
+                            height: 140,
+                            width: 140,
+                          ),
+                        ),
             ),
-            child: (controller.profile != null || controller.profileImg.isTrue)
-                ? Image.file(controller.profile!.value!,
-                    width: MySize.getHeight(140),
-                    height: MySize.getHeight(140),
-                    fit: BoxFit.cover)
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(200),
-                    child: getImageByLink(
-                      url:
-                          imageBaseUrl + controller.userProfile!.pic.toString(),
-                      boxFit: BoxFit.cover,
-                      height: 140,
-                      width: 140,
-                    ),
-                  ),
           ),
           Positioned(
             right: MySize.getHeight(10),

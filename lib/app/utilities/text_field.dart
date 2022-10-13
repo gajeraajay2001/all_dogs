@@ -27,12 +27,14 @@ TextFormField getTextField({
   FormFieldValidator<String>? validation,
   double fontSize = 15,
   double hintFontSize = 14,
+  TextCapitalization textCapitalization = TextCapitalization.none,
 }) {
   return TextFormField(
     controller: textEditingController,
     obscureText: textVisible,
     textInputAction: textInputAction,
     keyboardType: textInputType,
+    textCapitalization: textCapitalization,
     cursorColor: appTheme.primaryTheme,
     readOnly: readOnly,
     validator: validation,

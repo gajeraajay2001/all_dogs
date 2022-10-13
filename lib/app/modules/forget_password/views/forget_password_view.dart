@@ -60,6 +60,7 @@ class ForgetPasswordView extends GetWidget<ForgetPasswordController> {
                         Spacing.height(37),
                         getTextField(
                             textEditingController: controller.emailController,
+                            textInputType: TextInputType.emailAddress,
                             prefixIcon: Icon(
                               Icons.email_outlined,
                               color: appTheme.primaryTheme,
@@ -79,7 +80,7 @@ class ForgetPasswordView extends GetWidget<ForgetPasswordController> {
                                   }
                                 },
                                 child: getButton(
-                                    title: "LOGIN",
+                                    title: "SUBMIT",
                                     width: MySize.screenWidth))),
                       ],
                     ),

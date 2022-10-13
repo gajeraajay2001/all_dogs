@@ -80,6 +80,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                               Icons.person_outline,
                               color: appTheme.primaryTheme,
                             ),
+                            textCapitalization: TextCapitalization.sentences,
                             labelText: "Name",
                             validation: (val) {
                               if (val!.isEmpty) {
@@ -97,6 +98,7 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                             ),
                             validation: (val) => validateEmail(val),
                             labelText: "Email",
+                            textInputType: TextInputType.emailAddress,
                             hintText: "Enter email here"),
                         Spacing.height(30),
                         getTextField(
@@ -196,15 +198,14 @@ class SignupScreenView extends GetWidget<SignupScreenController> {
                                   text: "Have an account?",
                                   style: TextStyle(
                                       color: Colors.grey.shade500,
-                                      fontSize: MySize.getHeight(11))),
+                                      fontSize: MySize.getHeight(13))),
                               TextSpan(
                                   text: " Sign in!",
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () =>
-                                        Get.offAllNamed(Routes.LOGIN_SCREEN),
+                                    ..onTap = () => Get.back(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: MySize.getHeight(12))),
+                                      fontSize: MySize.getHeight(14))),
                             ]),
                           ),
                         ),

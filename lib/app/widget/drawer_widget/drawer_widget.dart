@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../main.dart';
 import '../../routes/app_pages.dart';
+import '../../utilities/buttons.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -41,130 +42,66 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 ),
                 Positioned(
                   right: MySize.getHeight(15),
-                  child: Container(
-                    height: MySize.getHeight(50),
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.white,
-                      size: MySize.getHeight(20),
+                  child: InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      height: MySize.getHeight(50),
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: MySize.getHeight(20),
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            Container(
-              height: MySize.getHeight(32),
-              child: ListTile(
-                title: Text(
-                  "Puppies",
-                  style: TextStyle(fontSize: MySize.getHeight(14)),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: MySize.getHeight(14),
-                  color: Colors.black,
-                ),
+            getButtonWidget(
+                title: "Puppies",
+                isArrowVisible: true,
                 onTap: () {
                   Get.back();
-
                   Get.toNamed(Routes.PUPPIES_LIST);
-                },
-              ),
-            ),
+                }),
             SizedBox(
               height: MySize.getHeight(5),
-              // child: Divider(thickness: MySize.getHeight(1)),
             ),
-            Container(
-              height: MySize.getHeight(32),
-              child: ListTile(
-                title: Text(
-                  "Breeders",
-                  style: TextStyle(fontSize: MySize.getHeight(14)),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: MySize.getHeight(14),
-                  color: Colors.black,
-                ),
+            getButtonWidget(
+                title: "Breeders",
+                isArrowVisible: true,
                 onTap: () {
                   Get.back();
                   Get.toNamed(Routes.BREEDERS_SCREEN);
-                },
-              ),
-            ),
+                }),
             SizedBox(
               height: MySize.getHeight(5),
-              // child: Divider(thickness: MySize.getHeight(1)),
             ),
-            Container(
-              height: MySize.getHeight(32),
-              child: ListTile(
-                title: Text(
-                  "Breeds",
-                  style: TextStyle(fontSize: MySize.getHeight(14)),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: MySize.getHeight(14),
-                  color: Colors.black,
-                ),
+            getButtonWidget(
+                title: "Breeds",
+                isArrowVisible: true,
                 onTap: () {
                   Get.back();
                   Get.toNamed(Routes.BREEDS_SCREEN);
-                },
-              ),
-            ),
+                }),
             SizedBox(
               height: MySize.getHeight(5),
-              // child: Divider(thickness: MySize.getHeight(1)),
             ),
-            Container(
-              height: MySize.getHeight(32),
-              child: ListTile(
-                title: Text(
-                  "Blogs",
-                  style: TextStyle(fontSize: MySize.getHeight(14)),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: MySize.getHeight(14),
-                  color: Colors.black,
-                ),
+            getButtonWidget(
+                title: "Blogs",
+                isArrowVisible: true,
                 onTap: () {
                   Get.back();
                   Get.toNamed(Routes.BLOGS_SCREEN);
-                },
-              ),
-            ),
+                }),
             SizedBox(
               height: MySize.getHeight(5),
-              // child: Divider(thickness: MySize.getHeight(1)),
             ),
-            Container(
-              height: MySize.getHeight(32),
-              child: ListTile(
-                title: Row(
-                  children: [
-                    Text(
-                      "Create an Ad",
-                      style: TextStyle(fontSize: MySize.getHeight(14)),
-                    ),
-                    Space.width(8),
-                    Image.asset(
-                      imagePath + "ic_edit.png",
-                      color: appTheme.primaryTheme,
-                      // fit: BoxFit.cover,
-                      height: MySize.getHeight(14),
-                      width: MySize.getHeight(14),
-                    ),
-                  ],
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: MySize.getHeight(14),
-                  color: Colors.black,
-                ),
+            getButtonWidget(
+                title: "Create an Ad",
+                isArrowVisible: true,
+                isPenVisible: true,
                 onTap: () {
                   if (isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
                     Get.back();
@@ -173,12 +110,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     Get.back();
                     Get.toNamed(Routes.CREATE_ADD);
                   }
-                },
-              ),
-            ),
+                }),
             SizedBox(
-              height: MySize.getHeight(15),
-              // child: Divider(thickness: MySize.getHeight(1)),
+              height: MySize.getHeight(10),
             ),
             SizedBox(
               height: MySize.getHeight(5),
@@ -186,141 +120,112 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ),
             SizedBox(
               height: MySize.getHeight(2),
-              // child: Divider(thickness: MySize.getHeight(1)),
             ),
-            Container(
-              height: MySize.getHeight(32),
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    "My Notification",
-                    style: TextStyle(fontSize: MySize.getHeight(14)),
-                  ),
-                  // trailing:
-                  //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-                  // onTap: () {
-                  //   Get.back();
-                  //   Get.toNamed(Routes.GET_IN_TOUCH_SCREEN);
-                  // },
-                ),
-              ),
-            ),
-            SizedBox(
-              height: MySize.getHeight(2),
-              // child: Divider(thickness: MySize.getHeight(1)),
-            ),
-            Container(
-              height: MySize.getHeight(32),
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    "My Profile",
-                    style: TextStyle(fontSize: MySize.getHeight(14)),
-                  ),
-                  // trailing:
-                  //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-                  onTap: () {
-                    if (isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
-                      Get.back();
-                      Get.toNamed(Routes.LOGIN_SCREEN);
-                    } else {
-                      Get.back();
-                      Get.toNamed(Routes.PROFILE);
-                    }
-                  },
-                ),
-              ),
-            ),
-            SizedBox(
-              height: MySize.getHeight(2),
-              // child: Divider(thickness: MySize.getHeight(1)),
-            ),
-            Container(
-              height: MySize.getHeight(32),
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    "Contact Us",
-                    style: TextStyle(fontSize: MySize.getHeight(14)),
-                  ),
-                  // trailing:
-                  //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-                  onTap: () {
+            getButtonWidget(
+                title: "My Notification",
+                onTap: () {
+                  Get.back();
+                }),
+            getButtonWidget(
+                title: "My Profile",
+                onTap: () {
+                  if (isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
                     Get.back();
-                    Get.toNamed(Routes.GET_IN_TOUCH_SCREEN);
-                  },
-                ),
-              ),
-            ),
-            SizedBox(
-              height: MySize.getHeight(2),
-              // child: Divider(thickness: MySize.getHeight(1)),
-            ),
-            Container(
-              height: MySize.getHeight(32),
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    "About Us",
-                    style: TextStyle(fontSize: MySize.getHeight(14)),
-                  ),
-                  // trailing:
-                  //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-                  onTap: () {
+                    Get.toNamed(Routes.LOGIN_SCREEN);
+                  } else {
                     Get.back();
-                    Get.toNamed(Routes.ABOUT_US_SCREEN);
-                  },
-                ),
-              ),
-            ),
-            SizedBox(
-              height: MySize.getHeight(2),
-              // child: Divider(thickness: MySize.getHeight(1)),
-            ),
+                    Get.toNamed(Routes.PROFILE);
+                  }
+                }),
+            getButtonWidget(
+                title: "Contact Us",
+                onTap: () {
+                  Get.back();
+                  Get.toNamed(Routes.GET_IN_TOUCH_SCREEN);
+                }),
+            getButtonWidget(
+                title: "Help",
+                onTap: () {
+                  Get.back();
+                }),
+            getButtonWidget(
+                title: "About Us",
+                onTap: () {
+                  Get.back();
+                  Get.toNamed(Routes.ABOUT_US_SCREEN);
+                }),
+            getButtonWidget(
+              title: (!isNullEmptyOrFalse(box.read(ArgumentConstant.token)))
+                  ? "Logout"
+                  : "Login",
+              onTap: () {
+                if (!isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
+                  Get.back();
+                  showConfirmationDialog(
+                      context: context,
+                      text: "Are you sure you want Logout.",
+                      submitText: "Yes",
+                      cancelText: "Cancel",
+                      submitCallBack: () {
+                        getLogOut();
+                      },
+                      cancelCallback: () {
+                        Get.back();
+                      });
+                } else {
+                  Get.back();
+                  Get.toNamed(Routes.LOGIN_SCREEN);
+                }
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget getButtonWidget({
+    required String title,
+    required void Function() onTap,
+    bool isArrowVisible = false,
+    bool isPenVisible = false,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(15)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
             Container(
-              height: MySize.getHeight(32),
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    "Help",
-                    style: TextStyle(fontSize: MySize.getHeight(14)),
+              height: MySize.getHeight(35),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: MySize.getHeight(14),
+                        fontWeight: FontWeight.w500),
                   ),
-                  // trailing:
-                  //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-                  onTap: () {
-                    Get.back();
-                    // Get.toNamed(Routes.ABOUT_US_SCREEN);
-                  },
-                ),
+                  Space.width(8),
+                  if (isPenVisible)
+                    Image.asset(
+                      imagePath + "ic_edit.png",
+                      color: appTheme.primaryTheme,
+                      // fit: BoxFit.cover,
+                      height: MySize.getHeight(14),
+                      width: MySize.getHeight(14),
+                    ),
+                ],
               ),
             ),
-            SizedBox(
-              height: MySize.getHeight(2),
-              // child: Divider(thickness: MySize.getHeight(1)),
-            ),
-            Container(
-              height: MySize.getHeight(32),
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    (!isNullEmptyOrFalse(box.read(ArgumentConstant.token)))
-                        ? "Logout"
-                        : "Login",
-                    style: TextStyle(fontSize: MySize.getHeight(14)),
-                  ),
-                  // trailing:
-                  //     Icon(Icons.arrow_forward_ios, size: MySize.getHeight(16)),
-                  onTap: () {
-                    if (!isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
-                      getLogOut();
-                    } else {
-                      Get.back();
-                      Get.toNamed(Routes.LOGIN_SCREEN);
-                    }
-                  },
-                ),
+            if (isArrowVisible)
+              Icon(
+                Icons.arrow_forward_ios,
+                size: MySize.getHeight(14),
+                color: Colors.black,
               ),
-            ),
           ],
         ),
       ),

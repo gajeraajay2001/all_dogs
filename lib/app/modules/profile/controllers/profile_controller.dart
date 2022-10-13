@@ -39,9 +39,7 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    if (!isNullEmptyOrFalse(box.read(ArgumentConstant.password))) {
-      cPasswordController.value.text = box.read(ArgumentConstant.password);
-    }
+
     getProfileDetailsData(context: Get.context!);
   }
 

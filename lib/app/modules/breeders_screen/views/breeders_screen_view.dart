@@ -37,7 +37,7 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
             centerTitle: true,
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+            padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(10)),
             child: Column(
               children: [
                 Spacing.height(10),
@@ -95,7 +95,8 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                       physics: NeverScrollableScrollPhysics(),
                                       // controller: controller.controller,
                                       crossAxisSpacing: MySize.getWidth(10),
-                                      childAspectRatio: MySize.getHeight(0.75),
+                                      childAspectRatio: MySize.getHeight(
+                                          (MySize.isMini) ? 1.05 : 0.75),
                                       mainAxisSpacing: MySize.getHeight(10),
                                       padding: EdgeInsets.only(
                                           top: MySize.getHeight(10)),
@@ -116,21 +117,19 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                                 });
                                           },
                                           child: Card(
-                                            elevation: 6,
+                                            elevation: 4,
                                             child: Container(
                                               height: MySize.getHeight(300),
                                               child: Column(
                                                 children: [
                                                   Spacing.height(10),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            200),
-                                                    child: Container(
-                                                      height:
-                                                          MySize.getHeight(68),
-                                                      width:
-                                                          MySize.getWidth(68),
+                                                  CircleAvatar(
+                                                    radius:
+                                                        MySize.getHeight(34),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100000),
                                                       child: getImageByLink(
                                                           url: !isNullEmptyOrFalse(
                                                                   controller
@@ -146,6 +145,7 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                                               : "",
                                                           height: 68,
                                                           width: 68,
+                                                          boxFit: BoxFit.cover,
                                                           imagePlaceHolder:
                                                               "avatar_placeholder.png"),
                                                     ),
@@ -172,10 +172,10 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                                       style: TextStyle(
                                                           fontSize:
                                                               MySize.getHeight(
-                                                                  9)),
+                                                                  11)),
                                                     ),
                                                   ),
-                                                  Spacing.height(15),
+                                                  Spacing.height(10),
                                                   Text(
                                                     controller
                                                         .breederList[i].mobile
@@ -184,9 +184,9 @@ class BreedersScreenView extends GetWidget<BreedersScreenController> {
                                                     style: TextStyle(
                                                         fontSize:
                                                             MySize.getHeight(
-                                                                9)),
+                                                                10)),
                                                   ),
-                                                  Spacing.height(15),
+                                                  Spacing.height(10),
                                                 ],
                                               ),
                                             ),

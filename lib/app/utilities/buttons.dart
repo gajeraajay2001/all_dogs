@@ -53,3 +53,54 @@ DateTime getDateFromStringNew(String dateString, {String? formatter}) {
   }
   return DateFormat(formatter).parse(dateString, true);
 }
+
+showConfirmationDialog(
+    {required BuildContext context,
+    required String text,
+    required String cancelText,
+    required String submitText,
+    required Function() cancelCallback,
+    required Function() submitCallBack}) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          content: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(text),
+                Spacing.height(25),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: cancelCallback,
+                      child: getButton(
+                        title: cancelText,
+                        height: 40,
+                        width: 100,
+                        textSize: 14,
+                        textColor: Colors.white,
+                      ),
+                    ),
+                    Spacing.width(20),
+                    InkWell(
+                      onTap: submitCallBack,
+                      child: getButton(
+                        title: submitText,
+                        height: 40,
+                        width: 100,
+                        textSize: 14,
+                        textColor: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      });
+}

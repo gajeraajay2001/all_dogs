@@ -48,63 +48,64 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
             onTap: () {
               Get.toNamed(Routes.PUPPIES_LIST);
             },
-            child: Align(
-                alignment: Alignment.centerRight,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "View All",
-                      style: TextStyle(color: Colors.grey.shade500),
-                    ),
-                    Spacing.width(3),
-                    Icon(Icons.arrow_forward,
-                        color: Colors.grey.shade500,
-                        size: MySize.getHeight(15)),
-                    Spacing.width(10),
-                  ],
-                )),
+            child: SizedBox(
+              height: MySize.getHeight(20),
+              child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "View All",
+                        style: TextStyle(color: Colors.grey.shade500),
+                      ),
+                      Spacing.width(3),
+                      Icon(Icons.arrow_forward,
+                          color: Colors.grey.shade500,
+                          size: MySize.getHeight(15)),
+                      Spacing.width(10),
+                    ],
+                  )),
+            ),
           ),
           Spacing.height(5),
           if (!isNullEmptyOrFalse(controller.postList))
-            SizedBox(
+            Container(
               width: MySize.screenWidth,
-              height: MySize.getHeight(340),
+              height: MySize.getHeight(305),
               child: ListView.separated(
                 itemCount: controller.postList.length,
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+                padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(5)),
                 itemBuilder: (context, index) {
                   return Card(
-                    elevation: 4,
+                    elevation: 2,
                     shape: RoundedRectangleBorder(
                         borderRadius:
                             BorderRadius.circular(MySize.getHeight(5))),
                     child: Container(
-                      width: MySize.getWidth(180),
+                      width: MySize.getWidth(165),
                       decoration: BoxDecoration(
                           color: Colors.grey.shade50,
                           borderRadius:
                               BorderRadius.circular(MySize.getHeight(5))),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MySize.getWidth(8),
-                          vertical: MySize.getHeight(5)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             height: MySize.getHeight(140),
-                            width: MySize.getWidth(200),
                             child: Stack(
                               children: [
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      MySize.getHeight(5)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft:
+                                          Radius.circular(MySize.getHeight(5)),
+                                      topRight:
+                                          Radius.circular(MySize.getHeight(5))),
                                   child: Container(
                                     height: MySize.getHeight(120),
                                     width: MySize.screenWidth,
-                                    alignment: Alignment.center,
                                     child: getImageByLink(
                                       url: imageBaseUrl +
                                           controller.postList[index].pic1
@@ -158,31 +159,39 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                               ],
                             ),
                           ),
-                          Spacing.height(10),
-                          SizedBox(
-                            height: MySize.getHeight(40),
-                            child: Text(
-                              controller.postList[index].title.toString(),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: MySize.getHeight(15)),
+                          Spacing.height(5),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: MySize.getWidth(8)),
+                            child: SizedBox(
+                              height: MySize.getHeight(38),
+                              child: Text(
+                                controller.postList[index].title.toString(),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: MySize.getHeight(14)),
+                              ),
                             ),
                           ),
-                          Spacing.height(10),
-                          SizedBox(
-                            height: MySize.getHeight(35),
-                            child: Text(
-                              controller.postList[index].body.toString(),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: MySize.getHeight(12)),
+                          Spacing.height(5),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: MySize.getWidth(8)),
+                            child: SizedBox(
+                              height: MySize.getHeight(30),
+                              child: Text(
+                                controller.postList[index].body.toString(),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: MySize.getHeight(10)),
+                              ),
                             ),
                           ),
-                          Spacing.height(15),
+                          Spacing.height(5),
                           Center(
                             child: InkWell(
                               onTap: () {
@@ -197,43 +206,49 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                               },
                               child: getButton(
                                 title: "MORE DETAILS",
-                                height: 35,
-                                width: 125,
-                                textSize: 12,
+                                height: 30,
+                                width: 100,
+                                textSize: 10,
                                 borderRadius: 5,
                               ),
                             ),
                           ),
                           Spacing.height(10),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.person_outline,
-                                color: appTheme.primaryTheme,
-                                size: MySize.getHeight(20),
-                              ),
-                              Spacing.width(10),
-                              Text(
-                                "Posted by",
-                                style:
-                                    TextStyle(fontSize: MySize.getHeight(11)),
-                              ),
-                              Spacer(),
-                              SizedBox(
-                                width: MySize.getWidth(80),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    controller.postList[index].name.toString(),
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: MySize.getHeight(11)),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: MySize.getWidth(8)),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.person_outline,
+                                  color: appTheme.primaryTheme,
+                                  size: MySize.getHeight(20),
+                                ),
+                                Spacing.width(10),
+                                Text(
+                                  "Posted by",
+                                  style:
+                                      TextStyle(fontSize: MySize.getHeight(11)),
+                                ),
+                                Spacer(),
+                                SizedBox(
+                                  width: MySize.getWidth(50),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      controller.postList[index].name
+                                          .toString(),
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: MySize.getHeight(11)),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                          Spacing.height(10),
                         ],
                       ),
                     ),
@@ -241,7 +256,7 @@ class _HomeNewArrivalWidgetState extends State<HomeNewArrivalWidget> {
                 },
                 separatorBuilder: (context, index) {
                   return SizedBox(
-                    width: MySize.getWidth(10),
+                    width: MySize.getWidth(5),
                   );
                 },
               ),

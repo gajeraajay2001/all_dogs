@@ -68,6 +68,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                               Icons.email_outlined,
                               color: appTheme.primaryTheme,
                             ),
+                            textInputType: TextInputType.emailAddress,
                             validation: (val) => validateEmail(val),
                             labelText: "Email",
                             hintText: "Enter email here"),
@@ -138,7 +139,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                                   text: "No account?",
                                   style: TextStyle(
                                       color: Colors.grey.shade500,
-                                      fontSize: MySize.getHeight(11))),
+                                      fontSize: MySize.getHeight(13))),
                               TextSpan(
                                   text: " Sign Up!",
                                   recognizer: TapGestureRecognizer()
@@ -146,7 +147,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                                         () => Get.toNamed(Routes.SIGNUP_SCREEN),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: MySize.getHeight(12))),
+                                      fontSize: MySize.getHeight(13))),
                             ]),
                           ),
                         ),

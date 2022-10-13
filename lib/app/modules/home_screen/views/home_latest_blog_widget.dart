@@ -51,49 +51,53 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                 onTap: () {
                   Get.toNamed(Routes.BLOGS_SCREEN);
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "View All",
-                      style: TextStyle(color: Colors.grey.shade500),
-                    ),
-                    Spacing.width(3),
-                    Icon(Icons.arrow_forward,
-                        color: Colors.grey.shade500,
-                        size: MySize.getHeight(15)),
-                    Spacing.width(10),
-                  ],
+                child: SizedBox(
+                  height: MySize.getHeight(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "View All",
+                        style: TextStyle(color: Colors.grey.shade500),
+                      ),
+                      Spacing.width(3),
+                      Icon(Icons.arrow_forward,
+                          color: Colors.grey.shade500,
+                          size: MySize.getHeight(15)),
+                      Spacing.width(10),
+                    ],
+                  ),
                 ),
               )),
           Spacing.height(5),
           if (!isNullEmptyOrFalse(controller.blogList))
             SizedBox(
               width: MySize.screenWidth,
-              height: MySize.getHeight(310),
+              height: MySize.getHeight(270),
               child: ListView.separated(
                 itemCount: controller.blogList.length,
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+                padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(5)),
                 itemBuilder: (context, index) {
                   return Card(
                     child: Container(
                       color: Colors.grey.shade50,
-                      width: MySize.getWidth(180),
+                      width: MySize.getWidth(165),
                       padding: EdgeInsets.symmetric(
-                          horizontal: MySize.getWidth(8),
-                          vertical: MySize.getHeight(5)),
+                          horizontal: MySize.getWidth(0),
+                          vertical: MySize.getHeight(0)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
                             child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.circular(MySize.getHeight(5)),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(MySize.getHeight(5)),
+                                  topRight:
+                                      Radius.circular(MySize.getHeight(5))),
                               child: Container(
                                 height: MySize.getHeight(120),
                                 width: MySize.screenWidth,
-                                alignment: Alignment.center,
                                 child: getImageByLink(
                                   url: imageBaseUrl +
                                       controller.blogList[index].pic.toString(),
@@ -107,40 +111,52 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                           Spacing.height(10),
                           if (!isNullEmptyOrFalse(
                               controller.blogList[index].dateTimePostedAt))
-                            Align(
-                              alignment: Alignment.centerLeft,
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: MySize.getWidth(8)),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "By : Admin / ${DateFormat("dd MMM, yy").format(controller.blogList[index].dateTimePostedAt!)}",
+                                  style: TextStyle(
+                                      color: Colors.grey.shade600,
+                                      fontSize: MySize.getHeight(10)),
+                                ),
+                              ),
+                            ),
+                          Spacing.height(5),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: MySize.getWidth(8)),
+                            child: SizedBox(
+                              height: MySize.getHeight(35),
                               child: Text(
-                                "By : Admin / ${DateFormat("dd MMM, yy").format(controller.blogList[index].dateTimePostedAt!)}",
+                                controller.blogList[index].title.toString(),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    color: Colors.grey.shade600,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: MySize.getHeight(13)),
+                              ),
+                            ),
+                          ),
+                          Spacing.height(5),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: MySize.getWidth(8)),
+                            child: SizedBox(
+                              height: MySize.getHeight(25),
+                              child: Text(
+                                controller.blogList[index].body.toString(),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300,
                                     fontSize: MySize.getHeight(10)),
                               ),
                             ),
-                          Spacing.height(10),
-                          SizedBox(
-                            height: MySize.getHeight(40),
-                            child: Text(
-                              controller.blogList[index].title.toString(),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: MySize.getHeight(15)),
-                            ),
                           ),
                           Spacing.height(10),
-                          SizedBox(
-                            height: MySize.getHeight(30),
-                            child: Text(
-                              controller.blogList[index].body.toString(),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: MySize.getHeight(12)),
-                            ),
-                          ),
-                          Spacing.height(20),
                           InkWell(
                             onTap: () {
                               Get.toNamed(Routes.BLOG_DETAILS_SCREEN,
@@ -151,9 +167,9 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                             },
                             child: getButton(
                               title: "MORE DETAILS",
-                              height: 35,
-                              width: 125,
-                              textSize: 12,
+                              height: 30,
+                              width: 100,
+                              textSize: 10,
                               borderRadius: 5,
                             ),
                           ),
@@ -164,7 +180,7 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                 },
                 separatorBuilder: (context, index) {
                   return SizedBox(
-                    width: MySize.getWidth(10),
+                    width: MySize.getWidth(5),
                   );
                 },
               ),

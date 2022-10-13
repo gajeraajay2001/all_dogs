@@ -107,7 +107,8 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
                                       crossAxisSpacing: MySize.getWidth(7),
-                                      childAspectRatio: MySize.getHeight(0.48),
+                                      childAspectRatio: MySize.getHeight(
+                                          (MySize.isMini) ? 0.68 : 0.48),
                                       mainAxisSpacing: MySize.getHeight(8),
                                       padding: EdgeInsets.only(
                                           top: MySize.getHeight(10)),
@@ -125,9 +126,6 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         MySize.getHeight(5))),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: MySize.getWidth(8),
-                                                vertical: MySize.getHeight(5)),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
@@ -140,19 +138,21 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                   child: Stack(
                                                     children: [
                                                       ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
+                                                        borderRadius: BorderRadius.only(
+                                                            topLeft: Radius
                                                                 .circular(MySize
                                                                     .getHeight(
                                                                         5)),
+                                                            topRight: Radius
+                                                                .circular(MySize
+                                                                    .getHeight(
+                                                                        5))),
                                                         child: Container(
                                                           height:
                                                               MySize.getHeight(
                                                                   120),
                                                           width: MySize
                                                               .screenWidth,
-                                                          alignment:
-                                                              Alignment.center,
                                                           child: getImageByLink(
                                                             url: imageBaseUrl +
                                                                 controller
@@ -251,39 +251,51 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                   ),
                                                 ),
                                                 Spacing.height(5),
-                                                SizedBox(
-                                                  height: MySize.getHeight(40),
-                                                  child: Text(
-                                                    controller
-                                                        .puppiesList[i].title
-                                                        .toString(),
-                                                    maxLines: 2,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize:
-                                                            MySize.getHeight(
-                                                                15)),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          MySize.getWidth(8)),
+                                                  child: SizedBox(
+                                                    height:
+                                                        MySize.getHeight(35),
+                                                    child: Text(
+                                                      controller
+                                                          .puppiesList[i].title
+                                                          .toString(),
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontSize:
+                                                              MySize.getHeight(
+                                                                  14)),
+                                                    ),
                                                   ),
                                                 ),
                                                 Spacing.height(5),
-                                                SizedBox(
-                                                  height: MySize.getHeight(35),
-                                                  child: Text(
-                                                    controller
-                                                        .puppiesList[i].body
-                                                        .toString(),
-                                                    maxLines: 2,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                        fontSize:
-                                                            MySize.getHeight(
-                                                                12)),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          MySize.getWidth(8)),
+                                                  child: SizedBox(
+                                                    height:
+                                                        MySize.getHeight(30),
+                                                    child: Text(
+                                                      controller
+                                                          .puppiesList[i].body
+                                                          .toString(),
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                          fontSize:
+                                                              MySize.getHeight(
+                                                                  10)),
+                                                    ),
                                                   ),
                                                 ),
                                                 Spacing.height(5),
@@ -329,61 +341,66 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                     },
                                                     child: getButton(
                                                       title: "MORE DETAILS",
-                                                      height: 35,
-                                                      width: 125,
-                                                      textSize: 12,
+                                                      height: 30,
+                                                      width: 100,
+                                                      textSize: 10,
                                                       borderRadius: 5,
                                                     ),
                                                   ),
                                                 ),
                                                 Spacing.height(10),
-                                                Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.person_outline,
-                                                      color:
-                                                          appTheme.primaryTheme,
-                                                      size:
-                                                          MySize.getHeight(20),
-                                                    ),
-                                                    Spacing.width(5),
-                                                    Text(
-                                                      "Posted by",
-                                                      style: TextStyle(
-                                                          fontSize:
-                                                              MySize.getHeight(
-                                                                  11)),
-                                                    ),
-                                                    // Spacer(),
-                                                    Space.width(10),
-                                                    Expanded(
-                                                      // width: MySize.getWidth(80),
-                                                      child: Align(
-                                                        alignment: Alignment
-                                                            .centerRight,
-                                                        child: Text(
-                                                          (controller
-                                                                  .isFromBreeder)
-                                                              ? controller
-                                                                  .breederName
-                                                              : controller
-                                                                  .puppiesList[
-                                                                      i]
-                                                                  .name
-                                                                  .toString(),
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: MySize
-                                                                  .getHeight(
-                                                                      11)),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          MySize.getWidth(8)),
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.person_outline,
+                                                        color: appTheme
+                                                            .primaryTheme,
+                                                        size: MySize.getHeight(
+                                                            20),
+                                                      ),
+                                                      Spacing.width(5),
+                                                      Text(
+                                                        "Posted by",
+                                                        style: TextStyle(
+                                                            fontSize: MySize
+                                                                .getHeight(11)),
+                                                      ),
+                                                      // Spacer(),
+                                                      Space.width(10),
+                                                      Expanded(
+                                                        // width: MySize.getWidth(80),
+                                                        child: Align(
+                                                          alignment: Alignment
+                                                              .centerRight,
+                                                          child: Text(
+                                                            (controller
+                                                                    .isFromBreeder)
+                                                                ? controller
+                                                                    .breederName
+                                                                : controller
+                                                                    .puppiesList[
+                                                                        i]
+                                                                    .name
+                                                                    .toString(),
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: MySize
+                                                                    .getHeight(
+                                                                        11)),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),

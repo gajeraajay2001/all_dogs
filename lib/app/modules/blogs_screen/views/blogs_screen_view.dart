@@ -62,7 +62,7 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                             crossAxisCount: 2,
                             crossAxisSpacing: MySize.getWidth(7),
                             childAspectRatio:
-                                MySize.getHeight((MySize.isMini) ? 0.65 : 0.53),
+                                MySize.getHeight((MySize.isMini) ? 0.75 : 0.53),
                             mainAxisSpacing: MySize.getHeight(8),
                             padding: EdgeInsets.only(top: MySize.getHeight(10)),
                             children: List.generate(controller.blogList.length,
@@ -71,20 +71,19 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                                 child: Container(
                                   color: Colors.grey.shade50,
                                   width: MySize.getWidth(180),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: MySize.getWidth(8),
-                                      vertical: MySize.getHeight(5)),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                              MySize.getHeight(5)),
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(
+                                                  MySize.getHeight(5)),
+                                              topRight: Radius.circular(
+                                                  MySize.getHeight(5))),
                                           child: Container(
                                             height: MySize.getHeight(120),
                                             width: MySize.screenWidth,
-                                            alignment: Alignment.center,
                                             child: getImageByLink(
                                               url: imageBaseUrl +
                                                   controller.blogList[index].pic
@@ -97,39 +96,51 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                                         ),
                                       ),
                                       Spacing.height(10),
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "By : Admin / ${DateFormat("dd MMM, yy").format(controller.blogList[index].dateTimePostedAt!)}",
-                                          style: TextStyle(
-                                              color: Colors.grey.shade600,
-                                              fontSize: MySize.getHeight(10)),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: MySize.getWidth(8)),
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "By : Admin / ${DateFormat("dd MMM, yy").format(controller.blogList[index].dateTimePostedAt!)}",
+                                            style: TextStyle(
+                                                color: Colors.grey.shade600,
+                                                fontSize: MySize.getHeight(10)),
+                                          ),
+                                        ),
+                                      ),
+                                      Spacing.height(5),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: MySize.getWidth(8)),
+                                        child: SizedBox(
+                                          height: MySize.getHeight(30),
+                                          child: Text(
+                                            controller.blogList[index].title
+                                                .toString(),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: MySize.getHeight(14)),
+                                          ),
                                         ),
                                       ),
                                       Spacing.height(10),
-                                      SizedBox(
-                                        height: MySize.getHeight(35),
-                                        child: Text(
-                                          controller.blogList[index].title
-                                              .toString(),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: MySize.getHeight(15)),
-                                        ),
-                                      ),
-                                      Spacing.height(10),
-                                      SizedBox(
-                                        height: MySize.getHeight(40),
-                                        child: Text(
-                                          controller.blogList[index].body
-                                              .toString(),
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w300,
-                                              fontSize: MySize.getHeight(10)),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: MySize.getWidth(8)),
+                                        child: SizedBox(
+                                          height: MySize.getHeight(30),
+                                          child: Text(
+                                            controller.blogList[index].body
+                                                .toString(),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: MySize.getHeight(10)),
+                                          ),
                                         ),
                                       ),
                                       Spacing.height(10),
@@ -145,7 +156,7 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                                         },
                                         child: getButton(
                                           title: "READ MORE",
-                                          height: 32,
+                                          height: 30,
                                           width: 100,
                                           textSize: 11,
                                           borderRadius: 5,

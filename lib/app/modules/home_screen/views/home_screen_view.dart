@@ -65,9 +65,9 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
                     child: Column(
                       children: [
                         HomeAddPostWidget(),
-                        Spacing.height(20),
+                        Spacing.height(15),
                         HomeNewArrivalWidget(homeScreenController: controller),
-                        Spacing.height(30),
+                        Spacing.height(20),
                         HomeLatestBlogWidget(
                           homeScreenController: controller,
                         ),
