@@ -39,7 +39,7 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
             centerTitle: true,
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+            padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(10)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -106,10 +106,9 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                       crossAxisCount: 2,
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
-                                      // controller: controller.controller,
-                                      crossAxisSpacing: MySize.getWidth(10),
-                                      childAspectRatio: MySize.getHeight(0.39),
-                                      mainAxisSpacing: MySize.getHeight(10),
+                                      crossAxisSpacing: MySize.getWidth(7),
+                                      childAspectRatio: MySize.getHeight(0.48),
+                                      mainAxisSpacing: MySize.getHeight(8),
                                       padding: EdgeInsets.only(
                                           top: MySize.getHeight(10)),
                                       children: List.generate(
@@ -121,7 +120,6 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                   BorderRadius.circular(
                                                       MySize.getHeight(5))),
                                           child: Container(
-                                            width: MySize.getWidth(180),
                                             decoration: BoxDecoration(
                                                 color: Colors.grey.shade50,
                                                 borderRadius:
@@ -252,7 +250,7 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                     ],
                                                   ),
                                                 ),
-                                                Spacing.height(10),
+                                                Spacing.height(5),
                                                 SizedBox(
                                                   height: MySize.getHeight(40),
                                                   child: Text(
@@ -270,7 +268,7 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                                 15)),
                                                   ),
                                                 ),
-                                                Spacing.height(10),
+                                                Spacing.height(5),
                                                 SizedBox(
                                                   height: MySize.getHeight(35),
                                                   child: Text(
@@ -288,7 +286,7 @@ class PuppiesListView extends GetWidget<PuppiesListController> {
                                                                 12)),
                                                   ),
                                                 ),
-                                                Spacing.height(15),
+                                                Spacing.height(5),
                                                 Center(
                                                   child: InkWell(
                                                     onTap: () {

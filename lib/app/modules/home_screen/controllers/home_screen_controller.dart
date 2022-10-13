@@ -54,8 +54,7 @@ class HomeScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -92,8 +91,7 @@ class HomeScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

@@ -56,15 +56,14 @@ class NetworkClient {
   }) async {
     var connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
-      failureCallback!("", "No Internet Connection");
-      getDialog(title: "Error", desc: "No Internet Connection.");
+      failureCallback!("Failed", "No Internet Connection");
     }
 
     dio.options.validateStatus = (status) {
       return status! < 500;
     };
-    dio.options.connectTimeout = 50000; //5s
-    dio.options.receiveTimeout = 50000;
+    dio.options.connectTimeout = 4000; //5s
+    dio.options.receiveTimeout = 4000;
 
     if (header != null) {
       for (var key in header.keys) {
@@ -76,7 +75,11 @@ class NetworkClient {
       case MethodType.Post:
         Response response =
             await dio.post(baseUrl + command, data: params).catchError((error) {
-          print("Error:=$error");
+          print("Error : = $error");
+          DioError dioError = error as DioError;
+          if (dioError.type == DioErrorType.connectTimeout) {
+            failureCallback!("Data", "Something went wrong.");
+          }
         });
         parseResponse(context, response,
             successCallback: successCallback!,
@@ -88,6 +91,10 @@ class NetworkClient {
             .get(baseUrl + command, queryParameters: params)
             .catchError((error) {
           print("Error : = $error");
+          DioError dioError = error as DioError;
+          if (dioError.type == DioErrorType.connectTimeout) {
+            failureCallback!("response.data", "Something went wrong.");
+          }
         });
         parseResponse(context, response,
             successCallback: successCallback!,
@@ -95,20 +102,46 @@ class NetworkClient {
         break;
 
       case MethodType.Put:
-        Response response = await dio.put(baseUrl + command, data: params);
+        Response response =
+            await dio.put(baseUrl + command, data: params).catchError((error) {
+          print("Error : = $error");
+          DioError dioError = error as DioError;
+          if (dioError.type == DioErrorType.connectTimeout) {
+            failureCallback!("response.data", "Something went wrong.");
+          }
+        });
+        ;
         parseResponse(context, response,
             successCallback: successCallback!,
             failureCallback: failureCallback!);
         break;
       case MethodType.Patch:
-        Response response = await dio.patch(baseUrl + command, data: params);
+        Response response = await dio
+            .patch(baseUrl + command, data: params)
+            .catchError((error) {
+          print("Error : = $error");
+          DioError dioError = error as DioError;
+          if (dioError.type == DioErrorType.connectTimeout) {
+            failureCallback!("response.data", "Something went wrong.");
+          }
+        });
+        ;
         parseResponse(context, response,
             successCallback: successCallback!,
             failureCallback: failureCallback!);
         break;
 
       case MethodType.Delete:
-        Response response = await dio.delete(baseUrl + command, data: params);
+        Response response = await dio
+            .delete(baseUrl + command, data: params)
+            .catchError((error) {
+          print("Error : = $error");
+          DioError dioError = error as DioError;
+          if (dioError.type == DioErrorType.connectTimeout) {
+            failureCallback!("response.data", "Something went wrong.");
+          }
+        });
+        ;
         parseResponse(context, response,
             successCallback: successCallback!,
             failureCallback: failureCallback!);
@@ -123,7 +156,7 @@ class NetworkClient {
       Function(dynamic statusCode, String message)? failureCallback}) {
     // app.resolve<CustomDialogs>().showCircularDialog(context);
     String statusCode = "response.data['code']";
-    String message = "response.data['message']";
+    String message = "Something went wrong.";
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       hideDialog(true, context);
@@ -139,30 +172,28 @@ class NetworkClient {
         successCallback!(response.data, response.statusMessage.toString());
         return;
       } else {
-        failureCallback!(response.data, response.statusMessage.toString());
+        failureCallback!(response.data, "Something went wrong.");
         return;
       }
     } else if (response.statusCode == 400) {
       if (!isNullEmptyOrFalse(response.data)) {
         hideDialog(true, context);
 
-        failureCallback!(
-            response.statusCode, response.data["message"].toString());
+        failureCallback!(response.statusCode, "Something went wrong.");
         return;
       } else {
         hideDialog(true, context);
 
-        failureCallback!(
-            response.statusCode, response.statusMessage.toString());
+        failureCallback!(response.statusCode, "Something went wrong.");
         return;
       }
     } else if (response.statusCode == 500) {
-      failureCallback!(response.data, response.statusMessage.toString());
+      failureCallback!(response.data, "Something went wrong.");
       return;
     } else {
       hideDialog(true, context);
 
-      failureCallback!(response.statusCode, response.statusMessage.toString());
+      failureCallback!(response.statusCode, "Something went wrong.");
       return;
     }
   }

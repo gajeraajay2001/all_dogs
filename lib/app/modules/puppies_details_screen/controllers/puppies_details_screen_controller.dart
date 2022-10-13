@@ -114,8 +114,7 @@ class PuppiesDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -146,8 +145,7 @@ class PuppiesDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         // getIt<CustomDialogs>().hideCircularDialog(context);
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -176,8 +174,7 @@ class PuppiesDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         getIt<CustomDialogs>().hideCircularDialog(context);
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

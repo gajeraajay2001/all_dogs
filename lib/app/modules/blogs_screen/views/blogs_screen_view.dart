@@ -25,6 +25,7 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
             backgroundColor: Colors.white,
             leading: IconButton(
               onPressed: () {
+                print(MediaQuery.of(context).size.height);
                 Get.back();
               },
               icon: Icon(
@@ -60,7 +61,8 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                           child: GridView.count(
                             crossAxisCount: 2,
                             crossAxisSpacing: MySize.getWidth(7),
-                            childAspectRatio: MySize.getHeight(0.49),
+                            childAspectRatio:
+                                MySize.getHeight((MySize.isMini) ? 0.65 : 0.53),
                             mainAxisSpacing: MySize.getHeight(8),
                             padding: EdgeInsets.only(top: MySize.getHeight(10)),
                             children: List.generate(controller.blogList.length,

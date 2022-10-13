@@ -35,6 +35,7 @@ class ArgumentConstant {
   static const name = "name";
   static const number = "number";
   static const token = "token";
+  static const password = "password";
   static const isFromBreeder = "isFromBreeder";
   static const breederName = "breederName";
   static const breederId = "breederId";
@@ -43,6 +44,7 @@ class ArgumentConstant {
 
 getLogOut() {
   box.write(ArgumentConstant.token, "");
+  box.write(ArgumentConstant.password, "");
   box.write(ArgumentConstant.userId, "");
   box.write(ArgumentConstant.name, "");
   box.write(ArgumentConstant.number, "");

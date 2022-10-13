@@ -50,6 +50,7 @@ class LoginScreenController extends GetxController {
           LogInResponse logInResponse = LogInResponse.fromJson(response);
           if (logInResponse.data!.token != null) {
             box.write(ArgumentConstant.token, logInResponse.data!.token);
+            box.write(ArgumentConstant.password, passwordController.value.text);
           }
           Get.offAllNamed(Routes.HOME_SCREEN);
         } else {
@@ -61,9 +62,7 @@ class LoginScreenController extends GetxController {
       failureCallback: (status, message) {
         getIt.get<CustomDialogs>().hideCircularDialog(context);
 
-        getIt
-            .get<CustomDialogs>()
-            .getDialog(title: "Failed", desc: status["message"]);
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

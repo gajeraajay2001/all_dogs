@@ -202,8 +202,7 @@ class CreateAddController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -318,9 +317,7 @@ class CreateAddController extends GetxController {
       failureCallback: (status, message) {
         getIt.get<CustomDialogs>().hideCircularDialog(context);
 
-        getIt
-            .get<CustomDialogs>()
-            .getDialog(title: "Failed", desc: status["message"]);
+        getIt.get<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -363,9 +360,7 @@ class CreateAddController extends GetxController {
       failureCallback: (status, message) {
         getIt.get<CustomDialogs>().hideCircularDialog(context);
 
-        getIt
-            .get<CustomDialogs>()
-            .getDialog(title: "Failed", desc: status["message"]);
+        getIt.get<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -477,9 +472,7 @@ class CreateAddController extends GetxController {
       failureCallback: (status, message) {
         getIt.get<CustomDialogs>().hideCircularDialog(context);
 
-        getIt
-            .get<CustomDialogs>()
-            .getDialog(title: "Failed", desc: status["message"]);
+        getIt.get<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

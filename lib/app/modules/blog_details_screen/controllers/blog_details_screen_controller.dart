@@ -63,8 +63,7 @@ class BlogDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -103,8 +102,7 @@ class BlogDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasCommentData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );
@@ -135,8 +133,7 @@ class BlogDetailsScreenController extends GetxController {
       },
       failureCallback: (response, message) {
         hasData.value = true;
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

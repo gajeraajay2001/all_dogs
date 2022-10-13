@@ -81,8 +81,7 @@ class BreedsScreenController extends GetxController {
         if (!isMoreDataLoad) {
           hasData.value = true;
         }
-        getIt<CustomDialogs>()
-            .getDialog(title: "Failed", desc: "Something went wrong.");
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

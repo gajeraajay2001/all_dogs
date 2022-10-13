@@ -11,21 +11,19 @@ class MySize {
   static late MediaQueryData _mediaQueryData;
   static late double screenWidth;
   static late double screenHeight;
+  static late bool isMini;
   static double? safeWidth;
   static double? safeHeight;
 
   static late double scaleFactorWidth;
   static late double scaleFactorHeight;
-  static double? size282;
-
-  //Custom sizes
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
 
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
-
+    isMini = _mediaQueryData.size.height < 750;
     double _safeAreaWidth =
         _mediaQueryData.padding.left + _mediaQueryData.padding.right;
     double _safeAreaHeight =

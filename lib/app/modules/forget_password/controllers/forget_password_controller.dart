@@ -59,9 +59,7 @@ class ForgetPasswordController extends GetxController {
       failureCallback: (status, message) {
         getIt.get<CustomDialogs>().hideCircularDialog(context);
 
-        getIt
-            .get<CustomDialogs>()
-            .getDialog(title: "Failed", desc: status["message"]);
+        getIt.get<CustomDialogs>().getDialog(title: "Failed", desc: message);
         print(" error");
       },
     );

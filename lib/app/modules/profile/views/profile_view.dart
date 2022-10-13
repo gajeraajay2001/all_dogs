@@ -19,440 +19,434 @@ class ProfileView extends GetWidget<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
+      return SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.black,
+              ),
             ),
+            title: Text(
+              'Profile',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+            centerTitle: true,
           ),
-          title: Text(
-            'Profile',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-          centerTitle: true,
-        ),
-        body: (controller.hasData.value)
-            ? (controller.userProfile != null)
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Form(
-                            key: controller.formKey.value,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: MySize.getHeight(22),
-                                    vertical: MySize.getHeight(32),
+          body: (controller.hasData.value)
+              ? (controller.userProfile != null)
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Form(
+                              key: controller.formKey.value,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: MySize.getHeight(22),
+                                      vertical: MySize.getHeight(32),
+                                    ),
+                                    width: MySize.screenWidth,
+                                    color: Color(0xffF7F7F7),
+                                    child: Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Stack(
+                                              children: [
+                                                getImageView(),
+                                              ],
+                                            ),
+                                            Space.height(10),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  width: MySize.screenWidth,
-                                  color: Color(0xffF7F7F7),
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Stack(
-                                            children: [
-                                              getImageView(),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: MySize.getHeight(20),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Spacing.height(20),
+                                        Text(
+                                          "NAME",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Spacing.height(8),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 7),
+                                                color: Colors.black
+                                                    .withOpacity(0.08),
+                                                blurRadius:
+                                                    MySize.getHeight(13),
+                                                spreadRadius:
+                                                    MySize.getHeight(2),
+                                              ),
                                             ],
                                           ),
-                                          Space.height(12),
-                                          Text(
-                                            "alphas@alldogs.in",
-                                            style: TextStyle(
-                                              fontSize: MySize.getHeight(12),
-                                              fontWeight: FontWeight.w500,
+                                          child: getTextField(
+                                            hintText: "full name",
+                                            borderColor: Colors.transparent,
+                                            size: 70,
+                                            prefixIcon: Padding(
+                                              padding: EdgeInsets.all(15),
+                                              child: Image.asset(
+                                                imagePath + "profile.png",
+                                                height: MySize.getHeight(20),
+                                                width: MySize.getWidth(20),
+                                              ),
                                             ),
+                                            isFilled: true,
+                                            readOnly: true,
+                                            fillColor: Colors.white,
+                                            textEditingController:
+                                                controller.nameController.value,
                                           ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: MySize.getHeight(20),
-                                    // vertical: MySize.getHeight(32),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Spacing.height(20),
-                                      Text(
-                                        "NAME",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Spacing.height(8),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              offset: Offset(0, 7),
-                                              color: Colors.black
-                                                  .withOpacity(0.08),
-                                              blurRadius: MySize.getHeight(13),
-                                              spreadRadius: MySize.getHeight(2),
-                                            ),
-                                          ],
                                         ),
-                                        child: getTextField(
-                                          hintText: "full name",
-                                          borderColor: Colors.transparent,
-                                          size: 70,
-                                          prefixIcon: Padding(
-                                            padding: EdgeInsets.all(15),
-                                            child: Image.asset(
-                                              imagePath + "profile.png",
-                                              height: MySize.getHeight(20),
-                                              width: MySize.getWidth(20),
-                                            ),
+                                        Spacing.height(20),
+                                        Text(
+                                          "E-MAIL",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Spacing.height(8),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 7),
+                                                color: Colors.black
+                                                    .withOpacity(0.08),
+                                                blurRadius:
+                                                    MySize.getHeight(13),
+                                                spreadRadius:
+                                                    MySize.getHeight(2),
+                                              ),
+                                            ],
                                           ),
-                                          isFilled: true,
-                                          readOnly: true,
-                                          // validation: (val) {
-                                          //   if (val!.isEmpty) {
-                                          //     return "Please Enter full name";
-                                          //   }
-                                          //   return null;
-                                          // },
-                                          fillColor: Colors.white,
-                                          textEditingController:
-                                              controller.nameController.value,
-                                        ),
-                                      ),
-                                      Spacing.height(20),
-                                      Text(
-                                        "E-MAIL",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Spacing.height(8),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              offset: Offset(0, 7),
-                                              color: Colors.black
-                                                  .withOpacity(0.08),
-                                              blurRadius: MySize.getHeight(13),
-                                              spreadRadius: MySize.getHeight(2),
+                                          child: getTextField(
+                                            hintText: "Your E-mail",
+                                            borderColor: Colors.transparent,
+                                            size: 70,
+                                            prefixIcon: Padding(
+                                              padding: EdgeInsets.all(15),
+                                              child: Image.asset(
+                                                imagePath + "mail.png",
+                                                height: MySize.getHeight(20),
+                                                width: MySize.getWidth(20),
+                                              ),
                                             ),
-                                          ],
-                                        ),
-                                        child: getTextField(
-                                          hintText: "Your E-mail",
-                                          borderColor: Colors.transparent,
-                                          size: 70,
-                                          prefixIcon: Padding(
-                                            padding: EdgeInsets.all(15),
-                                            child: Image.asset(
-                                              imagePath + "mail.png",
-                                              height: MySize.getHeight(20),
-                                              width: MySize.getWidth(20),
-                                            ),
+                                            isFilled: true,
+                                            readOnly: true,
+                                            fillColor: Colors.white,
+                                            textEditingController: controller
+                                                .emailController.value,
                                           ),
-                                          isFilled: true,
-                                          readOnly: true,
-                                          // validation: (val) {
-                                          //   if (val!.isEmpty) {
-                                          //     return "Please Your E-mail";
-                                          //   }
-                                          //   return null;
-                                          // },
-                                          fillColor: Colors.white,
-                                          textEditingController:
-                                              controller.emailController.value,
                                         ),
-                                      ),
-                                      Spacing.height(20),
-                                      Text(
-                                        "PHONE",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Spacing.height(8),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              offset: Offset(0, 7),
-                                              color: Colors.black
-                                                  .withOpacity(0.08),
-                                              blurRadius: MySize.getHeight(13),
-                                              spreadRadius: MySize.getHeight(2),
-                                            ),
-                                          ],
+                                        Spacing.height(20),
+                                        Text(
+                                          "PHONE",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
                                         ),
-                                        child: getTextField(
-                                          hintText: "1 - 234 - 567 - 8901",
-                                          borderColor: Colors.transparent,
-                                          size: 70,
-                                          prefixIcon: Padding(
-                                            padding: EdgeInsets.all(15),
-                                            child: Image.asset(
-                                              imagePath + "ic_call.png",
-                                              height: MySize.getHeight(17),
-                                              width: MySize.getWidth(22),
-                                            ),
+                                        Spacing.height(8),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 7),
+                                                color: Colors.black
+                                                    .withOpacity(0.08),
+                                                blurRadius:
+                                                    MySize.getHeight(13),
+                                                spreadRadius:
+                                                    MySize.getHeight(2),
+                                              ),
+                                            ],
                                           ),
-                                          isFilled: true,
-                                          readOnly: true,
-                                          // validation: (val) {
-                                          //   if (val!.isEmpty) {
-                                          //     return "Please Enter mobile number";
-                                          //   } else if (val.length < 10 ||
-                                          //       val.length > 10) {
-                                          //     return "Please Enter valid mobile number";
-                                          //   }
-                                          //   return null;
-                                          // },
-                                          fillColor: Colors.white,
-                                          textInputType: TextInputType.number,
-                                          textEditingController:
-                                              controller.phoneController.value,
-                                        ),
-                                      ),
-                                      Spacing.height(20),
-                                      Text(
-                                        "CURRENT PASSWORD",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Spacing.height(8),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              offset: Offset(0, 7),
-                                              color: Colors.black
-                                                  .withOpacity(0.08),
-                                              blurRadius: MySize.getHeight(13),
-                                              spreadRadius: MySize.getHeight(2),
+                                          child: getTextField(
+                                            hintText: "1 - 234 - 567 - 8901",
+                                            borderColor: Colors.transparent,
+                                            size: 70,
+                                            prefixIcon: Padding(
+                                              padding: EdgeInsets.all(15),
+                                              child: Image.asset(
+                                                imagePath + "ic_call.png",
+                                                height: MySize.getHeight(17),
+                                                width: MySize.getWidth(22),
+                                              ),
                                             ),
-                                          ],
-                                        ),
-                                        child: getTextField(
-                                          hintText: "Current password here",
-                                          borderColor: Colors.transparent,
-                                          size: 70,
-                                          textVisible:
-                                              !controller.isVisible1.value,
-                                          prefixIcon: Icon(
-                                            Icons.lock_outline,
+                                            isFilled: true,
+                                            readOnly: true,
+                                            fillColor: Colors.white,
+                                            textInputType: TextInputType.number,
+                                            textEditingController: controller
+                                                .phoneController.value,
                                           ),
-                                          // labelText: "Password",
-                                          suffixIcon: InkWell(
-                                              onTap: () {
-                                                controller.isVisible1.toggle();
-                                              },
-                                              child: Icon(
-                                                (controller.isVisible1.isTrue)
-                                                    ? Icons.visibility
-                                                    : Icons.visibility_off,
-                                                color: Colors.grey,
-                                              )),
-                                          isFilled: true,
-                                          validation:
-                                              (controller.profile == null)
-                                                  ? (val) {
-                                                      if (val!.isEmpty) {
-                                                        return "Please Enter Current password";
+                                        ),
+                                        Spacing.height(20),
+                                        Text(
+                                          "CURRENT PASSWORD",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Spacing.height(8),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 7),
+                                                color: Colors.black
+                                                    .withOpacity(0.08),
+                                                blurRadius:
+                                                    MySize.getHeight(13),
+                                                spreadRadius:
+                                                    MySize.getHeight(2),
+                                              ),
+                                            ],
+                                          ),
+                                          child: getTextField(
+                                            hintText: "Current password here",
+                                            borderColor: Colors.transparent,
+                                            size: 70,
+                                            textVisible:
+                                                !controller.isVisible1.value,
+                                            prefixIcon: Icon(
+                                              Icons.lock_outline,
+                                              color: appTheme.primaryTheme,
+                                            ),
+                                            // labelText: "Password",
+                                            suffixIcon: InkWell(
+                                                onTap: () {
+                                                  controller.isVisible1
+                                                      .toggle();
+                                                },
+                                                child: Icon(
+                                                  (controller.isVisible1.isTrue)
+                                                      ? Icons.visibility
+                                                      : Icons.visibility_off,
+                                                  color: Colors.grey,
+                                                )),
+                                            isFilled: true,
+                                            validation:
+                                                (controller.profile == null)
+                                                    ? (val) {
+                                                        if (val!.isEmpty) {
+                                                          return "Please Enter Current password";
+                                                        }
+                                                        return null;
                                                       }
-                                                      return null;
-                                                    }
-                                                  : null,
-                                          fillColor: Colors.white,
-                                          textEditingController: controller
-                                              .cPasswordController.value,
+                                                    : null,
+                                            fillColor: Colors.white,
+                                            textEditingController: controller
+                                                .cPasswordController.value,
+                                          ),
                                         ),
-                                      ),
-                                      Spacing.height(20),
-                                      Text(
-                                        "NEW PASSWORD",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Spacing.height(8),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              offset: Offset(0, 7),
-                                              color: Colors.black
-                                                  .withOpacity(0.08),
-                                              blurRadius: MySize.getHeight(13),
-                                              spreadRadius: MySize.getHeight(2),
-                                            ),
-                                          ],
+                                        Spacing.height(20),
+                                        Text(
+                                          "NEW PASSWORD",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
                                         ),
-                                        child: getTextField(
-                                          hintText: "New password here",
-                                          borderColor: Colors.transparent,
-                                          size: 70,
+                                        Spacing.height(8),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 7),
+                                                color: Colors.black
+                                                    .withOpacity(0.08),
+                                                blurRadius:
+                                                    MySize.getHeight(13),
+                                                spreadRadius:
+                                                    MySize.getHeight(2),
+                                              ),
+                                            ],
+                                          ),
+                                          child: getTextField(
+                                            hintText: "New password here",
+                                            borderColor: Colors.transparent,
+                                            size: 70,
 
-                                          isFilled: true,
-                                          validation:
-                                              (controller.profile == null)
-                                                  ? (val) {
-                                                      if (val!.isEmpty) {
-                                                        return "Please Enter New password";
+                                            isFilled: true,
+
+                                            validation:
+                                                (controller.profile == null)
+                                                    ? (val) {
+                                                        if (val!.isEmpty) {
+                                                          return "Please Enter New password";
+                                                        }
+                                                        return null;
                                                       }
-                                                      return null;
-                                                    }
-                                                  : null,
-                                          textVisible:
-                                              !controller.isVisible2.value,
-                                          prefixIcon: Icon(
-                                            Icons.lock_outline,
-                                          ),
-                                          //labelText: "Password",
-                                          suffixIcon: InkWell(
-                                              onTap: () {
-                                                controller.isVisible2.toggle();
-                                              },
-                                              child: Icon(
-                                                (controller.isVisible2.isTrue)
-                                                    ? Icons.visibility
-                                                    : Icons.visibility_off,
-                                                color: Colors.grey,
-                                              )),
-                                          fillColor: Colors.white,
-                                          textEditingController: controller
-                                              .nPasswordController.value,
-                                        ),
-                                      ),
-                                      Spacing.height(20),
-                                      Text(
-                                        "CONFIRM PASSWORD",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Spacing.height(8),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                              offset: Offset(0, 7),
-                                              color: Colors.black
-                                                  .withOpacity(0.08),
-                                              blurRadius: MySize.getHeight(13),
-                                              spreadRadius: MySize.getHeight(2),
+                                                    : null,
+                                            textVisible:
+                                                !controller.isVisible2.value,
+                                            prefixIcon: Icon(
+                                              Icons.lock_outline,
+                                              color: appTheme.primaryTheme,
                                             ),
-                                          ],
-                                        ),
-                                        child: getTextField(
-                                          hintText: "Confirm password here",
-                                          borderColor: Colors.transparent,
-                                          size: 70,
-                                          textVisible:
-                                              !controller.isVisible3.value,
-                                          prefixIcon: Icon(
-                                            Icons.lock_outline,
+                                            //labelText: "Password",
+                                            suffixIcon: InkWell(
+                                                onTap: () {
+                                                  controller.isVisible2
+                                                      .toggle();
+                                                },
+                                                child: Icon(
+                                                  (controller.isVisible2.isTrue)
+                                                      ? Icons.visibility
+                                                      : Icons.visibility_off,
+                                                  color: Colors.grey,
+                                                )),
+                                            fillColor: Colors.white,
+                                            textEditingController: controller
+                                                .nPasswordController.value,
                                           ),
-                                          // labelText: "Password",
-                                          suffixIcon: InkWell(
-                                              onTap: () {
-                                                controller.isVisible3.toggle();
-                                              },
-                                              child: Icon(
-                                                (controller.isVisible3.isTrue)
-                                                    ? Icons.visibility
-                                                    : Icons.visibility_off,
-                                                color: Colors.grey,
-                                              )),
-                                          isFilled: true,
-                                          validation:
-                                              (controller.profile == null)
-                                                  ? (val) {
-                                                      if (val!.isEmpty) {
-                                                        return "Please Enter Confirm password";
-                                                      }
-                                                      if (val !=
-                                                          controller
-                                                              .nPasswordController
-                                                              .value
-                                                              .text)
-                                                        return 'Not match both password';
-                                                      return null;
-                                                    }
-                                                  : null,
-                                          fillColor: Colors.white,
-                                          textEditingController: controller
-                                              .confirmPasswordController.value,
                                         ),
-                                      ),
-                                      Spacing.height(20),
-                                    ],
+                                        Spacing.height(20),
+                                        Text(
+                                          "CONFIRM PASSWORD",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Spacing.height(8),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: Offset(0, 7),
+                                                color: Colors.black
+                                                    .withOpacity(0.08),
+                                                blurRadius:
+                                                    MySize.getHeight(13),
+                                                spreadRadius:
+                                                    MySize.getHeight(2),
+                                              ),
+                                            ],
+                                          ),
+                                          child: getTextField(
+                                            hintText: "Confirm password here",
+                                            borderColor: Colors.transparent,
+                                            size: 70,
+                                            textVisible:
+                                                !controller.isVisible3.value,
+                                            prefixIcon: Icon(
+                                              Icons.lock_outline,
+                                              color: appTheme.primaryTheme,
+                                            ),
+                                            // labelText: "Password",
+                                            suffixIcon: InkWell(
+                                                onTap: () {
+                                                  controller.isVisible3
+                                                      .toggle();
+                                                },
+                                                child: Icon(
+                                                  (controller.isVisible3.isTrue)
+                                                      ? Icons.visibility
+                                                      : Icons.visibility_off,
+                                                  color: Colors.grey,
+                                                )),
+                                            isFilled: true,
+                                            validation:
+                                                (controller.profile == null)
+                                                    ? (val) {
+                                                        if (val!.isEmpty) {
+                                                          return "Please Enter Confirm password";
+                                                        }
+                                                        if (val !=
+                                                            controller
+                                                                .nPasswordController
+                                                                .value
+                                                                .text)
+                                                          return 'Not match both password';
+                                                        return null;
+                                                      }
+                                                    : null,
+                                            fillColor: Colors.white,
+                                            textEditingController: controller
+                                                .confirmPasswordController
+                                                .value,
+                                          ),
+                                        ),
+                                        Spacing.height(20),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: MySize.getWidth(20),
-                            vertical: MySize.getWidth(20)),
-                        child: InkWell(
-                          onTap: () {
-                            if (controller.formKey.value.currentState!
-                                .validate()) {
-                              controller.updateProfileData(
-                                  context: Get.context!);
-                            }
-                          },
-                          child: getButton(
-                            title: "SAVE",
-                            height: 50,
-                            width: MySize.screenWidth,
-                            // widget: Center(
-                            //   child: Row(
-                            //       mainAxisAlignment: MainAxisAlignment.center,
-                            //       children: [
-                            //         SvgPicture.asset(imagePath + "send_icon.svg",
-                            //             height: MySize.getHeight(18)),
-                            //         Spacing.width(15),
-                            //         Text(
-                            //           "SEND MESSAGE",
-                            //           style: TextStyle(
-                            //             color: Colors.white,
-                            //             fontSize: MySize.getHeight(16),
-                            //             fontWeight: FontWeight.w500,
-                            //           ),
-                            //         )
-                            //       ]),
-                            // ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: MySize.getWidth(20),
+                              vertical: MySize.getWidth(20)),
+                          child: InkWell(
+                            onTap: () {
+                              if (controller.formKey.value.currentState!
+                                  .validate()) {
+                                controller.updateProfileData(
+                                    context: Get.context!);
+                              }
+                            },
+                            child: getButton(
+                              title: "SAVE",
+                              height: 50,
+                              width: MySize.screenWidth,
+                              // widget: Center(
+                              //   child: Row(
+                              //       mainAxisAlignment: MainAxisAlignment.center,
+                              //       children: [
+                              //         SvgPicture.asset(imagePath + "send_icon.svg",
+                              //             height: MySize.getHeight(18)),
+                              //         Spacing.width(15),
+                              //         Text(
+                              //           "SEND MESSAGE",
+                              //           style: TextStyle(
+                              //             color: Colors.white,
+                              //             fontSize: MySize.getHeight(16),
+                              //             fontWeight: FontWeight.w500,
+                              //           ),
+                              //         )
+                              //       ]),
+                              // ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                : Center(
-                    child: Text("No Data Found"),
-                  )
-            : Center(
-                child: CircularProgressIndicator(
-                  color: appTheme.primaryTheme,
+                      ],
+                    )
+                  : Center(
+                      child: Text("No Data Found"),
+                    )
+              : Center(
+                  child: CircularProgressIndicator(
+                    color: appTheme.primaryTheme,
+                  ),
                 ),
-              ),
+        ),
       );
     });
   }
