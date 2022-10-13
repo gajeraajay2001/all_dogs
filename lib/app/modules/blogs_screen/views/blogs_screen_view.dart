@@ -62,7 +62,7 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                             crossAxisCount: 2,
                             crossAxisSpacing: MySize.getWidth(7),
                             childAspectRatio:
-                                MySize.getHeight((MySize.isMini) ? 0.75 : 0.53),
+                                MySize.getHeight((MySize.isMini) ? 0.75 : 0.56),
                             mainAxisSpacing: MySize.getHeight(8),
                             padding: EdgeInsets.only(top: MySize.getHeight(10)),
                             children: List.generate(controller.blogList.length,
@@ -114,7 +114,7 @@ class BlogsScreenView extends GetWidget<BlogsScreenController> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: MySize.getWidth(8)),
                                         child: SizedBox(
-                                          height: MySize.getHeight(30),
+                                          height: MySize.getHeight(37),
                                           child: Text(
                                             controller.blogList[index].title
                                                 .toString(),
