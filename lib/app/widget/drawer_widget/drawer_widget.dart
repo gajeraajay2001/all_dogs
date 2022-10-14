@@ -121,11 +121,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             SizedBox(
               height: MySize.getHeight(2),
             ),
-            getButtonWidget(
-                title: "My Notification",
-                onTap: () {
-                  Get.back();
-                }),
+            // getButtonWidget(
+            //     title: "My Notification",
+            //     onTap: () {
+            //       Get.back();
+            //     }),
             getButtonWidget(
                 title: "My Profile",
                 onTap: () {
@@ -143,11 +143,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   Get.back();
                   Get.toNamed(Routes.GET_IN_TOUCH_SCREEN);
                 }),
-            getButtonWidget(
-                title: "Help",
-                onTap: () {
-                  Get.back();
-                }),
+            // getButtonWidget(
+            //     title: "Help",
+            //     onTap: () {
+            //       Get.back();
+            //     }),
             getButtonWidget(
                 title: "About Us",
                 onTap: () {
