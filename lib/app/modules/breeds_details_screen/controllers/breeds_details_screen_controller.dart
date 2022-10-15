@@ -46,8 +46,7 @@ class BreedsDetailsScreenController extends GetxController {
           if (!isNullEmptyOrFalse(res.data)) {
             if (!isNullEmptyOrFalse(res.data!.breed)) {
               if (!isNullEmptyOrFalse(res.data!.breed!.filename)) {
-                url =
-                    "https://alldogs.in/breeds/show/${res.data!.breed!.breedSlug}";
+                url = "https://alldogs.in/breeds/${res.data!.breed!.filename}";
               }
             }
           }
