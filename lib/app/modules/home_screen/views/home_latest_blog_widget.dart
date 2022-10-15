@@ -184,6 +184,16 @@ class _HomeLatestBlogWidgetState extends State<HomeLatestBlogWidget> {
                   );
                 },
               ),
+            )
+          else
+            Container(
+              width: MySize.screenWidth,
+              height: MySize.getHeight(100),
+              alignment: Alignment.center,
+              child: Text(
+                "No data found...",
+                style: TextStyle(fontSize: MySize.getHeight(18)),
+              ),
             ),
         ],
       ),
