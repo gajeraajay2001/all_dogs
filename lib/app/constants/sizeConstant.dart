@@ -273,10 +273,11 @@ CachedNetworkImage getImageByLink(
 }
 
 urlLauncher({required Uri url}) async {
-  if (await launchUrl(url)) {
-  } else {
-    getIt<CustomDialogs>()
-        .getDialog(title: "Failed", desc: "Something went wrong..");
-    throw 'Could not launch $url';
-  }
+  if (await launchUrl(url).catchError((error) async {
+    await getIt<CustomDialogs>().getDialog(
+        title: "Failed", desc: "Unable to find whatsapp in your device");
+    return await false;
+  }).then((value) async {
+    return await true;
+  })) {}
 }

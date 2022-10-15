@@ -7,9 +7,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../main.dart';
 import '../../../constants/api_constants.dart';
 import '../../../routes/app_pages.dart';
+import '../../../utilities/buttons.dart';
+import '../../../utilities/progress_dialog_utils.dart';
 import '../controllers/puppies_details_screen_controller.dart';
 
 class PuppiesDetailsScreenView
@@ -198,9 +201,20 @@ class PuppiesDetailsScreenView
                                     if (controller.isOwnPost.isTrue)
                                       InkWell(
                                         onTap: () {
-                                          controller.deletePostApi(
+                                          showConfirmationDialog(
                                               context: context,
-                                              id: controller.postId);
+                                              text:
+                                                  "Are you sure you want delete post.",
+                                              submitText: "Yes",
+                                              cancelText: "Cancel",
+                                              submitCallBack: () {
+                                                controller.deletePostApi(
+                                                    context: context,
+                                                    id: controller.postId);
+                                              },
+                                              cancelCallback: () {
+                                                Get.back();
+                                              });
                                         },
                                         child: Card(
                                           elevation: 3,
@@ -328,7 +342,7 @@ class PuppiesDetailsScreenView
                                       ),
                                       Spacing.width(30),
                                       InkWell(
-                                        onTap: () {
+                                        onTap: () async {
                                           if (!isNullEmptyOrFalse(
                                               controller.userDetails.mobile)) {
                                             if (!controller.userDetails.mobile

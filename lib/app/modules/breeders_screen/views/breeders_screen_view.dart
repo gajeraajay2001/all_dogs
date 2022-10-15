@@ -1,9 +1,7 @@
 import 'package:all_dogs/app/routes/app_pages.dart';
 import 'package:all_dogs/app/utilities/text_field.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../../../constants/api_constants.dart';
 import '../../../constants/color_constant.dart';
 import '../../../constants/sizeConstant.dart';
