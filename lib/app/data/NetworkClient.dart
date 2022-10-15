@@ -62,8 +62,8 @@ class NetworkClient {
     dio.options.validateStatus = (status) {
       return status! < 500;
     };
-    dio.options.connectTimeout = 4000; //5s
-    dio.options.receiveTimeout = 4000;
+    dio.options.connectTimeout = 5000; //5s
+    dio.options.receiveTimeout = 5000;
 
     if (header != null) {
       for (var key in header.keys) {
@@ -77,8 +77,9 @@ class NetworkClient {
             await dio.post(baseUrl + command, data: params).catchError((error) {
           print("Error : = $error");
           DioError dioError = error as DioError;
-          if (dioError.type == DioErrorType.connectTimeout) {
-            failureCallback!("Data", "Something went wrong.");
+          if (dioError.type == DioErrorType.connectTimeout ||
+              dioError.type == DioErrorType.receiveTimeout) {
+            failureCallback!("TimeOut", "Something went wrong.");
           }
         });
         parseResponse(context, response,
@@ -92,8 +93,9 @@ class NetworkClient {
             .catchError((error) {
           print("Error : = $error");
           DioError dioError = error as DioError;
-          if (dioError.type == DioErrorType.connectTimeout) {
-            failureCallback!("response.data", "Something went wrong.");
+          if (dioError.type == DioErrorType.connectTimeout ||
+              dioError.type == DioErrorType.receiveTimeout) {
+            failureCallback!("TimeOut", "Something went wrong.");
           }
         });
         parseResponse(context, response,
@@ -106,8 +108,9 @@ class NetworkClient {
             await dio.put(baseUrl + command, data: params).catchError((error) {
           print("Error : = $error");
           DioError dioError = error as DioError;
-          if (dioError.type == DioErrorType.connectTimeout) {
-            failureCallback!("response.data", "Something went wrong.");
+          if (dioError.type == DioErrorType.connectTimeout ||
+              dioError.type == DioErrorType.receiveTimeout) {
+            failureCallback!("TimeOut", "Something went wrong.");
           }
         });
         ;
@@ -121,8 +124,9 @@ class NetworkClient {
             .catchError((error) {
           print("Error : = $error");
           DioError dioError = error as DioError;
-          if (dioError.type == DioErrorType.connectTimeout) {
-            failureCallback!("response.data", "Something went wrong.");
+          if (dioError.type == DioErrorType.connectTimeout ||
+              dioError.type == DioErrorType.receiveTimeout) {
+            failureCallback!("TimeOut", "Something went wrong.");
           }
         });
         ;
@@ -137,8 +141,9 @@ class NetworkClient {
             .catchError((error) {
           print("Error : = $error");
           DioError dioError = error as DioError;
-          if (dioError.type == DioErrorType.connectTimeout) {
-            failureCallback!("response.data", "Something went wrong.");
+          if (dioError.type == DioErrorType.connectTimeout ||
+              dioError.type == DioErrorType.receiveTimeout) {
+            failureCallback!("TimeOut", "Something went wrong.");
           }
         });
         ;

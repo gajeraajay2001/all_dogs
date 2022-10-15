@@ -1,4 +1,4 @@
-package com.all_dogs.all_dogs
+package com.all_dog.all_dogs
 
 import io.flutter.embedding.android.FlutterActivity
 
