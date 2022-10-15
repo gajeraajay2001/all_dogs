@@ -3,7 +3,6 @@ import 'package:all_dogs/app/models/home_screen_data_model.dart';
 import 'package:all_dogs/app/models/profile_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import '../../../../main.dart';
 import '../../../constants/api_constants.dart';
 import '../../../data/NetworkClient.dart';

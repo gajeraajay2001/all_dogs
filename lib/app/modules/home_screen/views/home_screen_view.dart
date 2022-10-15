@@ -8,7 +8,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../constants/api_constants.dart';
 import '../../../constants/sizeConstant.dart';
-import '../../../routes/app_pages.dart';
 import '../controllers/home_screen_controller.dart';
 
 class HomeScreenView extends GetWidget<HomeScreenController> {
