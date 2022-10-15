@@ -33,164 +33,199 @@ class GetInTouchScreenView extends GetWidget<GetInTouchScreenController> {
           ),
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Text(
-                    "Feel free to drop us a line below!",
-                    style: TextStyle(
-                        fontSize: MySize.getHeight(10),
-                        fontWeight: FontWeight.w300),
+        body: Form(
+          key: controller.formKey,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      "Feel free to drop us a line below!",
+                      style: TextStyle(
+                          fontSize: MySize.getHeight(10),
+                          fontWeight: FontWeight.w300),
+                    ),
                   ),
-                ),
-                Spacing.height(5),
-                Center(
-                  child: Text(
-                    "alphas@alldogs.in",
-                    style: TextStyle(
-                        fontSize: MySize.getHeight(10),
-                        fontWeight: FontWeight.w300),
+                  Spacing.height(5),
+                  Center(
+                    child: Text(
+                      "alphas@alldogs.in",
+                      style: TextStyle(
+                          fontSize: MySize.getHeight(10),
+                          fontWeight: FontWeight.w300),
+                    ),
                   ),
-                ),
-                Spacing.height(20),
-                Text(
-                  "NAME",
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                Spacing.height(15),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 7),
-                        color: Colors.black.withOpacity(0.08),
-                        blurRadius: MySize.getHeight(13),
-                        spreadRadius: MySize.getHeight(2),
+                  Spacing.height(20),
+                  Text(
+                    "NAME",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  Spacing.height(15),
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 7),
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: MySize.getHeight(13),
+                          spreadRadius: MySize.getHeight(2),
+                        ),
+                      ],
+                    ),
+                    child: getTextField(
+                      hintText: "Full Name",
+                      borderColor: Colors.transparent,
+                      size: 70,
+                      hintFontSize: 12,
+                      fontSize: 12,
+                      isFilled: true,
+                      fillColor: Colors.white,
+                      validation: (val) {
+                        if (isNullEmptyOrFalse(val)) {
+                          return "Please enter name";
+                        }
+                        return null;
+                      },
+                      textEditingController: controller.nameController,
+                    ),
+                  ),
+                  Spacing.height(30),
+                  Text(
+                    "E-MAIL",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  Spacing.height(15),
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 7),
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: MySize.getHeight(13),
+                          spreadRadius: MySize.getHeight(2),
+                        ),
+                      ],
+                    ),
+                    child: getTextField(
+                      hintText: "Your E-Mail",
+                      borderColor: Colors.transparent,
+                      size: 70,
+                      hintFontSize: 12,
+                      fontSize: 12,
+                      isFilled: true,
+                      fillColor: Colors.white,
+                      validation: (val) {
+                        if (isNullEmptyOrFalse(val)) {
+                          return "Please enter email";
+                        }
+                        return null;
+                      },
+                      textEditingController: controller.mailController,
+                    ),
+                  ),
+                  Spacing.height(30),
+                  Text(
+                    "PHONE",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  Spacing.height(15),
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 7),
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: MySize.getHeight(13),
+                          spreadRadius: MySize.getHeight(2),
+                        ),
+                      ],
+                    ),
+                    child: getTextField(
+                      hintText: "1-234-567-8901",
+                      borderColor: Colors.transparent,
+                      hintFontSize: 12,
+                      fontSize: 12,
+                      size: 70,
+                      isFilled: true,
+                      fillColor: Colors.white,
+                      textInputType: TextInputType.number,
+                      validation: (val) {
+                        if (isNullEmptyOrFalse(val)) {
+                          return "Please enter number";
+                        }
+                        return null;
+                      },
+                      textEditingController: controller.phoneNumberController,
+                    ),
+                  ),
+                  Spacing.height(30),
+                  Text(
+                    "MESSAGE",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  Spacing.height(15),
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 7),
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: MySize.getHeight(13),
+                          spreadRadius: MySize.getHeight(2),
+                        ),
+                      ],
+                    ),
+                    child: getTextField(
+                      hintText: "Type here...",
+                      borderColor: Colors.transparent,
+                      size: 70,
+                      hintFontSize: 12,
+                      fontSize: 12,
+                      maxLine: 7,
+                      isFilled: true,
+                      fillColor: Colors.white,
+                      validation: (val) {
+                        if (isNullEmptyOrFalse(val)) {
+                          return "Please enter message";
+                        }
+                        return null;
+                      },
+                      textEditingController: controller.messageController,
+                    ),
+                  ),
+                  Spacing.height(70),
+                  InkWell(
+                    onTap: () {
+                      if (controller.formKey.currentState!.validate()) {
+                        controller.callContactUsApi(context: context);
+                      }
+                    },
+                    child: getButton(
+                      title: "",
+                      height: 50,
+                      width: MySize.screenWidth,
+                      widget: Center(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "SEND MESSAGE",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: MySize.getHeight(16),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              )
+                            ]),
                       ),
-                    ],
+                    ),
                   ),
-                  child: getTextField(
-                    hintText: "Full Name",
-                    borderColor: Colors.transparent,
-                    size: 70,
-                    hintFontSize: 12,
-                    fontSize: 12,
-                    isFilled: true,
-                    fillColor: Colors.white,
-                    textEditingController: controller.nameController,
-                  ),
-                ),
-                Spacing.height(30),
-                Text(
-                  "E-MAIL",
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                Spacing.height(15),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 7),
-                        color: Colors.black.withOpacity(0.08),
-                        blurRadius: MySize.getHeight(13),
-                        spreadRadius: MySize.getHeight(2),
-                      ),
-                    ],
-                  ),
-                  child: getTextField(
-                    hintText: "Your E-Mail",
-                    borderColor: Colors.transparent,
-                    size: 70,
-                    hintFontSize: 12,
-                    fontSize: 12,
-                    isFilled: true,
-                    fillColor: Colors.white,
-                    textEditingController: controller.mailController,
-                  ),
-                ),
-                Spacing.height(30),
-                Text(
-                  "PHONE",
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                Spacing.height(15),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 7),
-                        color: Colors.black.withOpacity(0.08),
-                        blurRadius: MySize.getHeight(13),
-                        spreadRadius: MySize.getHeight(2),
-                      ),
-                    ],
-                  ),
-                  child: getTextField(
-                    hintText: "1-234-567-8901",
-                    borderColor: Colors.transparent,
-                    hintFontSize: 12,
-                    fontSize: 12,
-                    size: 70,
-                    isFilled: true,
-                    fillColor: Colors.white,
-                    textInputType: TextInputType.number,
-                    textEditingController: controller.phoneNumberController,
-                  ),
-                ),
-                Spacing.height(30),
-                Text(
-                  "MESSAGE",
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                ),
-                Spacing.height(15),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 7),
-                        color: Colors.black.withOpacity(0.08),
-                        blurRadius: MySize.getHeight(13),
-                        spreadRadius: MySize.getHeight(2),
-                      ),
-                    ],
-                  ),
-                  child: getTextField(
-                    hintText: "Type here...",
-                    borderColor: Colors.transparent,
-                    size: 70,
-                    hintFontSize: 12,
-                    fontSize: 12,
-                    maxLine: 7,
-                    isFilled: true,
-                    fillColor: Colors.white,
-                    textEditingController: controller.messageController,
-                  ),
-                ),
-                Spacing.height(70),
-                getButton(
-                  title: "",
-                  height: 50,
-                  width: MySize.screenWidth,
-                  widget: Center(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "SEND MESSAGE",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: MySize.getHeight(16),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ]),
-                  ),
-                ),
-              ],
+                  Spacing.height(30),
+                ],
+              ),
             ),
           ),
         ),

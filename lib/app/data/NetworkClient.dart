@@ -171,6 +171,9 @@ class NetworkClient {
       } else if (response.data is List<Map<String, dynamic>>) {
         successCallback!(response.data, response.statusMessage.toString());
         return;
+      } else if (!isNullEmptyOrFalse(response.data)) {
+        successCallback!(response.data, response.statusMessage.toString());
+        return;
       } else {
         failureCallback!(response.data, "Something went wrong.");
         return;

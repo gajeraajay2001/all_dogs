@@ -27,6 +27,8 @@ class ApiConstant {
   static const editPost = "/post/edit/";
   static const breedsDetailsApi = "/breed/details/";
   static const breedsCommentApi = "/breed/comment/";
+  static const aboutUsApi = "/about-us";
+  static const contactUsApi = "/contact-us";
 }
 
 class ArgumentConstant {
