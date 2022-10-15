@@ -40,10 +40,10 @@ class HomeScreenView extends GetWidget<HomeScreenController> {
             centerTitle: false,
             elevation: 0,
             actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.search, color: Colors.black),
-              ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: Icon(Icons.search, color: Colors.black),
+              // ),
               InkWell(
                 onTap: () {
                   controller.scaffoldKey.currentState!.openEndDrawer();
