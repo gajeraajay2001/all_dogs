@@ -163,7 +163,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   Get.back();
                   showConfirmationDialog(
                       context: context,
-                      text: "Are you sure you want Logout.",
+                      text: "Are you sure you want to Logout.",
                       submitText: "Yes",
                       cancelText: "Cancel",
                       submitCallBack: () {

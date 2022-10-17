@@ -205,7 +205,7 @@ class PuppiesDetailsScreenView
                                           showConfirmationDialog(
                                               context: context,
                                               text:
-                                                  "Are you sure you want delete post.",
+                                                  "Are you sure you want to delete post.",
                                               submitText: "Yes",
                                               cancelText: "Cancel",
                                               submitCallBack: () {
