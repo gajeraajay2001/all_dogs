@@ -78,6 +78,7 @@ TextFormField getTextField({
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
       suffix: suffix,
+      errorMaxLines: 2,
       errorText: (isNullEmptyOrFalse(errorText)) ? null : errorText,
       hintText: hintText,
       hintStyle: TextStyle(
