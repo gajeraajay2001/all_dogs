@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../../../main.dart';
 import '../../../constants/api_constants.dart';
 import '../../../routes/app_pages.dart';
@@ -375,36 +376,42 @@ class PuppiesDetailsScreenView
               height: MySize.screenWidth,
               onPageChanged: (val, _) {
                 controller.selectedBannerIndex.value = val;
+                controller.youtubePlayerController.pause();
               },
             ),
             items: List.generate(controller.bannerList.length, (index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
-                child: Stack(
-                  fit: StackFit.expand,
-                  alignment: Alignment.center,
-                  children: [
-                    ClipRRect(
-                        borderRadius:
-                            BorderRadius.circular(MySize.getHeight(15)),
-                        child: Container(
-                          width: MySize.screenWidth,
-                          child: getImageByLink(
-                              url: imageBaseUrl + controller.bannerList[index],
-                              height: 100,
-                              width: 100,
-                              boxFit: BoxFit.cover),
-                        )),
-                    Positioned(
-                      bottom: MySize.getHeight(27),
-                      child: Text(
-                        controller.bannerTextList[index].toString(),
-                        style: TextStyle(color: Colors.white),
+              return (!controller.bannerList[index].isVideo)
+                  ? Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: MySize.getWidth(20)),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        alignment: Alignment.center,
+                        children: [
+                          ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(MySize.getHeight(15)),
+                              child: Container(
+                                width: MySize.screenWidth,
+                                child: getImageByLink(
+                                    url: imageBaseUrl +
+                                        controller.bannerList[index].link,
+                                    height: 100,
+                                    width: 100,
+                                    boxFit: BoxFit.cover),
+                              )),
+                          Positioned(
+                            bottom: MySize.getHeight(27),
+                            child: Text(
+                              controller.bannerTextList[index].toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              );
+                    )
+                  : YoutubePlayer(
+                      controller: controller.youtubePlayerController);
             }),
           ),
           Positioned(
