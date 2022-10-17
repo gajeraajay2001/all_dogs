@@ -77,6 +77,7 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                           textEditingController: controller.passwordController,
                           hintText: "Enter password here",
                           textVisible: !controller.isVisible.value,
+                          textInputType: TextInputType.visiblePassword,
                           validation: (val) {
                             if (val!.isEmpty) {
                               return "Please Enter Password";
