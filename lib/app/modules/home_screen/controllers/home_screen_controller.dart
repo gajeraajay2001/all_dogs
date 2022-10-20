@@ -15,11 +15,13 @@ class HomeScreenController extends GetxController {
   RxBool hasData = false.obs;
   @override
   void onInit() {
-    if (!isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
-      getUserProfileData(context: Get.context!);
-    } else {
-      getHomeScreenData(context: Get.context!);
-    }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if (!isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
+        getUserProfileData(context: Get.context!);
+      } else {
+        getHomeScreenData(context: Get.context!);
+      }
+    });
 
     super.onInit();
   }
@@ -27,7 +29,7 @@ class HomeScreenController extends GetxController {
   getHomeScreenData({required BuildContext context}) async {
     hasData.value = false;
     Map<String, dynamic> dict = {};
-
+    print("3333333");
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,
@@ -36,6 +38,7 @@ class HomeScreenController extends GetxController {
       header: NetworkClient.getInstance.getAuthHeaders(),
       params: dict,
       successCallback: (response, message) {
+        print("444444444");
         hasData.value = true;
         HomeScreenDataModel res = HomeScreenDataModel.fromJson(response);
         if (!isNullEmptyOrFalse(res.data)) {
@@ -62,7 +65,6 @@ class HomeScreenController extends GetxController {
   getUserProfileData({required BuildContext context}) async {
     hasData.value = false;
     Map<String, dynamic> dict = {};
-
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,
@@ -71,8 +73,9 @@ class HomeScreenController extends GetxController {
       header: NetworkClient.getInstance.getAuthHeaders(),
       params: dict,
       successCallback: (response, message) {
-        hasData.value = true;
+        print("1111111111");
         if (response["responseCode"] == 200) {
+          print("22222222");
           getHomeScreenData(context: Get.context!);
           ProfileDataModel res = ProfileDataModel.fromJson(response);
           if (!isNullEmptyOrFalse(res.data)) {
@@ -86,6 +89,8 @@ class HomeScreenController extends GetxController {
               box.write(ArgumentConstant.number, res.data!.mobile.toString());
             }
           }
+        } else {
+          hasData.value = true;
         }
       },
       failureCallback: (response, message) {
