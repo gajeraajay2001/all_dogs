@@ -40,4 +40,7 @@ void main() async {
       getPages: AppPages.routes,
     ),
   );
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 }

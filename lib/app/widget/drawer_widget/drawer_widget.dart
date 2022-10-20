@@ -167,6 +167,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       submitText: "Yes",
                       cancelText: "Cancel",
                       submitCallBack: () {
+                        Get.back();
                         getLogOut();
                       },
                       cancelCallback: () {

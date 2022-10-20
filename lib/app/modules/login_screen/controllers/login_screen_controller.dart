@@ -27,7 +27,7 @@ class LoginScreenController extends GetxController {
   callApiForLogin({
     required BuildContext context,
   }) {
-    FocusScope.of(context).unfocus();
+    FocusManager.instance.primaryFocus!.unfocus();
     getIt.get<CustomDialogs>().showCircularDialog(context);
     Map<String, dynamic> dict = {};
     dict["email"] = emailController.value.text;
@@ -49,7 +49,8 @@ class LoginScreenController extends GetxController {
         if (response["responseCode"] == 200) {
           LogInResponse logInResponse = LogInResponse.fromJson(response);
           if (logInResponse.data!.token != null) {
-            box.write(ArgumentConstant.token, logInResponse.data!.token);
+            box.write(
+                ArgumentConstant.token, logInResponse.data!.token.toString());
             box.write(ArgumentConstant.password, passwordController.value.text);
           }
           Get.offAllNamed(Routes.HOME_SCREEN);
