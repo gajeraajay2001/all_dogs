@@ -4,8 +4,10 @@ import 'package:all_dogs/app/constants/sizeConstant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../main.dart';
+import '../../data/NetworkClient.dart';
 import '../../routes/app_pages.dart';
 import '../../utilities/buttons.dart';
+import '../../utilities/progress_dialog_utils.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -154,6 +156,24 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   Get.back();
                   Get.toNamed(Routes.ABOUT_US_SCREEN);
                 }),
+            (!isNullEmptyOrFalse(box.read(ArgumentConstant.token)))
+                ? getButtonWidget(
+                    title: "Delete Account",
+                    onTap: () {
+                      showConfirmationDialog(
+                          context: context,
+                          text: "Are you sure you want to delete your account.",
+                          submitText: "Yes",
+                          cancelText: "Cancel",
+                          submitCallBack: () {
+                            Get.back();
+                            deleteUserApi(context: context);
+                          },
+                          cancelCallback: () {
+                            Get.back();
+                          });
+                    })
+                : Container(),
             getButtonWidget(
               title: (!isNullEmptyOrFalse(box.read(ArgumentConstant.token)))
                   ? "Logout"
@@ -230,6 +250,26 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           ],
         ),
       ),
+    );
+  }
+
+  deleteUserApi({required BuildContext context}) async {
+    Map<String, dynamic> dict = {};
+    print("3333333");
+    return NetworkClient.getInstance.callApi(
+      context,
+      baseUrl,
+      ApiConstant.deleteUser,
+      MethodType.Delete,
+      header: NetworkClient.getInstance.getAuthHeaders(),
+      params: dict,
+      successCallback: (response, message) {
+        getLogOut();
+      },
+      failureCallback: (response, message) {
+        getIt<CustomDialogs>().getDialog(title: "Failed", desc: message);
+        print(" error");
+      },
     );
   }
 }

@@ -29,6 +29,7 @@ class ApiConstant {
   static const breedsCommentApi = "/breed/comment/";
   static const aboutUsApi = "/about-us";
   static const contactUsApi = "/contact-us";
+  static const deleteUser = "user/delete";
 }
 
 class ArgumentConstant {
