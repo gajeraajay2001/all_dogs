@@ -255,7 +255,6 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
   deleteUserApi({required BuildContext context}) async {
     Map<String, dynamic> dict = {};
-    print("3333333");
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,
