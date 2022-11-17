@@ -52,8 +52,12 @@ class LoginScreenController extends GetxController {
             box.write(
                 ArgumentConstant.token, logInResponse.data!.token.toString());
             box.write(ArgumentConstant.password, passwordController.value.text);
+            Get.offAllNamed(Routes.HOME_SCREEN);
+          } else {
+            getIt
+                .get<CustomDialogs>()
+                .getDialog(title: "Failed", desc: response["message"]);
           }
-          Get.offAllNamed(Routes.HOME_SCREEN);
         } else {
           getIt
               .get<CustomDialogs>()

@@ -9,7 +9,6 @@ import '../../../data/NetworkClient.dart';
 import '../../../utilities/progress_dialog_utils.dart';
 
 class HomeScreenController extends GetxController {
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   RxList<Posts> postList = RxList<Posts>([]);
   RxList<Blogs> blogList = RxList<Blogs>([]);
   RxBool hasData = false.obs;
