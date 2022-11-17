@@ -122,7 +122,8 @@ class LoginScreenView extends GetWidget<LoginScreenController> {
                         Center(
                             child: InkWell(
                                 onTap: () {
-                                  //Get.toNamed(Routes.HOME_SCREEN);
+                                  FocusManager.instance.primaryFocus!.unfocus();
+                                  // Get.toNamed(Routes.HOME_SCREEN);
                                   if (controller.formKey.currentState!
                                       .validate()) {
                                     controller.callApiForLogin(
