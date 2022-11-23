@@ -26,7 +26,6 @@ class BlogsScreenController extends GetxController {
       hasData.value = false;
     }
     Map<String, dynamic> dict = {};
-
     return NetworkClient.getInstance.callApi(
       context,
       baseUrl,

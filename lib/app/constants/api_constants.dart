@@ -30,6 +30,7 @@ class ApiConstant {
   static const aboutUsApi = "/about-us";
   static const contactUsApi = "/contact-us";
   static const deleteUser = "user/delete";
+  static const videoListApi = "video/list";
 }
 
 class ArgumentConstant {
@@ -53,4 +54,8 @@ getLogOut() {
   box.write(ArgumentConstant.name, "");
   box.write(ArgumentConstant.number, "");
   Get.offAllNamed(Routes.HOME_SCREEN);
+}
+
+String getYoutubeThumbnail({required String videoId}) {
+  return "https://img.youtube.com/vi/$videoId/hqdefault.jpg";
 }

@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import '../../../constants/api_constants.dart';
 import '../../../constants/sizeConstant.dart';
 import '../controllers/home_screen_controller.dart';
+import 'home_latest_video_widget.dart';
 
 class HomeScreenView extends StatefulWidget {
   const HomeScreenView({Key? key}) : super(key: key);
@@ -49,31 +50,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   centerTitle: false,
                   elevation: 0,
                   actions: [
-                    // IconButton(
-                    //   onPressed: () {},
-                    //   icon: Icon(Icons.search, color: Colors.black),
-                    // ),
                     InkWell(
                       onTap: () {
                         scaffoldKey.currentState!.openEndDrawer();
-                        // if (!isNullEmptyOrFalse(box.read(ArgumentConstant.token))) {
-                        //   Get.back();
-                        //   showConfirmationDialog(
-                        //       context: context,
-                        //       text: "Are you sure you want to Logout.",
-                        //       submitText: "Yes",
-                        //       cancelText: "Cancel",
-                        //       submitCallBack: () {
-                        //         Get.back();
-                        //         getLogOut();
-                        //       },
-                        //       cancelCallback: () {
-                        //         Get.back();
-                        //       });
-                        // } else {
-                        //   // Get.back();
-                        //   Get.toNamed(Routes.LOGIN_SCREEN);
-                        // }
                       },
                       child: Container(
                         padding: EdgeInsets.only(right: MySize.getWidth(13)),
@@ -97,6 +76,10 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                   homeScreenController: controller),
                               Spacing.height(20),
                               HomeLatestBlogWidget(
+                                homeScreenController: controller,
+                              ),
+                              Spacing.height(20),
+                              HomeLatestVideoWidget(
                                 homeScreenController: controller,
                               ),
                               Spacing.height(20),
