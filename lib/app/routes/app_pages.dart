@@ -30,6 +30,8 @@ import '../modules/puppies_list/bindings/puppies_list_binding.dart';
 import '../modules/puppies_list/views/puppies_list_view.dart';
 import '../modules/signup_screen/bindings/signup_screen_binding.dart';
 import '../modules/signup_screen/views/signup_screen_view.dart';
+import '../modules/video_screen/bindings/video_screen_binding.dart';
+import '../modules/video_screen/views/video_screen_view.dart';
 
 part 'app_routes.dart';
 
@@ -113,6 +115,11 @@ class AppPages {
       name: _Paths.BREEDS_DETAILS_SCREEN,
       page: () => const BreedsDetailsScreenView(),
       binding: BreedsDetailsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDEO_SCREEN,
+      page: () => const VideoScreenView(),
+      binding: VideoScreenBinding(),
     ),
   ];
 }
