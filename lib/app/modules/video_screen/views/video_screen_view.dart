@@ -89,13 +89,11 @@ class VideoScreenView extends GetWidget<VideoScreenController> {
                                           onTap: () {
                                             controller.youtubePlayerController =
                                                 YoutubePlayerController(
-                                                    initialVideoId: controller
-                                                            .videoList[i]
-                                                            .videoUrl!
-                                                            .split("https://www.youtube.com/embed/")[
-                                                        1],
-                                                    flags: YoutubePlayerFlags(
-                                                        autoPlay: false));
+                                              initialVideoId: controller
+                                                  .videoList[i].videoUrl!
+                                                  .split(
+                                                      "https://www.youtube.com/embed/")[1],
+                                            );
                                             showYoutubeDialog(context: context);
                                           },
                                           child: Container(
@@ -186,25 +184,16 @@ class VideoScreenView extends GetWidget<VideoScreenController> {
     return showDialog(
         context: context,
         builder: (context) {
-          return WillPopScope(
-            onWillPop: () {
-              SystemChrome.setPreferredOrientations(
-                  [DeviceOrientation.portraitUp]);
-              return Future.value(true);
-            },
-            child: AlertDialog(
-              backgroundColor: Colors.transparent,
-              content: Container(
-                height: MySize.getHeight(200),
-                // width: MySize.getWidth(500),
-                child: YoutubePlayer(
-                    controller: controller.youtubePlayerController!,
-                    width: MySize.getWidth(500)),
+          return YoutubePlayerBuilder(
+              player: YoutubePlayer(
+                controller: controller.youtubePlayerController!,
+                showVideoProgressIndicator: true,
               ),
-            ),
-          );
-        }).then((value) {
-      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    });
+              builder: (context, player) {
+                return Container(
+                  child: player,
+                );
+              });
+        });
   }
 }
