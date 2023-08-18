@@ -63,7 +63,7 @@ class VideoScreenView extends GetWidget<VideoScreenController> {
                             physics: NeverScrollableScrollPhysics(),
                             crossAxisSpacing: MySize.getWidth(7),
                             childAspectRatio:
-                                MySize.getHeight((MySize.isMini) ? 0.68 : 0.70),
+                                MySize.getHeight((MySize.isMini) ? 0.67 : 0.69),
                             mainAxisSpacing: MySize.getHeight(8),
                             padding: EdgeInsets.only(top: MySize.getHeight(10)),
                             children:
